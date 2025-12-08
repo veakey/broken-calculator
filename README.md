@@ -83,8 +83,18 @@ Chaque niveau contient :
 ## 📝 Notes
 
 - Les versions Scratch nécessitent des fichiers `.sb3` (non inclus, arborescence créée)
+- **Assets Scratch** : Voir le dossier `assets/scratch/` pour les guides de création des sprites
 - Les niveaux sans code utilisent des activités manuelles
 - Chaque version est adaptée au niveau de difficulté approprié
+
+## 🎨 Assets Scratch
+
+Le dossier `assets/scratch/` contient :
+- **Instructions** : Guides complets pour créer les sprites de la calculatrice
+- **Références** : Descriptions détaillées, palette de couleurs, positionnement
+- **Guide rapide** : Version condensée pour création rapide
+
+Voir `assets/README.md` pour plus d'informations.
 
 ## 🎓 Compétences Développées
 
