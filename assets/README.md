@@ -118,6 +118,16 @@ Toutes les couleurs sont définies dans les fichiers d'instructions. Format :
 - Tous les assets peuvent être créés directement dans Scratch avec l'éditeur intégré
 - Les images de référence peuvent être ajoutées dans `sprites/` si nécessaire
 
+## Version avec Tests Unitaires
+
+Le dossier `version-avec-tests/` contient une version avancée qui ajoute :
+- Système de tests unitaires intégré dans Scratch
+- 7 bugs intentionnels à corriger
+- Validation automatique des corrections
+- Sprite Testeur qui exécute les tests automatiquement
+
+Voir `version-avec-tests/README.md` pour plus d'informations.
+
 ## Prochaines étapes
 
 1. Créer les projets dans Scratch selon les guides
