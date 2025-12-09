@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outil Enseignant - Visualisation du Code</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .panel h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .code-viewer {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .code-line {
+            padding: 2px 0;
+            white-space: pre;
+        }
+
+        .code-line:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .line-number {
+            color: #858585;
+            margin-right: 15px;
+            user-select: none;
+        }
+
+        .keyword {
+            color: #569cd6;
+        }
+
+        .function {
+            color: #dcdcaa;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .bug {
+            background: rgba(231, 76, 60, 0.2);
+            border-left: 4px solid #e74c3c;
+            padding-left: 10px;
+        }
+
+        .bug-marker {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .explanation {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .explanation h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .bug-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .bug-list li {
+            padding: 15px;
+            margin: 10px 0;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 5px;
+        }
+
+        .bug-list li strong {
+            color: #e74c3c;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .highlight {
+            background: rgba(255, 255, 0, 0.3);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        @media (max-width: 1200px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👨‍🏫 Outil Enseignant</h1>
+            <p class="subtitle">Visualisation et explication du code de la calculatrice</p>
+        </header>
+
+        <div class="controls">
+            <button class="btn btn-primary" onclick="loadCode()">📄 Afficher le code</button>
+            <button class="btn btn-secondary" onclick="showBugs()">🐛 Voir les bugs</button>
+            <button class="btn btn-secondary" onclick="showExplanations()">💡 Explications</button>
+        </div>
+        
+        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
+            <strong>💡 Note :</strong> Cet outil fonctionne sans serveur ! Ouvrez simplement ce fichier HTML dans votre navigateur.
+            <br>Pour modifier le code, éditez directement le fichier <code>calculator.js</code> avec un éditeur de texte.
+        </div>
+
+        <div class="main-content">
+            <div class="panel">
+                <h2>📝 Code de la Calculatrice</h2>
+                <div class="code-viewer" id="code-viewer">
+                    <div style="text-align: center; padding: 50px; color: #858585;">
+                        Cliquez sur "Afficher le code" pour voir le code
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>📚 Explications et Bugs</h2>
+                <div id="explanations">
+                    <div class="explanation">
+                        <h3>🎯 Comment utiliser cet outil</h3>
+                        <p>Cet outil vous permet de visualiser le code de la calculatrice de manière claire et compréhensible.</p>
+                        <ul style="margin-top: 10px; margin-left: 20px;">
+                            <li><strong>Charger le code</strong> : Affiche le code avec coloration syntaxique</li>
+                            <li><strong>Voir les bugs</strong> : Met en évidence les bugs dans le code</li>
+                            <li><strong>Explications</strong> : Affiche des explications pour chaque partie</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="enseignant-viewer.js"></script>
+</body>
+</html>
+

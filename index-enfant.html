@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice Cassée - Mode Enfant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-enfant.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔧 Calculatrice Cassée</h1>
+            <p class="subtitle">Aide la calculatrice à faire les bons calculs !</p>
+        </header>
+
+        <div class="main-content-enfant">
+            <!-- Bloc 1 : Calculatrice -->
+            <div class="calculator-block">
+                <h2>🔢 Calculatrice</h2>
+                <div class="calculator calculator-enfant" id="calculator">
+                    <div class="display display-enfant" id="display">0</div>
+                    <div class="buttons buttons-enfant">
+                        <button class="btn clear btn-enfant" onclick="clearDisplay()">C</button>
+                        <button class="btn operator btn-enfant" onclick="appendOperator('/')">÷</button>
+                        <button class="btn operator btn-enfant" onclick="appendOperator('*')">×</button>
+                        
+                        <button class="btn number btn-enfant" onclick="appendNumber('7')">7</button>
+                        <button class="btn number btn-enfant" onclick="appendNumber('8')">8</button>
+                        <button class="btn number btn-enfant" onclick="appendNumber('9')">9</button>
+                        <button class="btn operator btn-enfant" onclick="appendOperator('-')">-</button>
+                        
+                        <button class="btn number btn-enfant" onclick="appendNumber('4')">4</button>
+                        <button class="btn number btn-enfant" onclick="appendNumber('5')">5</button>
+                        <button class="btn number btn-enfant" onclick="appendNumber('6')">6</button>
+                        <button class="btn operator btn-enfant" onclick="appendOperator('+')">+</button>
+                        
+                        <button class="btn number btn-enfant" onclick="appendNumber('1')">1</button>
+                        <button class="btn number btn-enfant" onclick="appendNumber('2')">2</button>
+                        <button class="btn number btn-enfant" onclick="appendNumber('3')">3</button>
+                        <button class="btn equals btn-enfant" onclick="calculate()">=</button>
+                        
+                        <button class="btn number zero btn-enfant" onclick="appendNumber('0')">0</button>
+                        <button class="btn number btn-enfant" onclick="appendNumber('.')">.</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloc 2 : Étapes visuelles -->
+            <div class="steps-block">
+                <h2>📋 Étapes des calculs</h2>
+                <div class="visual-steps" id="visual-steps"></div>
+            </div>
+
+            <!-- Bloc 3 : Tests -->
+            <div class="test-block">
+                <h2>🧪 Tests</h2>
+                <button class="btn-test btn-test-enfant" onclick="runTests()">Lancer les Tests</button>
+                <div id="test-results" class="test-results-enfant"></div>
+            </div>
+        </div>
+
+        <div class="info-panel info-panel-enfant">
+            <h2>ℹ️ Comment ça marche ?</h2>
+            <p>Cette calculatrice fait des erreurs !</p>
+            <p><strong>Ta mission :</strong> Trouve les erreurs en testant des calculs.</p>
+            <p>Regarde les étapes qui s'affichent pour comprendre ce qui se passe !</p>
+        </div>
+    </div>
+
+    <script src="calculator.js"></script>
+    <script src="calculator-enfant.js"></script>
+    <script src="tests.js"></script>
+    <script src="tests-enfant.js"></script>
+</body>
+</html>
+

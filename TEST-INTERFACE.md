@@ -2,7 +2,15 @@
 
 ## 🚀 Démarrage rapide
 
-### Option 1 : Serveur HTTP local (recommandé)
+### Ouvrir directement (Recommandé)
+
+**Double-cliquer sur `index.html`** ou faire glisser le fichier dans le navigateur.
+
+**C'est tout !** Pas besoin de serveur, npm, git, ou autre installation.
+
+### Option alternative : Serveur local (si problème avec file://)
+
+**Uniquement si vous avez des problèmes** (rare) :
 
 ```bash
 # Dans le dossier du projet
@@ -12,11 +20,7 @@ python3 -m http.server 8000
 # http://localhost:8000
 ```
 
-### Option 2 : Ouvrir directement
-
-Double-cliquer sur `index.html` ou faire glisser le fichier dans le navigateur.
-
-**Note** : Certaines fonctionnalités peuvent ne pas fonctionner avec `file://` à cause des restrictions de sécurité des navigateurs.
+**Mais normalement, ce n'est PAS nécessaire !**
 
 ## ✅ Checklist de test
 

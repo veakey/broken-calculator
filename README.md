@@ -28,10 +28,35 @@ Réparer une calculatrice qui contient des bugs intentionnels en :
 
 ## 🚀 Utilisation
 
-### Version de base
-Ouvrez `index.html` dans un navigateur pour la version complète avec tous les bugs.
+### ⚡ Installation Ultra-Simple
 
-**Pour tester l'interface :** Voir `TEST-INTERFACE.md` pour un guide complet de test.
+**Aucun serveur, npm, git ou installation nécessaire !**
+
+1. **Télécharger le projet** (ZIP ou git clone)
+2. **Ouvrir directement** les fichiers HTML dans votre navigateur :
+   - `index.html` → Version standard
+   - `index-enfant.html` → Version enfant
+   - `enseignant-viewer.html` → Outil enseignant
+3. **C'est tout !** 
+
+**Voir `INSTALLATION.md` pour plus de détails.**
+
+### Versions disponibles
+
+1. **Version Standard** (`index.html`) : Pour CM2/6P et plus - Code visible
+2. **Version Enfant** (`index-enfant.html`) ⭐ : Pour CP-CE2/3P-5P - Interface visuelle simplifiée
+3. **Outil Enseignant** (`enseignant-viewer.html`) ⭐ : Pour les enseignants - Visualisation du code
+
+**Voir `GUIDE-VERSIONS.md` pour choisir la bonne version.**
+
+### Modifier le code
+
+1. Ouvrir `calculator.js` avec un éditeur de texte
+2. Modifier le code
+3. Sauvegarder
+4. Recharger la page (F5)
+
+**Pas besoin de compiler, installer, ou configurer quoi que ce soit !**
 
 ### Versions par niveau
 Chaque niveau a sa propre version dans les dossiers correspondants :
