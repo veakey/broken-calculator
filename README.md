@@ -48,6 +48,8 @@ Réparer une calculatrice qui contient des bugs intentionnels en :
 3. **Outil Enseignant** (`enseignant-viewer.html`) ⭐ : Pour les enseignants - Visualisation du code
 4. **Créateur de Bugs** (`bug-creator.html`) ⭐ : Pour les enseignants - Créer des bugs personnalisés
 
+**📖 Voir `GUIDE-CREATEUR-BUGS.md` pour un guide complet et détaillé.**
+
 **Voir `GUIDE-VERSIONS.md` pour choisir la bonne version.**
 
 ### 🔄 Comment passer d'un mode à l'autre ?

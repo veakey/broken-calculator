@@ -143,10 +143,18 @@
         <header>
             <h1>🐛 Créateur de Bugs</h1>
             <p class="subtitle">Créez vos propres bugs personnalisés pour vos élèves</p>
+            <div style="background: rgba(52, 152, 219, 0.2); border-left: 4px solid rgba(52, 152, 219, 0.8); padding: 15px; margin-top: 20px; border-radius: 8px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+                <strong>📖 Nouveau ?</strong> Consultez le <a href="GUIDE-CREATEUR-BUGS.md" target="_blank" style="color: rgba(255, 255, 255, 0.95); text-decoration: underline;">Guide du Créateur de Bugs</a> pour des instructions détaillées.
+            </div>
         </header>
 
         <div class="bug-creator-panel">
             <h2>📝 Sélectionner les bugs à introduire</h2>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 20px; line-height: 1.6;">
+                <strong>Comment ça marche ?</strong> Cochez les bugs que vous voulez introduire dans votre calculatrice personnalisée. 
+                Cliquez sur "Générer le code" pour voir l'aperçu, puis "Télécharger" pour obtenir votre fichier. 
+                Remplacez ensuite le fichier <code>calculator.js</code> du projet par celui téléchargé.
+            </p>
             
             <div class="bug-option">
                 <label>
@@ -229,12 +237,37 @@
                 <button class="btn-test" onclick="generateCode()">🔧 Générer le code</button>
                 <button class="btn-export" onclick="downloadCode()">📥 Télécharger calculator.js</button>
             </div>
+            
+            <div style="background: rgba(241, 196, 15, 0.2); border-left: 4px solid rgba(241, 196, 15, 0.8); padding: 15px; margin-top: 20px; border-radius: 8px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+                <strong>💡 Comment utiliser ?</strong>
+                <ol style="margin-top: 10px; margin-left: 20px; color: rgba(255, 255, 255, 0.9); line-height: 1.8;">
+                    <li>Cochez les bugs que vous voulez introduire</li>
+                    <li>Cliquez sur "Générer le code" pour voir l'aperçu</li>
+                    <li>Cliquez sur "Télécharger calculator.js"</li>
+                    <li>Remplacez le fichier <code>calculator.js</code> du projet par celui téléchargé</li>
+                    <li>Ouvrez <code>index.html</code> dans le navigateur - c'est prêt !</li>
+                </ol>
+            </div>
         </div>
 
         <div class="bug-creator-panel">
             <h2>👁️ Aperçu du code généré</h2>
+            <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">
+                Le code ci-dessous sera dans le fichier <code>calculator.js</code> que vous téléchargerez. 
+                Les lignes avec <strong style="color: #e74c3c;">BUG</strong> contiennent les erreurs, 
+                celles avec <strong style="color: #27ae60;">CORRIGÉ</strong> sont correctes.
+            </p>
             <div id="code-preview" class="preview-code">
                 Sélectionnez des bugs et cliquez sur "Générer le code" pour voir l'aperçu
+            </div>
+            <div style="background: rgba(39, 174, 96, 0.2); border-left: 4px solid rgba(39, 174, 96, 0.8); padding: 15px; margin-top: 20px; border-radius: 8px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);">
+                <strong>✅ Prochaines étapes :</strong>
+                <ul style="margin-top: 10px; margin-left: 20px; color: rgba(255, 255, 255, 0.9); line-height: 1.8;">
+                    <li>Vérifiez que l'aperçu correspond à ce que vous voulez</li>
+                    <li>Téléchargez le fichier <code>calculator.js</code></li>
+                    <li>Remplacez l'ancien fichier dans le dossier du projet</li>
+                    <li>Ouvrez <code>index.html</code> pour tester avec vos élèves</li>
+                </ul>
             </div>
         </div>
     </div>
