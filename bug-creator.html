@@ -25,6 +25,16 @@
             margin: 10px 0;
             border-radius: 10px;
             border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bug-option:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .bug-option label {
@@ -39,6 +49,80 @@
             width: 20px;
             height: 20px;
             cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .bug-option input[type="checkbox"]:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .bug-option input[type="checkbox"]:checked {
+            background: rgba(39, 174, 96, 0.4);
+            border-color: rgba(39, 174, 96, 0.8);
+            box-shadow: 
+                0 0 20px rgba(39, 174, 96, 0.4),
+                inset 0 0 10px rgba(39, 174, 96, 0.2);
+        }
+
+        .bug-option input[type="checkbox"]:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            animation: checkmarkAppear 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes checkmarkAppear {
+            0% {
+                transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .bug-option {
+            animation: slideInFade 0.4s ease-out backwards;
+        }
+
+        .bug-option:nth-child(1) { animation-delay: 0.05s; }
+        .bug-option:nth-child(2) { animation-delay: 0.1s; }
+        .bug-option:nth-child(3) { animation-delay: 0.15s; }
+        .bug-option:nth-child(4) { animation-delay: 0.2s; }
+        .bug-option:nth-child(5) { animation-delay: 0.25s; }
+        .bug-option:nth-child(6) { animation-delay: 0.3s; }
+        .bug-option:nth-child(7) { animation-delay: 0.35s; }
+        .bug-option:nth-child(8) { animation-delay: 0.4s; }
+        .bug-option:nth-child(9) { animation-delay: 0.45s; }
+        .bug-option:nth-child(10) { animation-delay: 0.5s; }
+        .bug-option:nth-child(11) { animation-delay: 0.55s; }
+
+        @keyframes slideInFade {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .preview-code {
