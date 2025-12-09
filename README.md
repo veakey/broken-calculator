@@ -31,11 +31,13 @@ Réparer une calculatrice qui contient des bugs intentionnels en :
 ### Version de base
 Ouvrez `index.html` dans un navigateur pour la version complète avec tous les bugs.
 
+**Pour tester l'interface :** Voir `TEST-INTERFACE.md` pour un guide complet de test.
+
 ### Versions par niveau
 Chaque niveau a sa propre version dans les dossiers correspondants :
 - **Débutant** : 2 bugs simples
 - **Intermédiaire** : 4 bugs modérés
-- **Avancé** : 6+ bugs complexes
+- **Avancé** : 6+ bugs complexes (avec fonctions mathématiques avancées)
 
 ## 🧪 Système de Tests
 
@@ -83,6 +85,8 @@ Chaque niveau contient :
 ## 📝 Notes
 
 - Les versions Scratch nécessitent des fichiers `.sb3` (non inclus, arborescence créée)
+- **Créer les fichiers .sb3** : Voir `assets/scratch/CREER-SB3.md` pour le guide complet
+- **Générateur Python** : Utiliser `assets/scratch/generate-scratch-project.py` pour créer la structure de base
 - **Assets Scratch** : Voir le dossier `assets/scratch/` pour les guides de création des sprites
 - Les niveaux sans code utilisent des activités manuelles
 - Chaque version est adaptée au niveau de difficulté approprié

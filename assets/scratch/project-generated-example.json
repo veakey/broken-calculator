@@ -1,0 +1,156 @@
+{
+  "targets": [
+    {
+      "isStage": true,
+      "name": "Stage",
+      "variables": {
+        "a7ec5f5509ae475f97e132576c28664e": {
+          "name": "nombre1",
+          "value": 0,
+          "isCloud": false
+        },
+        "eadc5314b850495080b61d08af96d29f": {
+          "name": "nombre2",
+          "value": 0,
+          "isCloud": false
+        },
+        "e9c5659ce969431fb835eb1e4337e3bd": {
+          "name": "operateur",
+          "value": "",
+          "isCloud": false
+        },
+        "e586e99634604fc284e13e812adfe688": {
+          "name": "affichage",
+          "value": "",
+          "isCloud": false
+        },
+        "439761453176407092a26a74bc218bbd": {
+          "name": "resultat",
+          "value": 0,
+          "isCloud": false
+        },
+        "f9bb6ef87bb34a0099eeeb6f26f76e55": {
+          "name": "en_attente",
+          "value": false,
+          "isCloud": false
+        }
+      },
+      "lists": {},
+      "broadcasts": {},
+      "blocks": {},
+      "comments": {},
+      "currentCostume": 0,
+      "costumes": [],
+      "sounds": [],
+      "volume": 100,
+      "layerOrder": 0,
+      "tempo": 60,
+      "videoTransparency": 50,
+      "videoState": "on",
+      "textToSpeechLanguage": null
+    },
+    {
+      "isStage": false,
+      "name": "Calculatrice",
+      "variables": {},
+      "lists": {},
+      "broadcasts": {},
+      "blocks": {
+        "938526d3c1b041538d3de39e7ba38a0e": {
+          "opcode": "event_whenflagclicked",
+          "next": null,
+          "parent": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": true,
+          "topLevel": true,
+          "x": 0,
+          "y": 0
+        },
+        "7be208357f2e46c5893954d35185137f": {
+          "opcode": "control_forever",
+          "next": null,
+          "parent": "938526d3c1b041538d3de39e7ba38a0e",
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": false,
+          "x": 0,
+          "y": 0
+        },
+        "14595cda62f8425f9d44b53cc0ba4a0a": {
+          "opcode": "looks_say",
+          "next": null,
+          "parent": "7be208357f2e46c5893954d35185137f",
+          "inputs": {
+            "MESSAGE": [
+              1,
+              [
+                12,
+                "e586e99634604fc284e13e812adfe688",
+                null
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false,
+          "x": 0,
+          "y": 0
+        }
+      },
+      "comments": {},
+      "currentCostume": 0,
+      "costumes": [
+        {
+          "name": "costume1",
+          "bitmapResolution": 1,
+          "dataFormat": "svg",
+          "assetId": "11c385829d604c1a8aaa8a57f25a14f7",
+          "md5ext": "4d77785cbae9454fa0251cdd0dbf1646.svg",
+          "rotationCenterX": 0,
+          "rotationCenterY": 0
+        }
+      ],
+      "sounds": [],
+      "volume": 100,
+      "layerOrder": 1,
+      "visible": true,
+      "x": 0,
+      "y": 0,
+      "size": 100,
+      "direction": 90,
+      "draggable": false,
+      "rotationStyle": "all around"
+    }
+  ],
+  "monitors": [],
+  "extensions": [],
+  "meta": {
+    "semver": "3.0.0",
+    "vm": "0.2.0",
+    "agent": "Mozilla/5.0"
+  },
+  "_meta": {
+    "generated": "2025-12-09T09:59:39.592094",
+    "niveau": "avance",
+    "include_advanced": true,
+    "variables": {
+      "nombre1": "a7ec5f5509ae475f97e132576c28664e",
+      "nombre2": "eadc5314b850495080b61d08af96d29f",
+      "operateur": "e9c5659ce969431fb835eb1e4337e3bd",
+      "affichage": "e586e99634604fc284e13e812adfe688",
+      "resultat": "439761453176407092a26a74bc218bbd",
+      "en_attente": "f9bb6ef87bb34a0099eeeb6f26f76e55"
+    },
+    "instructions": [
+      "Ce fichier a été généré automatiquement",
+      "Vous devez compléter manuellement :",
+      "1. Créer les sprites des boutons (0-9, +, -, ×, ÷, =, C)",
+      "2. Ajouter les scripts pour chaque bouton",
+      "3. Ajouter les bugs intentionnels selon bugs-detaille.md",
+      "4. Si include_advanced=True, ajouter les boutons sin, cos, tan, hyp, %",
+      "5. Créer le sprite Testeur pour les tests unitaires"
+    ]
+  }
+}
