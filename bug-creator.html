@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créateur de Bugs - Outil Enseignant</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .bug-creator-panel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 
+                0 8px 32px 0 rgba(31, 38, 135, 0.37),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .bug-option {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .bug-option label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .bug-option input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .preview-code {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐛 Créateur de Bugs</h1>
+            <p class="subtitle">Créez vos propres bugs personnalisés pour vos élèves</p>
+        </header>
+
+        <div class="bug-creator-panel">
+            <h2>📝 Sélectionner les bugs à introduire</h2>
+            
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-addition" checked>
+                    <span><strong>Addition inversée</strong> : L'addition soustrait au lieu d'additionner</span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-subtraction" checked>
+                    <span><strong>Soustraction inversée</strong> : La soustraction additionne au lieu de soustraire</span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-multiplication" checked>
+                    <span><strong>Multiplication inversée</strong> : La multiplication divise au lieu de multiplier</span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-division" checked>
+                    <span><strong>Division inversée</strong> : La division multiplie au lieu de diviser</span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-division-zero">
+                    <span><strong>Pas de vérification division par zéro</strong></span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-decimal">
+                    <span><strong>Points décimaux multiples</strong> : Permet d'ajouter plusieurs points</span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-percentage">
+                    <span><strong>Pourcentage incorrect</strong> : Multiplie au lieu de calculer le pourcentage</span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-sin">
+                    <span><strong>Sin incorrect</strong> : Utilise cos au lieu de sin</span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-cos">
+                    <span><strong>Cos incorrect</strong> : Utilise tan au lieu de cos</span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-tan">
+                    <span><strong>Tan incorrect</strong> : Utilise sin au lieu de tan</span>
+                </label>
+            </div>
+
+            <div class="bug-option">
+                <label>
+                    <input type="checkbox" id="bug-hyp">
+                    <span><strong>Hyp incorrect</strong> : Additionne au lieu de calculer l'hypoténuse</span>
+                </label>
+            </div>
+
+            <div style="margin-top: 20px;">
+                <button class="btn-test" onclick="generateCode()">🔧 Générer le code</button>
+                <button class="btn-export" onclick="downloadCode()">📥 Télécharger calculator.js</button>
+            </div>
+        </div>
+
+        <div class="bug-creator-panel">
+            <h2>👁️ Aperçu du code généré</h2>
+            <div id="code-preview" class="preview-code">
+                Sélectionnez des bugs et cliquez sur "Générer le code" pour voir l'aperçu
+            </div>
+        </div>
+    </div>
+
+    <script src="bug-creator.js"></script>
+</body>
+</html>
+

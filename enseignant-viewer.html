@@ -189,6 +189,20 @@
             background: #5a6268;
         }
 
+        .btn-comparison {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-comparison:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .comparison-mode {
+            margin-top: 20px;
+        }
+
         .highlight {
             background: rgba(255, 255, 0, 0.3);
             padding: 2px 4px;
@@ -213,6 +227,7 @@
             <button class="btn btn-primary" onclick="loadCode()">📄 Afficher le code</button>
             <button class="btn btn-secondary" onclick="showBugs()">🐛 Voir les bugs</button>
             <button class="btn btn-secondary" onclick="showExplanations()">💡 Explications</button>
+            <button class="btn btn-comparison" onclick="toggleComparison()">🔄 Comparaison Avant/Après</button>
         </div>
         
         <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin-bottom: 20px; border-radius: 5px;">
@@ -220,7 +235,7 @@
             <br>Pour modifier le code, éditez directement le fichier <code>calculator.js</code> avec un éditeur de texte.
         </div>
 
-        <div class="main-content">
+        <div class="main-content" id="main-content">
             <div class="panel">
                 <h2>📝 Code de la Calculatrice</h2>
                 <div class="code-viewer" id="code-viewer">
@@ -240,8 +255,23 @@
                             <li><strong>Charger le code</strong> : Affiche le code avec coloration syntaxique</li>
                             <li><strong>Voir les bugs</strong> : Met en évidence les bugs dans le code</li>
                             <li><strong>Explications</strong> : Affiche des explications pour chaque partie</li>
+                            <li><strong>Comparaison</strong> : Compare le code avant et après correction</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mode comparaison (caché par défaut) -->
+        <div class="comparison-mode" id="comparison-mode" style="display: none;">
+            <div class="main-content">
+                <div class="panel">
+                    <h2>🐛 Code avec Bugs (Avant)</h2>
+                    <div class="code-viewer" id="code-before-viewer"></div>
+                </div>
+                <div class="panel">
+                    <h2>✅ Code Corrigé (Après)</h2>
+                    <div class="code-viewer" id="code-after-viewer"></div>
                 </div>
             </div>
         </div>

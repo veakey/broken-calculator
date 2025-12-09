@@ -125,8 +125,22 @@ window.addEventListener('load', function() {
             
             if (isCorrect) {
                 addVisualStep(`✅ Résultat correct : ${result}`, 'correct');
+                // Animation feedback visuel
+                const displayEnfant = document.getElementById('display');
+                if (displayEnfant) {
+                    displayEnfant.classList.remove('error');
+                    displayEnfant.classList.add('correct');
+                    setTimeout(() => displayEnfant.classList.remove('correct'), 1500);
+                }
             } else {
                 addVisualStep(`❌ Erreur ! J'ai obtenu ${result} mais j'aurais dû avoir ${expected}`, 'error');
+                // Animation feedback visuel
+                const displayEnfant = document.getElementById('display');
+                if (displayEnfant) {
+                    displayEnfant.classList.remove('correct');
+                    displayEnfant.classList.add('error');
+                    setTimeout(() => displayEnfant.classList.remove('error'), 1500);
+                }
             }
         }, 100);
     };

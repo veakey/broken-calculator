@@ -48,7 +48,10 @@
 
             <!-- Bloc 2 : Étapes visuelles -->
             <div class="steps-block">
-                <h2>📋 Étapes des calculs</h2>
+                <div class="steps-header">
+                    <h2>📋 Étapes des calculs</h2>
+                    <button class="btn-clear-steps" onclick="clearVisualSteps()" title="Effacer les étapes">🗑️</button>
+                </div>
                 <div class="visual-steps" id="visual-steps"></div>
             </div>
 
@@ -69,6 +72,7 @@
     </div>
 
     <script src="calculator.js"></script>
+    <script src="keyboard-support.js"></script>
     <script src="calculator-enfant.js"></script>
     <script src="tests.js"></script>
     <script src="tests-enfant.js"></script>
