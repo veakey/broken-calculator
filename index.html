@@ -13,39 +13,47 @@
             <p class="subtitle">Votre mission : réparer cette calculatrice qui fait des erreurs !</p>
         </header>
 
-        <div class="calculator-wrapper">
-            <div class="calculator" id="calculator">
-                <div class="display" id="display">0</div>
-                <div class="buttons">
-                    <button class="btn clear" onclick="clearDisplay()">C</button>
-                    <button class="btn operator" onclick="appendOperator('/')">/</button>
-                    <button class="btn operator" onclick="appendOperator('*')">×</button>
-                    <button class="btn operator" onclick="appendOperator('-')">-</button>
-                    
-                    <button class="btn number" onclick="appendNumber('7')">7</button>
-                    <button class="btn number" onclick="appendNumber('8')">8</button>
-                    <button class="btn number" onclick="appendNumber('9')">9</button>
-                    <button class="btn operator" onclick="appendOperator('+')">+</button>
-                    
-                    <button class="btn number" onclick="appendNumber('4')">4</button>
-                    <button class="btn number" onclick="appendNumber('5')">5</button>
-                    <button class="btn number" onclick="appendNumber('6')">6</button>
-                    <button class="btn equals" onclick="calculate()" rowspan="2">=</button>
-                    
-                    <button class="btn number" onclick="appendNumber('1')">1</button>
-                    <button class="btn number" onclick="appendNumber('2')">2</button>
-                    <button class="btn number" onclick="appendNumber('3')">3</button>
-                    
-                    <button class="btn number zero" onclick="appendNumber('0')">0</button>
-                    <button class="btn number" onclick="appendNumber('.')">.</button>
+        <div class="main-content">
+            <div class="calculator-wrapper">
+                <div class="calculator" id="calculator">
+                    <div class="display" id="display">0</div>
+                    <div class="buttons">
+                        <button class="btn advanced" onclick="calculateAdvanced('sin')">sin</button>
+                        <button class="btn advanced" onclick="calculateAdvanced('cos')">cos</button>
+                        <button class="btn advanced" onclick="calculateAdvanced('tan')">tan</button>
+                        <button class="btn advanced" onclick="calculateAdvanced('hyp')">hyp</button>
+                        
+                        <button class="btn clear" onclick="clearDisplay()">C</button>
+                        <button class="btn operator" onclick="appendOperator('/')">/</button>
+                        <button class="btn operator" onclick="appendOperator('*')">×</button>
+                        <button class="btn operator" onclick="appendOperator('%')">%</button>
+                        
+                        <button class="btn number" onclick="appendNumber('7')">7</button>
+                        <button class="btn number" onclick="appendNumber('8')">8</button>
+                        <button class="btn number" onclick="appendNumber('9')">9</button>
+                        <button class="btn operator" onclick="appendOperator('-')">-</button>
+                        
+                        <button class="btn number" onclick="appendNumber('4')">4</button>
+                        <button class="btn number" onclick="appendNumber('5')">5</button>
+                        <button class="btn number" onclick="appendNumber('6')">6</button>
+                        <button class="btn operator" onclick="appendOperator('+')">+</button>
+                        
+                        <button class="btn number" onclick="appendNumber('1')">1</button>
+                        <button class="btn number" onclick="appendNumber('2')">2</button>
+                        <button class="btn number" onclick="appendNumber('3')">3</button>
+                        <button class="btn equals" onclick="calculate()" rowspan="2">=</button>
+                        
+                        <button class="btn number zero" onclick="appendNumber('0')">0</button>
+                        <button class="btn number" onclick="appendNumber('.')">.</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="test-panel">
-            <h2>🧪 Tests de Validation</h2>
-            <button class="btn-test" onclick="runTests()">Lancer les Tests</button>
-            <div id="test-results"></div>
+            <div class="test-panel">
+                <h2>🧪 Tests de Validation</h2>
+                <button class="btn-test" onclick="runTests()">Lancer les Tests</button>
+                <div id="test-results"></div>
+            </div>
         </div>
 
         <div class="info-panel">

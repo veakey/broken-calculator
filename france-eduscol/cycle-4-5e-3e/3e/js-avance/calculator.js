@@ -67,6 +67,10 @@ function calculate() {
             result = prev * current;
             // BUG: Ne vérifie pas la division par zéro
             break;
+        case '%':
+            // BUG: Pourcentage incorrect (multiplie au lieu de calculer le pourcentage)
+            result = prev * current; // Devrait être: prev * (current / 100)
+            break;
         default:
             return;
     }
@@ -103,6 +107,42 @@ function getCalculatorState() {
     };
 }
 
+
+// Fonctions mathématiques avancées (avec bugs)
+function calculateAdvanced(func) {
+    let value = parseFloat(currentInput);
+    let result = 0;
+    
+    // Convertir en radians si nécessaire
+    let radians = value * (Math.PI / 180);
+    
+    switch(func) {
+        case 'sin':
+            // BUG: Utilise cos au lieu de sin
+            result = Math.cos(radians);
+            break;
+        case 'cos':
+            // BUG: Utilise tan au lieu de cos
+            result = Math.tan(radians);
+            break;
+        case 'tan':
+            // BUG: Utilise sin au lieu de tan
+            result = Math.sin(radians);
+            break;
+        case 'hyp':
+            // BUG: Calcul hypothénuse incorrect (additionne au lieu de sqrt(a²+b²))
+            // Pour simplifier, on utilise juste la valeur actuelle
+            result = value + value; // Devrait calculer l'hypoténuse
+            break;
+        default:
+            return;
+    }
+    
+    currentInput = result.toString();
+    shouldResetDisplay = true;
+    updateDisplay();
+}
+
 // Fonction utilitaire pour exécuter un calcul directement (utilisée par les tests)
 function testCalculate(a, op, b) {
     clearDisplay();
@@ -114,4 +154,14 @@ function testCalculate(a, op, b) {
     calculate();
     return parseFloat(currentInput);
 }
+// Fonction utilitaire pour tester les fonctions avancées (utilisée par les tests)
+function testAdvancedFunction(value, func) {
+    clearDisplay();
+    currentInput = value.toString();
+    updateDisplay();
+    calculateAdvanced(func);
+    return parseFloat(currentInput);
+}
+
+
 

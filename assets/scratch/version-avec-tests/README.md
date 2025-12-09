@@ -27,6 +27,7 @@ Voir `GUIDE-FINAL.md` pour les instructions complètes.
 
 ## Bugs à introduire
 
+### Bugs de base (1-7)
 1. **Addition** : Soustrait au lieu d'additionner
 2. **Soustraction** : Additionne au lieu de soustraire
 3. **Multiplication** : Divise au lieu de multiplier
@@ -34,6 +35,13 @@ Voir `GUIDE-FINAL.md` pour les instructions complètes.
 5. **Clear** : Ne réinitialise pas correctement
 6. **Décimales** : Permet plusieurs points décimaux
 7. **Division par zéro** : Ne gère pas l'erreur
+
+### Bugs fonctions avancées (8-12) - Pour niveaux avancés
+8. **Pourcentage** : Multiplie au lieu de calculer le pourcentage
+9. **Sinus** : Utilise cos au lieu de sin
+10. **Cosinus** : Utilise tan au lieu de cos
+11. **Tangente** : Utilise sin au lieu de tan
+12. **Hypoténuse** : Additionne au lieu de calculer l'hypoténuse
 
 ## Système de tests
 
@@ -55,6 +63,7 @@ Le sprite "Testeur" contient :
 
 ### Tests inclus
 
+#### Tests de base (1-7)
 1. **testAddition** : 5 + 3 = 8
 2. **testSoustraction** : 10 - 4 = 6
 3. **testMultiplication** : 6 × 7 = 42
@@ -62,6 +71,13 @@ Le sprite "Testeur" contient :
 5. **testDecimal** : 3.5 + 2.5 = 6
 6. **testDivisionParZero** : 10 ÷ 0 = Erreur
 7. **testClear** : Vérifie la réinitialisation
+
+#### Tests fonctions avancées (8-12) - Pour niveaux avancés
+8. **testPourcentage** : 50 % de 20 = 10
+9. **testSin** : sin(30°) ≈ 0.5
+10. **testCos** : cos(60°) = 0.5
+11. **testTan** : tan(45°) = 1
+12. **testHyp** : hyp(3, 4) = 5
 
 ## Instructions de création
 

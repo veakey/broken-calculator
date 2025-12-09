@@ -29,6 +29,11 @@ testDivision
 testDecimal
 testDivisionParZero
 testClear
+testPourcentage
+testSin
+testCos
+testTan
+testHyp
 afficherResultats
 ```
 
@@ -201,6 +206,130 @@ si <[calculator.answer] = [0]> et <[calculator.equation] = []> alors
     dire [✅ Test Clear réussi] pendant (1) secondes
 sinon
     dire [❌ Test Clear échoué: réinitialisation incomplète] pendant (2) secondes
+fin
+```
+
+### Fonction : testPourcentage
+
+```
+définir testPourcentage
+mettre [test.nombreTests] à ([test.nombreTests] + [1])
+mettre [test.nomTest] à [Pourcentage: 50 % de 20]
+mettre [test.resultatAttendu] à [10]
+
+// Simuler le calcul : 50 % de 20
+envoyer [Clear Problem] à tous
+// Simuler 50 % 20 =
+// (Adapter selon votre structure)
+
+attendre (0.5) secondes
+mettre [test.resultatActuel] à [calculator.answer]
+
+si <([test.resultatActuel] - [test.resultatAttendu]) < [0.1]> alors
+    mettre [test.nombreReussis] à ([test.nombreReussis] + [1])
+    dire [✅ Test Pourcentage réussi] pendant (1) secondes
+sinon
+    dire [❌ Test Pourcentage échoué: attendu [test.resultatAttendu], obtenu [test.resultatActuel]] pendant (2) secondes
+fin
+```
+
+### Fonction : testSin
+
+```
+définir testSin
+mettre [test.nombreTests] à ([test.nombreTests] + [1])
+mettre [test.nomTest] à [Sinus: sin(30°)]
+mettre [test.resultatAttendu] à [0.5]
+
+// Simuler le calcul : sin(30°)
+envoyer [Clear Problem] à tous
+// Simuler 30 puis bouton sin
+// (Adapter selon votre structure)
+
+attendre (0.5) secondes
+mettre [test.resultatActuel] à [calculator.answer]
+
+// Tolérance pour les calculs trigonométriques
+si <([test.resultatActuel] - [test.resultatAttendu]) < [0.1]> alors
+    mettre [test.nombreReussis] à ([test.nombreReussis] + [1])
+    dire [✅ Test Sinus réussi] pendant (1) secondes
+sinon
+    dire [❌ Test Sinus échoué: attendu [test.resultatAttendu], obtenu [test.resultatActuel]] pendant (2) secondes
+fin
+```
+
+### Fonction : testCos
+
+```
+définir testCos
+mettre [test.nombreTests] à ([test.nombreTests] + [1])
+mettre [test.nomTest] à [Cosinus: cos(60°)]
+mettre [test.resultatAttendu] à [0.5]
+
+// Simuler le calcul : cos(60°)
+envoyer [Clear Problem] à tous
+// Simuler 60 puis bouton cos
+// (Adapter selon votre structure)
+
+attendre (0.5) secondes
+mettre [test.resultatActuel] à [calculator.answer]
+
+// Tolérance pour les calculs trigonométriques
+si <([test.resultatActuel] - [test.resultatAttendu]) < [0.1]> alors
+    mettre [test.nombreReussis] à ([test.nombreReussis] + [1])
+    dire [✅ Test Cosinus réussi] pendant (1) secondes
+sinon
+    dire [❌ Test Cosinus échoué: attendu [test.resultatAttendu], obtenu [test.resultatActuel]] pendant (2) secondes
+fin
+```
+
+### Fonction : testTan
+
+```
+définir testTan
+mettre [test.nombreTests] à ([test.nombreTests] + [1])
+mettre [test.nomTest] à [Tangente: tan(45°)]
+mettre [test.resultatAttendu] à [1]
+
+// Simuler le calcul : tan(45°)
+envoyer [Clear Problem] à tous
+// Simuler 45 puis bouton tan
+// (Adapter selon votre structure)
+
+attendre (0.5) secondes
+mettre [test.resultatActuel] à [calculator.answer]
+
+// Tolérance pour les calculs trigonométriques
+si <([test.resultatActuel] - [test.resultatAttendu]) < [0.1]> alors
+    mettre [test.nombreReussis] à ([test.nombreReussis] + [1])
+    dire [✅ Test Tangente réussi] pendant (1) secondes
+sinon
+    dire [❌ Test Tangente échoué: attendu [test.resultatAttendu], obtenu [test.resultatActuel]] pendant (2) secondes
+fin
+```
+
+### Fonction : testHyp
+
+```
+définir testHyp
+mettre [test.nombreTests] à ([test.nombreTests] + [1])
+mettre [test.nomTest] à [Hypoténuse: hyp(3, 4)]
+mettre [test.resultatAttendu] à [5]
+
+// Simuler le calcul : hyp(3, 4)
+envoyer [Clear Problem] à tous
+// Simuler 3, 4 puis bouton hyp
+// (Adapter selon votre structure)
+
+attendre (0.5) secondes
+mettre [test.resultatActuel] à [calculator.answer]
+
+// Tolérance pour les calculs
+si <([test.resultatActuel] - [test.resultatAttendu]) < [0.1]> alors
+    mettre [test.nombreReussis] à ([test.nombreReussis] + [1])
+    dire [✅ Test Hypoténuse réussi] pendant (1) secondes
+sinon
+    dire [❌ Test Hypoténuse échoué: attendu [test.resultatAttendu], obtenu [test.resultatActuel]] pendant (2) secondes
 fin
 ```
 

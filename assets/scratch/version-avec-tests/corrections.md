@@ -118,10 +118,94 @@ Une fois toutes les corrections appliquées :
 - Le score doit être : `7 / 7` (ou le nombre total de tests)
 - Le message "🎉 Tous les tests passent !" doit s'afficher
 
+## Correction 8 : Pourcentage
+
+### Problème
+Le pourcentage multiplie au lieu de calculer le pourcentage.
+
+### Solution
+```scratch
+// Remplacer
+mettre [resultat] à ([nombre1] × [nombre2])
+
+// Par
+mettre [resultat] à ([nombre1] × ([nombre2] / [100]))
+```
+
+## Correction 9 : Sinus
+
+### Problème
+Sinus utilise cos au lieu de sin.
+
+### Solution
+```scratch
+// Remplacer
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([cos] de ([radians]))
+
+// Par
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([sin] de ([radians]))
+```
+
+## Correction 10 : Cosinus
+
+### Problème
+Cosinus utilise tan au lieu de cos.
+
+### Solution
+```scratch
+// Remplacer
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([tan] de ([radians]))
+
+// Par
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([cos] de ([radians]))
+```
+
+## Correction 11 : Tangente
+
+### Problème
+Tangente utilise sin au lieu de tan.
+
+### Solution
+```scratch
+// Remplacer
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([sin] de ([radians]))
+
+// Par
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([tan] de ([radians]))
+```
+
+## Correction 12 : Hypoténuse
+
+### Problème
+Hypoténuse additionne au lieu de calculer l'hypoténuse.
+
+### Solution
+```scratch
+// Remplacer
+mettre [resultat] à ([valeur] + [valeur])
+
+// Par
+mettre [resultat] à ([sqrt] de (([nombre1] × [nombre1]) + ([nombre2] × [nombre2])))
+```
+
+## Validation
+
+Une fois toutes les corrections appliquées :
+- Tous les tests doivent passer ✅
+- Le score doit être : `12 / 12` (ou le nombre total de tests)
+- Le message "🎉 Tous les tests passent !" doit s'afficher
+
 ## Conseils
 
 - **Corriger méthodiquement** : Un bug à la fois
 - **Tester régulièrement** : Après chaque correction
 - **Comprendre l'erreur** : Lire les messages des tests
 - **Valider** : S'assurer que tous les tests passent
+- **Fonctions avancées** : Les bugs 8-12 nécessitent une compréhension des fonctions mathématiques avancées
 

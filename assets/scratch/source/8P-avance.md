@@ -1,4 +1,4 @@
-# Code Source - 8P Avancé (8 bugs)
+# Code Source - 8P Avancé (13 bugs avec fonctions avancées)
 
 ## Variables à créer
 
@@ -96,6 +96,83 @@ mettre [operateur] à []
 mettre [en_attente] à [vrai]
 ```
 
+## Sprite: Bouton Pourcentage (%)
+
+### Script (AVEC BUG)
+
+```
+quand ce sprite est cliqué
+si [operateur] ≠ [] alors
+    mettre [nombre2] à [affichage]
+    // BUG 9: Pourcentage multiplie au lieu de calculer le pourcentage
+    mettre [resultat] à ([nombre1] × [nombre2])  // Devrait être: nombre1 × (nombre2 / 100)
+    mettre [affichage] à [resultat]
+    mettre [operateur] à []
+    mettre [en_attente] à [vrai]
+sinon
+    // Calculer le pourcentage du nombre affiché
+    mettre [resultat] à ([affichage] × [100])  // BUG 9: Devrait diviser par 100
+    mettre [affichage] à [resultat]
+fin
+```
+
+## Sprite: Bouton Sinus (sin)
+
+### Script (AVEC BUG)
+
+```
+quand ce sprite est cliqué
+mettre [nombre1] à [affichage]
+// Convertir degrés en radians
+mettre [nombre2] à (([nombre1] × [3.14159]) / [180])
+// BUG 10: Utilise cos au lieu de sin
+mettre [resultat] à ([cos] de ([nombre2]))  // Devrait être: sin de (nombre2)
+mettre [affichage] à [resultat]
+mettre [en_attente] à [vrai]
+```
+
+## Sprite: Bouton Cosinus (cos)
+
+### Script (AVEC BUG)
+
+```
+quand ce sprite est cliqué
+mettre [nombre1] à [affichage]
+// Convertir degrés en radians
+mettre [nombre2] à (([nombre1] × [3.14159]) / [180])
+// BUG 11: Utilise tan au lieu de cos
+mettre [resultat] à ([tan] de ([nombre2]))  // Devrait être: cos de (nombre2)
+mettre [affichage] à [resultat]
+mettre [en_attente] à [vrai]
+```
+
+## Sprite: Bouton Tangente (tan)
+
+### Script (AVEC BUG)
+
+```
+quand ce sprite est cliqué
+mettre [nombre1] à [affichage]
+// Convertir degrés en radians
+mettre [nombre2] à (([nombre1] × [3.14159]) / [180])
+// BUG 12: Utilise sin au lieu de tan
+mettre [resultat] à ([sin] de ([nombre2]))  // Devrait être: tan de (nombre2)
+mettre [affichage] à [resultat]
+mettre [en_attente] à [vrai]
+```
+
+## Sprite: Bouton Hypoténuse (hyp)
+
+### Script (AVEC BUG)
+
+```
+quand ce sprite est cliqué
+// BUG 13: Additionne au lieu de calculer l'hypoténuse
+mettre [resultat] à ([affichage] + [affichage])  // Devrait être: sqrt(nombre1² + nombre2²)
+mettre [affichage] à [resultat]
+mettre [en_attente] à [vrai]
+```
+
 ## Sprite: Bouton Clear (C)
 
 ### Script (AVEC BUG)
@@ -135,6 +212,21 @@ mettre [en_attente] à [faux]
 8. **Test 8 : Chaînes d'opérations**
    - 2 + 3 + 4 (tester la gestion d'état)
 
+9. **Test 9 : Pourcentage**
+   - 50 % de 20 = 10 (donnera 1000)
+
+10. **Test 10 : Sinus**
+    - sin(30°) ≈ 0.5 (donnera cos(30°) ≈ 0.866)
+
+11. **Test 11 : Cosinus**
+    - cos(60°) = 0.5 (donnera tan(60°) ≈ 1.732)
+
+12. **Test 12 : Tangente**
+    - tan(45°) = 1 (donnera sin(45°) ≈ 0.707)
+
+13. **Test 13 : Hypoténuse**
+    - hyp(3) devrait calculer l'hypoténuse (donnera 6)
+
 ## Corrections
 
 1. **BUG 1 - Points décimaux :**
@@ -173,9 +265,28 @@ mettre [en_attente] à [faux]
 8. **BUG 8 - Clear :**
    - Remplacer `mettre [affichage] à [0]` par `mettre [affichage] à []`
 
+9. **BUG 9 - Pourcentage :**
+   - Remplacer `nombre1 × nombre2` par `nombre1 × (nombre2 / 100)`
+
+10. **BUG 10 - Sinus :**
+    - Remplacer `cos` par `sin`
+
+11. **BUG 11 - Cosinus :**
+    - Remplacer `tan` par `cos`
+
+12. **BUG 12 - Tangente :**
+    - Remplacer `sin` par `tan`
+
+13. **BUG 13 - Hypoténuse :**
+    - Remplacer l'addition par le calcul de l'hypoténuse :
+    ```
+    mettre [resultat] à ([sqrt] de (([nombre1] × [nombre1]) + ([nombre2] × [nombre2])))
+    ```
+
 ## Notes
 
-- 8 bugs de complexité variable
+- 13 bugs de complexité variable (8 de base + 5 fonctions avancées)
 - Introduction à la gestion d'état
 - Vérifications nécessaires (division par zéro, points décimaux)
+- Fonctions mathématiques avancées (trigonométrie, pourcentage, hypoténuse)
 

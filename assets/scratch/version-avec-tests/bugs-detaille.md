@@ -143,9 +143,101 @@ mettre [resultat] à ([nombre1] / [nombre2])  // BUG: Ne vérifie pas la divisio
 2. Continuer avec les bugs moyens (Multiplication, Division)
 3. Finir avec les bugs complexes (Clear, Décimales, Division par zéro)
 
+## Bug 8 : Pourcentage incorrect
+
+### Localisation
+Dans le script qui gère le bouton "%" (pourcentage).
+
+### Modification à faire
+```scratch
+// AVANT (correct)
+mettre [resultat] à ([nombre1] × ([nombre2] / [100]))
+
+// APRÈS (bugué)
+mettre [resultat] à ([nombre1] × [nombre2])  // BUG: Multiplie au lieu de calculer le pourcentage
+```
+
+### Test qui échouera
+- `testPourcentage` : 50 % de 20 devrait donner 10, mais donnera 1000
+
+## Bug 9 : Sinus utilise cos
+
+### Localisation
+Dans le script qui gère le bouton "sin" (sinus).
+
+### Modification à faire
+```scratch
+// AVANT (correct)
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([sin] de ([radians]))
+
+// APRÈS (bugué)
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([cos] de ([radians]))  // BUG: Utilise cos au lieu de sin
+```
+
+### Test qui échouera
+- `testSin` : sin(30°) devrait donner ≈ 0.5, mais donnera cos(30°) ≈ 0.866
+
+## Bug 10 : Cosinus utilise tan
+
+### Localisation
+Dans le script qui gère le bouton "cos" (cosinus).
+
+### Modification à faire
+```scratch
+// AVANT (correct)
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([cos] de ([radians]))
+
+// APRÈS (bugué)
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([tan] de ([radians]))  // BUG: Utilise tan au lieu de cos
+```
+
+### Test qui échouera
+- `testCos` : cos(60°) devrait donner 0.5, mais donnera tan(60°) ≈ 1.732
+
+## Bug 11 : Tangente utilise sin
+
+### Localisation
+Dans le script qui gère le bouton "tan" (tangente).
+
+### Modification à faire
+```scratch
+// AVANT (correct)
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([tan] de ([radians]))
+
+// APRÈS (bugué)
+mettre [radians] à (([valeur] × [3.14159]) / [180])
+mettre [resultat] à ([sin] de ([radians]))  // BUG: Utilise sin au lieu de tan
+```
+
+### Test qui échouera
+- `testTan` : tan(45°) devrait donner 1, mais donnera sin(45°) ≈ 0.707
+
+## Bug 12 : Hypoténuse additionne
+
+### Localisation
+Dans le script qui gère le bouton "hyp" (hypoténuse).
+
+### Modification à faire
+```scratch
+// AVANT (correct)
+mettre [resultat] à ([sqrt] de (([nombre1] × [nombre1]) + ([nombre2] × [nombre2])))
+
+// APRÈS (bugué)
+mettre [resultat] à ([valeur] + [valeur])  // BUG: Additionne au lieu de calculer l'hypoténuse
+```
+
+### Test qui échouera
+- `testHyp` : hyp(3, 4) devrait donner 5, mais donnera 6 (3+3)
+
 ## Notes
 
 - Ne pas introduire tous les bugs en même temps pour les débutants
 - Commencer avec 1-2 bugs, puis ajouter progressivement
 - Les tests aideront à identifier chaque bug individuellement
+- Les bugs 8-12 sont pour les niveaux avancés (fonctions mathématiques avancées)
 

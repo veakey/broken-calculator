@@ -73,10 +73,16 @@ header h1 {
     text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
 }
 
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
 .calculator-wrapper {
     display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
+    justify-content: flex-start;
 }
 
 .calculator {
@@ -120,6 +126,15 @@ header h1 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+}
+
+.btn.advanced {
+    background: rgba(155, 89, 182, 0.4);
+    color: white;
+}
+
+.btn.advanced:hover {
+    background: rgba(142, 68, 173, 0.5);
 }
 
 .btn {
@@ -210,7 +225,20 @@ header h1 {
     grid-column: span 2;
 }
 
-.test-panel, .info-panel {
+.test-panel {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    height: fit-content;
+}
+
+.info-panel {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -221,6 +249,7 @@ header h1 {
         0 8px 32px 0 rgba(31, 38, 135, 0.37),
         inset 0 0 0 1px rgba(255, 255, 255, 0.18);
     border: 1px solid rgba(255, 255, 255, 0.18);
+    grid-column: 1 / -1;
 }
 
 .test-panel h2, .info-panel h2 {
@@ -311,6 +340,16 @@ header h1 {
     margin-bottom: 10px;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 900px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .calculator-wrapper {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 600px) {
