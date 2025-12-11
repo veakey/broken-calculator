@@ -476,9 +476,17 @@
         Blockly.JavaScript['variables_set'] = function(block) {
             // Utiliser le générateur original mais remplacer 'var' par 'let'
             var code = originalVariablesSet.call(this, block);
-            // Remplacer 'var' par 'let' dans le code généré
-            return code.replace(/^\s*var\s+/, 'let ');
+            // Remplacer 'var' par 'let' dans le code généré (gère aussi les cas avec plusieurs espaces)
+            return code.replace(/^\s*var\s+/, 'let ').replace(/\nvar\s+/g, '\nlet ');
         };
+        
+        // Vérifier que tous les générateurs sont bien enregistrés
+        console.log('Générateurs enregistrés:', {
+            add_correct: typeof Blockly.JavaScript['calculator_add_correct'],
+            subtract_correct: typeof Blockly.JavaScript['calculator_subtract_correct'],
+            multiply_correct: typeof Blockly.JavaScript['calculator_multiply_correct'],
+            divide_correct: typeof Blockly.JavaScript['calculator_divide_correct']
+        });
         
         // Initialiser Blockly APRÈS avoir défini tous les générateurs
         var workspace = Blockly.inject('blocklyDiv', {
@@ -580,6 +588,15 @@
         // Mettre à jour la fonction de calcul quand Blockly change
         function updateCalculatorFunction() {
             try {
+                // Vérifier que les générateurs sont disponibles
+                if (!Blockly.JavaScript['calculator_add_correct']) {
+                    console.error('Générateur calculator_add_correct non trouvé!');
+                    var status = document.getElementById('status');
+                    status.className = 'status disconnected';
+                    status.textContent = '❌ Erreur: Générateurs non chargés. Rechargez la page.';
+                    return;
+                }
+                
                 var code = Blockly.JavaScript.workspaceToCode(workspace);
                 
                 // Chercher la fonction "calculer" dans le code généré

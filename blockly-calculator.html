@@ -363,6 +363,15 @@
             return [code, Blockly.JavaScript.ORDER_DIVISION];
         };
         
+        // Surcharger le générateur pour variables_set pour utiliser 'let' au lieu de 'var'
+        var originalVariablesSet = Blockly.JavaScript['variables_set'];
+        Blockly.JavaScript['variables_set'] = function(block) {
+            // Utiliser le générateur original mais remplacer 'var' par 'let'
+            var code = originalVariablesSet.call(this, block);
+            // Remplacer 'var' par 'let' dans le code généré (gère aussi les cas avec plusieurs espaces)
+            return code.replace(/^\s*var\s+/, 'let ').replace(/\nvar\s+/g, '\nlet ');
+        };
+        
         // Initialiser Blockly APRÈS avoir défini les blocs et générateurs
         var workspace = Blockly.inject('blocklyDiv', {
             toolbox: document.getElementById('toolbox'),
