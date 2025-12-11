@@ -1,5 +1,19 @@
 # Guide d'Installation - Calculatrice Cassée
 
+## 📑 Table des Matières
+
+- [Installation Ultra-Simple](#-installation-ultra-simple)
+  - [Méthode 1 : Ouvrir directement (Recommandé)](#méthode-1--ouvrir-directement-recommandé)
+  - [Méthode 2 : Serveur local (Optionnel)](#méthode-2--serveur-local-optionnel)
+- [Modifier le code](#-modifier-le-code)
+  - [Pour les élèves](#pour-les-élèves)
+  - [Pour les enseignants](#pour-les-enseignants)
+- [Structure minimale nécessaire](#-structure-minimale-nécessaire)
+- [Vérification](#-vérification)
+- [Dépannage](#-dépannage)
+- [Conseils](#-conseils)
+- [Objectif](#-objectif)
+
 ## 🚀 Installation Ultra-Simple
 
 **Aucun serveur, npm, git ou installation nécessaire !**
@@ -15,9 +29,9 @@
    ```
 
 2. **Ouvrir les fichiers HTML directement**
-   - Double-cliquer sur `index.html` (version standard)
-   - Double-cliquer sur `index-enfant.html` (version pour enfants)
-   - Double-cliquer sur `enseignant-viewer.html` (outil enseignant)
+   - Double-cliquer sur `src/index.html` (version standard)
+   - Double-cliquer sur `src/index-enfant.html` (version pour enfants)
+   - Double-cliquer sur `src/enseignant-viewer.html` (outil enseignant)
 
 3. **C'est tout !** Les fichiers s'ouvrent dans votre navigateur.
 
@@ -38,7 +52,7 @@ python3 -m http.server 8000
 
 ### Pour les élèves
 
-1. **Ouvrir `calculator.js`** avec n'importe quel éditeur de texte :
+1. **Ouvrir `src/js/calculator.js`** avec n'importe quel éditeur de texte :
    - Bloc-notes (Windows)
    - TextEdit (Mac)
    - Gedit (Linux)
@@ -54,8 +68,8 @@ python3 -m http.server 8000
 
 ### Pour les enseignants
 
-- Utiliser `enseignant-viewer.html` pour visualiser le code
-- Modifier `calculator.js` avec un éditeur de texte
+- Utiliser `src/enseignant-viewer.html` pour visualiser le code
+- Modifier `src/js/calculator.js` avec un éditeur de texte
 - Recharger la page pour voir les changements
 
 ## 📁 Structure minimale nécessaire
@@ -64,20 +78,23 @@ Pour que ça fonctionne, vous avez besoin de ces fichiers dans le même dossier 
 
 ```
 broken-calculator/
-├── index.html              # Version standard
-├── index-enfant.html       # Version enfant
-├── enseignant-viewer.html  # Outil enseignant
-├── calculator.js           # Code de la calculatrice (À MODIFIER)
-├── tests.js               # Système de tests
-├── styles.css             # Styles de base
-├── styles-enfant.css      # Styles version enfant
-├── calculator-enfant.js    # Logique version enfant
-└── tests-enfant.js        # Tests version enfant
+├── src/
+│   ├── index.html              # Version standard
+│   ├── index-enfant.html       # Version enfant
+│   ├── enseignant-viewer.html  # Outil enseignant
+│   ├── js/
+│   │   ├── calculator.js       # Code de la calculatrice (À MODIFIER)
+│   │   ├── tests.js            # Système de tests
+│   │   ├── calculator-enfant.js # Logique version enfant
+│   │   └── tests-enfant.js     # Tests version enfant
+│   └── css/
+│       ├── styles.css          # Styles de base
+│       └── styles-enfant.css  # Styles version enfant
 ```
 
 ## ✅ Vérification
 
-1. Ouvrez `index.html` dans votre navigateur
+1. Ouvrez `src/index.html` dans votre navigateur
 2. La calculatrice doit s'afficher
 3. Cliquez sur quelques boutons
 4. Cliquez sur "Lancer les Tests"
@@ -93,17 +110,17 @@ broken-calculator/
 
 ### "Les styles ne s'appliquent pas"
 
-- Vérifiez que `styles.css` est dans le même dossier
+- Vérifiez que `src/css/styles.css` est dans le bon dossier
 - Vérifiez que le chemin dans `<link>` est correct
 
 ### "Les tests ne fonctionnent pas"
 
-- Vérifiez que `tests.js` est dans le même dossier
+- Vérifiez que `src/js/tests.js` est dans le bon dossier
 - Ouvrez la console du navigateur (F12) pour voir les erreurs
 
 ## 💡 Conseils
 
-- **Pour les élèves** : Commencez par la version enfant (`index-enfant.html`)
+- **Pour les élèves** : Commencez par la version enfant (`src/index-enfant.html`)
 - **Pour modifier** : Utilisez un éditeur de texte simple, pas besoin d'IDE complexe
 - **Pour partager** : Copiez tout le dossier, ça fonctionnera partout
 - **Pas de dépendances** : Tout fonctionne avec juste un navigateur moderne
@@ -113,7 +130,7 @@ broken-calculator/
 **Zéro installation, zéro configuration, zéro dépendance.**
 
 Juste :
-1. Ouvrir les fichiers HTML
-2. Modifier `calculator.js` si besoin
+1. Ouvrir les fichiers HTML dans `src/`
+2. Modifier `src/js/calculator.js` si besoin
 3. C'est tout !
 

@@ -1,5 +1,21 @@
 # 🐛 Guide du Créateur de Bugs
 
+## 📑 Table des Matières
+
+- [À quoi sert cet outil ?](#-à-quoi-sert-cet-outil-)
+- [Pourquoi utiliser cet outil ?](#-pourquoi-utiliser-cet-outil-)
+  - [Scénario 1 : Exercice progressif](#scénario-1--exercice-progressif)
+  - [Scénario 2 : Adaptation au niveau](#scénario-2--adaptation-au-niveau)
+  - [Scénario 3 : Focus sur un type d'erreur](#scénario-3--focus-sur-un-type-derreur)
+- [Comment utiliser le Créateur de Bugs](#-comment-utiliser-le-créateur-de-bugs)
+  - [Étape 1 : Ouvrir l'outil](#étape-1--ouvrir-loutil)
+  - [Étape 2 : Sélectionner les bugs](#étape-2--sélectionner-les-bugs)
+  - [Étape 3 : Générer le code](#étape-3--générer-le-code)
+  - [Étape 4 : Télécharger et utiliser](#étape-4--télécharger-et-utiliser)
+- [Liste des Bugs Disponibles](#-liste-des-bugs-disponibles)
+- [Exemples d'Utilisation](#-exemples-dutilisation)
+- [Dépannage](#-dépannage)
+
 ## 📖 À quoi sert cet outil ?
 
 Le **Créateur de Bugs** est un outil simple qui vous permet de créer vos propres exercices de débogage personnalisés pour vos élèves. 
@@ -35,7 +51,7 @@ Vous voulez que vos élèves se concentrent sur un type spécifique d'erreur :
 
 ### Étape 1 : Ouvrir l'outil
 
-1. Ouvrez le fichier `bug-creator.html` dans votre navigateur
+1. Ouvrez le fichier `src/bug-creator.html` dans votre navigateur
    - Double-cliquez sur le fichier, ou
    - Faites un clic droit → "Ouvrir avec" → votre navigateur
 
@@ -77,12 +93,12 @@ Vous voulez que vos élèves se concentrent sur un type spécifique d'erreur :
 
 ### Étape 5 : Utiliser avec vos élèves
 
-1. **Remplacez** le fichier `calculator.js` existant par celui que vous venez de télécharger
-   - Localisez le fichier `calculator.js` dans le dossier du projet
+1. **Remplacez** le fichier `src/js/calculator.js` existant par celui que vous venez de télécharger
+   - Localisez le fichier `src/js/calculator.js` dans le dossier du projet
    - Supprimez l'ancien fichier (ou renommez-le en `calculator-backup.js`)
    - Copiez le nouveau fichier téléchargé à la place
 
-2. **Ouvrez** `index.html` ou `index-enfant.html` dans le navigateur
+2. **Ouvrez** `src/index.html` ou `src/index-enfant.html` dans le navigateur
    - Vos élèves verront maintenant la calculatrice avec les bugs que vous avez choisis !
 
 3. **Lancez les tests** pour vérifier que les bugs fonctionnent comme prévu
@@ -128,7 +144,7 @@ Vous voulez que vos élèves se concentrent sur un type spécifique d'erreur :
 ### Q : Puis-je modifier le fichier après l'avoir téléchargé ?
 
 **R :** Oui ! Vous pouvez :
-1. Revenir sur `bug-creator.html`
+1. Revenir sur `src/bug-creator.html`
 2. Modifier vos sélections
 3. Régénérer et télécharger un nouveau fichier
 4. Remplacer l'ancien fichier
@@ -196,12 +212,12 @@ Commencez toujours par les bugs faciles et progressez !
 - Essayez avec un autre navigateur (Chrome, Firefox, Edge)
 
 ### La calculatrice ne fonctionne pas après remplacement
-- Vérifiez que vous avez bien remplacé le fichier `calculator.js` à la racine du projet
+- Vérifiez que vous avez bien remplacé le fichier `src/js/calculator.js`
 - Rechargez la page (F5 ou Ctrl+R)
 - Vérifiez la console du navigateur (F12) pour voir s'il y a des erreurs
 
 ### Je veux revenir à la version originale
-- Le fichier `calculator.js` original est toujours disponible dans le projet
+- Le fichier `src/js/calculator.js` original est toujours disponible dans le projet
 - Vous pouvez aussi créer une version sans bugs dans le créateur
 
 ---
@@ -210,7 +226,7 @@ Commencez toujours par les bugs faciles et progressez !
 
 - **Guide des versions** : Voir `GUIDE-VERSIONS.md` pour choisir la bonne interface
 - **Installation** : Voir `INSTALLATION.md` pour les instructions de base
-- **Outil Enseignant** : Utilisez `enseignant-viewer.html` pour visualiser le code avec vos élèves
+- **Outil Enseignant** : Utilisez `src/enseignant-viewer.html` pour visualiser le code avec vos élèves
 
 ---
 
@@ -219,7 +235,9 @@ Commencez toujours par les bugs faciles et progressez !
 **Créez un dossier "versions"** dans votre projet :
 ```
 broken-calculator/
-├── calculator.js (version actuelle)
+├── src/
+│   └── js/
+│       └── calculator.js (version actuelle)
 ├── versions/
 │   ├── calculator-debutant.js (2 bugs)
 │   ├── calculator-intermediaire.js (5 bugs)

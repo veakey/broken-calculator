@@ -2,6 +2,36 @@
 
 Un projet éducatif pour apprendre le débogage et la résolution de problèmes en programmation, adapté aux programmes scolaires français (Eduscol) et suisse (PER).
 
+## 📑 Table des Matières
+
+- [Structure du Projet](#-structure-du-projet)
+  - [Suisse - Plan d'Études Romand (PER)](#-suisse---plan-détudes-romand-per)
+  - [France - Eduscol](#-france---eduscol)
+- [Objectif](#-objectif)
+- [Utilisation](#-utilisation)
+  - [Installation Ultra-Simple](#-installation-ultra-simple)
+  - [Versions Blockly par Tranche d'Âge](#-versions-blockly-par-tranche-dâge)
+  - [Approche Différenciée pour les Plus Grands](#-approche-différenciée-pour-les-plus-grands)
+  - [Versions disponibles](#versions-disponibles)
+  - [Comment passer d'un mode à l'autre ?](#-comment-passer-dun-mode-à-lautre-)
+  - [Modifier le code](#modifier-le-code)
+  - [Versions par niveau](#versions-par-niveau)
+- [Système de Tests](#-système-de-tests)
+  - [Fonctionnalités avancées des tests](#fonctionnalités-avancées-des-tests)
+- [Structure des Fichiers](#-structure-des-fichiers)
+- [Design](#-design)
+  - [Contrôles d'accessibilité](#contrôles-daccessibilité)
+- [Documentation](#-documentation)
+- [Technologies](#️-technologies)
+- [Notes](#-notes)
+- [Assets Scratch](#-assets-scratch)
+- [Compétences Développées](#-compétences-développées)
+- [Nouvelles Fonctionnalités](#-nouvelles-fonctionnalités)
+  - [Pour les élèves](#pour-les-élèves)
+  - [Pour les enseignants](#pour-les-enseignants)
+  - [Accessibilité](#accessibilité)
+- [Licence](#-licence)
+
 ## 📚 Structure du Projet
 
 Le projet est organisé selon deux systèmes éducatifs :

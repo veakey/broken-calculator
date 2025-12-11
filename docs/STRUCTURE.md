@@ -2,6 +2,18 @@
 
 Ce document décrit l'organisation des fichiers du projet.
 
+## 📑 Table des Matières
+
+- [Organisation Générale](#️-organisation-générale)
+- [Détails des Dossiers](#-détails-des-dossiers)
+  - [src/ - Fichiers Sources Principaux](#src---fichiers-sources-principaux)
+  - [docs/ - Documentation](#docs---documentation)
+  - [suisse-per/ - Versions PER (Suisse)](#suisse-per---versions-per-suisse)
+  - [france-eduscol/ - Versions Eduscol (France)](#france-eduscol---versions-eduscol-france)
+  - [assets/ - Assets](#assets---assets)
+- [Chemins Relatifs](#-chemins-relatifs)
+- [Notes](#-notes)
+
 ## 🗂️ Organisation Générale
 
 ```

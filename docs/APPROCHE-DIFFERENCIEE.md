@@ -1,5 +1,23 @@
 # 🎓 Approche Différenciée : Blockly vs JavaScript
 
+## 📑 Table des Matières
+
+- [Pourquoi Blockly pour les plus grands ?](#-pourquoi-blockly-pour-les-plus-grands-9p-11p--4e-3e-)
+  - [Avantages de Blockly pour les plus grands](#-avantages-de-blockly-pour-les-plus-grands)
+  - [Quand utiliser Blockly vs JavaScript ?](#-quand-utiliser-blockly-vs-javascript-)
+- [Structure des Versions pour 9P-11P / 4e-3e](#-structure-des-versions-pour-9p-11p--4e-3e)
+  - [Option 1 : Blockly Avancé (avec code généré)](#option-1--blockly-avancé-avec-code-généré)
+  - [Option 2 : JavaScript (pour les plus doués)](#option-2--javascript-pour-les-plus-doués)
+- [Stratégie Pédagogique Recommandée](#-stratégie-pédagogique-recommandée)
+  - [Phase 1 : Découverte avec Blockly](#phase-1--découverte-avec-blockly)
+  - [Phase 2 : Différenciation](#phase-2--différenciation)
+  - [Phase 3 : Transition Progressive](#phase-3--transition-progressive)
+- [Exemple de Progression](#-exemple-de-progression)
+- [Compétences Visées](#-compétences-visées)
+- [Conseils pour les Enseignants](#-conseils-pour-les-enseignants)
+- [Fichiers Disponibles](#-fichiers-disponibles)
+- [Références](#-références)
+
 ## 💡 Pourquoi Blockly pour les plus grands (9P-11P / 4e-3e) ?
 
 Blockly reste **très pertinent** même pour les plus grands, notamment pour :

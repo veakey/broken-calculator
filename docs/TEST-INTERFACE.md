@@ -1,10 +1,23 @@
 # Guide de Test de l'Interface Web
 
+## 📑 Table des Matières
+
+- [Démarrage rapide](#-démarrage-rapide)
+  - [Ouvrir directement (Recommandé)](#ouvrir-directement-recommandé)
+  - [Option alternative : Serveur local](#option-alternative--serveur-local-si-problème-avec-file)
+- [Checklist de test](#-checklist-de-test)
+  - [Interface visuelle](#interface-visuelle)
+  - [Fonctionnalités de base](#fonctionnalités-de-base)
+  - [Système de tests](#système-de-tests)
+  - [Fonctionnalités avancées](#fonctionnalités-avancées)
+- [Tests spécifiques par version](#-tests-spécifiques-par-version)
+- [Dépannage](#-dépannage)
+
 ## 🚀 Démarrage rapide
 
 ### Ouvrir directement (Recommandé)
 
-**Double-cliquer sur `index.html`** ou faire glisser le fichier dans le navigateur.
+**Double-cliquer sur `src/index.html`** ou faire glisser le fichier dans le navigateur.
 
 **C'est tout !** Pas besoin de serveur, npm, git, ou autre installation.
 
@@ -129,7 +142,7 @@ Résultat correct (après réparation) : 1 (tan(45°))
 
 ## 🔧 Après réparation
 
-Une fois les bugs corrigés dans `calculator.js` :
+Une fois les bugs corrigés dans `src/js/calculator.js` :
 
 - [ ] Tous les tests doivent passer (✅)
 - [ ] Le score doit être "12/12 tests réussis"

@@ -1,5 +1,21 @@
 # 📚 Synthèse des Référentiels PER et Eduscol - Compétences IT
 
+## 📑 Table des Matières
+
+- [Plan d'Études Romand (PER) - MITIC](#-plan-détudes-romand-per---mitic)
+  - [Vue d'ensemble](#vue-densemble)
+  - [Cycle 1 (1P-4P)](#cycle-1-1p-4p)
+  - [Cycle 2 (5P-8P)](#cycle-2-5p-8p)
+  - [Cycle 3 (9P-11P)](#cycle-3-9p-11p)
+- [Eduscol - Compétences Numériques](#-eduscol---compétences-numériques)
+  - [Vue d'ensemble](#vue-densemble-1)
+  - [Cycle 3 (CM1, CM2, 6e)](#cycle-3-cm1-cm2-6e)
+  - [Cycle 4 (5e, 4e, 3e)](#cycle-4-5e-4e-3e)
+- [Compétences Transversales Communes](#-compétences-transversales-communes)
+- [Tableau de Correspondance des Niveaux](#-tableau-de-correspondance-des-niveaux)
+- [Implications pour le Projet Blockly](#-implications-pour-le-projet-blockly)
+- [Sources](#-sources)
+
 ## 🇨🇭 Plan d'Études Romand (PER) - MITIC
 
 ### Vue d'ensemble

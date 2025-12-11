@@ -2,6 +2,20 @@
 
 Ce document liste toutes les versions du projet Blockly adaptées aux différentes tranches d'âge selon les référentiels PER (Suisse) et Eduscol (France).
 
+## 📑 Table des Matières
+
+- [Structure des Versions](#-structure-des-versions)
+  - [Suisse - Plan d'Études Romand (PER)](#-suisse---plan-détudes-romand-per)
+    - [Cycle 1 (1P-4P)](#cycle-1-1p-4p)
+    - [Cycle 2 (5P-8P)](#cycle-2-5p-8p)
+    - [Cycle 3 (9P-11P)](#cycle-3-9p-11p)
+  - [France - Eduscol](#-france---eduscol)
+    - [Cycle 3 (CM1, CM2, 6e)](#cycle-3-cm1-cm2-6e)
+    - [Cycle 4 (5e, 4e, 3e)](#cycle-4-5e-4e-3e)
+- [Progression des Compétences](#-progression-des-compétences)
+- [Utilisation](#-utilisation)
+- [Références](#-références)
+
 ## 📚 Structure des Versions
 
 ### 🇨🇭 Suisse - Plan d'Études Romand (PER)

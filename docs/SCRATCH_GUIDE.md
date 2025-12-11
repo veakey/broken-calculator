@@ -1,5 +1,16 @@
 # Guide Complet pour les Projets Scratch
 
+## 📑 Table des Matières
+
+- [Vue d'ensemble](#vue-densemble)
+- [Structure des projets](#structure-des-projets)
+- [Niveaux disponibles](#niveaux-disponibles)
+  - [Suisse - PER](#suisse---per)
+  - [France - Eduscol](#france---eduscol)
+- [Comment créer un projet](#comment-créer-un-projet)
+- [Guide de création des sprites](#guide-de-création-des-sprites)
+- [Ressources](#ressources)
+
 ## Vue d'ensemble
 
 Ce guide explique comment créer les projets Scratch pour chaque niveau. Les fichiers .sb3 ne sont pas inclus car ils nécessitent Scratch Desktop ou Scratch en ligne, mais ce guide fournit toutes les instructions nécessaires.
