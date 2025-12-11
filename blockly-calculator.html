@@ -363,15 +363,6 @@
             return [code, Blockly.JavaScript.ORDER_DIVISION];
         };
         
-        // Surcharger le générateur pour variables_set pour utiliser 'let' au lieu de 'var'
-        var originalVariablesSet = Blockly.JavaScript['variables_set'];
-        Blockly.JavaScript['variables_set'] = function(block) {
-            // Utiliser le générateur original mais remplacer 'var' par 'let'
-            var code = originalVariablesSet.call(this, block);
-            // Remplacer 'var' par 'let' dans le code généré (gère aussi les cas avec plusieurs espaces)
-            return code.replace(/^\s*var\s+/, 'let ').replace(/\nvar\s+/g, '\nlet ');
-        };
-        
         // Initialiser Blockly APRÈS avoir défini les blocs et générateurs
         var workspace = Blockly.inject('blocklyDiv', {
             toolbox: document.getElementById('toolbox'),
@@ -396,6 +387,10 @@
         // Générer le code JavaScript
         function generateCode() {
             var code = Blockly.JavaScript.workspaceToCode(workspace);
+            // Remplacer tous les "var" par "let" dans le code généré
+            if (code) {
+                code = code.replace(/^\s*var\s+/gm, 'let ').replace(/\n\s*var\s+/g, '\nlet ');
+            }
             document.getElementById('codePreview').textContent = code || 'Aucun bloc dans l\'espace de travail';
         }
         
@@ -427,11 +422,23 @@
                 return;
             }
             
+            // Remplacer tous les "var" par "let" dans le code généré
+            code = code.replace(/^\s*var\s+/gm, 'let ').replace(/\n\s*var\s+/g, '\nlet ');
+            
             // Exécuter le code (dans un contexte sécurisé)
             try {
-                // Créer une fonction à partir du code généré
-                var func = new Function('return ' + code);
-                var result = func();
+                var result;
+                // Si le code contient des déclarations de variables, on doit l'exécuter différemment
+                if (code.includes('let ') || code.includes('var ')) {
+                    // Exécuter le code dans une fonction et retourner resultat
+                    // On encapsule le code dans une fonction qui retourne resultat
+                    var func = new Function(code + '\nreturn resultat;');
+                    result = func();
+                } else {
+                    // Code simple sans déclarations, on peut l'exécuter directement
+                    var func = new Function('return ' + code);
+                    result = func();
+                }
                 
                 // Calculer le résultat attendu
                 var expected;
