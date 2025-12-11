@@ -29,27 +29,27 @@ Chaque niveau a son propre dossier avec un fichier README.md contenant :
 ### Suisse - PER
 
 1. **6P - Version Basique** : 1 bug simple
-   - Dossier : `suisse-per/cycle-2-5p-8p/6P/scratch-version-basique/`
+   - Dossier : [`suisse-per/cycle-2-5p-8p/6P/scratch-version-basique/`](../suisse-per/cycle-2-5p-8p/6P/scratch-version-basique/)
 
 2. **7P - Version Intermédiaire** : 5 bugs modérés
-   - Dossier : `suisse-per/cycle-2-5p-8p/7P/scratch-version-intermediaire/`
+   - Dossier : [`suisse-per/cycle-2-5p-8p/7P/scratch-version-intermediaire/`](../suisse-per/cycle-2-5p-8p/7P/scratch-version-intermediaire/)
 
 3. **8P - Version Avancée** : 8 bugs complexes
-   - Dossier : `suisse-per/cycle-2-5p-8p/8P/scratch-version-avancee/`
+   - Dossier : [`suisse-per/cycle-2-5p-8p/8P/scratch-version-avancee/`](../suisse-per/cycle-2-5p-8p/8P/scratch-version-avancee/)
 
 4. **9P - Version Expert** : 9 bugs subtils
-   - Dossier : `suisse-per/cycle-3-9p-11p/9P/scratch-expert/`
+   - Dossier : [`suisse-per/cycle-3-9p-11p/9P/scratch-expert/`](../suisse-per/cycle-3-9p-11p/9P/scratch-expert/)
 
 ### France - Eduscol
 
 1. **CM1 - Version Basique** : 1 bug simple
-   - Dossier : `france-eduscol/cycle-3-cm1-6e/cm1/scratch-basique/`
+   - Dossier : [`france-eduscol/cycle-3-cm1-6e/cm1/scratch-basique/`](../france-eduscol/cycle-3-cm1-6e/cm1/scratch-basique/)
 
 2. **CM2 - Version Intermédiaire** : 4 bugs modérés
-   - Dossier : `france-eduscol/cycle-3-cm1-6e/cm2/scratch-intermediaire/`
+   - Dossier : [`france-eduscol/cycle-3-cm1-6e/cm2/scratch-intermediaire/`](../france-eduscol/cycle-3-cm1-6e/cm2/scratch-intermediaire/)
 
 3. **6e - Version Avancée** : 7 bugs complexes
-   - Dossier : `france-eduscol/cycle-3-cm1-6e/6e/scratch-avance/`
+   - Dossier : [`france-eduscol/cycle-3-cm1-6e/6e/scratch-avance/`](../france-eduscol/cycle-3-cm1-6e/6e/scratch-avance/)
 
 ## Comment utiliser ce guide
 

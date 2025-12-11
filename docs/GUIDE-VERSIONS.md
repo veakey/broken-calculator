@@ -12,7 +12,7 @@
 
 ## 📱 Versions disponibles
 
-### 1. Version Standard (`src/index.html`)
+### 1. Version Standard ([`src/index.html`](../src/index.html))
 **Pour qui :** Élèves à partir de CM2/6P (10-11 ans) et plus
 
 **Caractéristiques :**
@@ -22,13 +22,13 @@
 - Fonctions mathématiques avancées (sin, cos, tan, hyp, %)
 
 **Utilisation :**
-- Ouvrir `src/index.html` dans un navigateur
+- Ouvrir [`src/index.html`](../src/index.html) dans un navigateur
 - Les élèves peuvent voir et modifier le code JavaScript
 - Système de tests pour valider les corrections
 
 ---
 
-### 2. Version Enfant (`src/index-enfant.html`) ⭐ NOUVEAU
+### 2. Version Enfant ([`src/index-enfant.html`](../src/index-enfant.html)) ⭐ NOUVEAU
 **Pour qui :** Élèves de CP-CE2/3P-5P (6-9 ans)
 
 **Caractéristiques :**
@@ -40,7 +40,7 @@
 - Messages explicatifs simples
 
 **Utilisation :**
-- Ouvrir `src/index-enfant.html` dans un navigateur
+- Ouvrir [`src/index-enfant.html`](../src/index-enfant.html) dans un navigateur
 - Les enfants utilisent la calculatrice normalement
 - Les étapes s'affichent visuellement pour comprendre ce qui se passe
 - Les tests montrent clairement les erreurs avec des couleurs
@@ -53,7 +53,7 @@
 
 ---
 
-### 3. Outil Enseignant (`src/enseignant-viewer.html`) ⭐ NOUVEAU
+### 3. Outil Enseignant ([`src/enseignant-viewer.html`](../src/enseignant-viewer.html)) ⭐ NOUVEAU
 **Pour qui :** Enseignants et accompagnants
 
 **Caractéristiques :**
@@ -64,7 +64,7 @@
 - Permet de montrer le code aux élèves de manière compréhensible
 
 **Utilisation :**
-- Ouvrir `src/enseignant-viewer.html` dans un navigateur
+- Ouvrir [`src/enseignant-viewer.html`](../src/enseignant-viewer.html) dans un navigateur
 - Cliquer sur "Charger le code" pour voir le code coloré
 - Cliquer sur "Voir les bugs" pour mettre en évidence les erreurs
 - Cliquer sur "Explications" pour les détails pédagogiques
@@ -95,7 +95,7 @@
 - Introduction au code progressif
 
 ### Pour Cycle 3+ (CM2-6e, 7P+)
-- **Version Standard** (`src/index.html`)
+- **Version Standard** ([`src/index.html`](../src/index.html))
 - Code visible et modifiable
 - Apprentissage complet du débogage
 
@@ -136,6 +136,7 @@ python3 -m http.server 8000
 ```bash
 python3 -m http.server 8000
 # Ouvrir http://localhost:8000/src/enseignant-viewer.html
+# Ou directement : http://localhost:8000/src/enseignant-viewer.html
 ```
 
 ---

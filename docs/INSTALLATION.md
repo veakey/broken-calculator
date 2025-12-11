@@ -29,9 +29,9 @@
    ```
 
 2. **Ouvrir les fichiers HTML directement**
-   - Double-cliquer sur `src/index.html` (version standard)
-   - Double-cliquer sur `src/index-enfant.html` (version pour enfants)
-   - Double-cliquer sur `src/enseignant-viewer.html` (outil enseignant)
+   - Double-cliquer sur [`src/index.html`](../src/index.html) (version standard)
+   - Double-cliquer sur [`src/index-enfant.html`](../src/index-enfant.html) (version pour enfants)
+   - Double-cliquer sur [`src/enseignant-viewer.html`](../src/enseignant-viewer.html) (outil enseignant)
 
 3. **C'est tout !** Les fichiers s'ouvrent dans votre navigateur.
 
@@ -52,7 +52,7 @@ python3 -m http.server 8000
 
 ### Pour les élèves
 
-1. **Ouvrir `src/js/calculator.js`** avec n'importe quel éditeur de texte :
+1. **Ouvrir [`src/js/calculator.js`](../src/js/calculator.js)** avec n'importe quel éditeur de texte :
    - Bloc-notes (Windows)
    - TextEdit (Mac)
    - Gedit (Linux)
@@ -68,8 +68,8 @@ python3 -m http.server 8000
 
 ### Pour les enseignants
 
-- Utiliser `src/enseignant-viewer.html` pour visualiser le code
-- Modifier `src/js/calculator.js` avec un éditeur de texte
+- Utiliser [`src/enseignant-viewer.html`](../src/enseignant-viewer.html) pour visualiser le code
+- Modifier [`src/js/calculator.js`](../src/js/calculator.js) avec un éditeur de texte
 - Recharger la page pour voir les changements
 
 ## 📁 Structure minimale nécessaire
@@ -94,7 +94,7 @@ broken-calculator/
 
 ## ✅ Vérification
 
-1. Ouvrez `src/index.html` dans votre navigateur
+1. Ouvrez [`src/index.html`](../src/index.html) dans votre navigateur
 2. La calculatrice doit s'afficher
 3. Cliquez sur quelques boutons
 4. Cliquez sur "Lancer les Tests"
@@ -110,17 +110,17 @@ broken-calculator/
 
 ### "Les styles ne s'appliquent pas"
 
-- Vérifiez que `src/css/styles.css` est dans le bon dossier
+- Vérifiez que [`src/css/styles.css`](../src/css/styles.css) est dans le bon dossier
 - Vérifiez que le chemin dans `<link>` est correct
 
 ### "Les tests ne fonctionnent pas"
 
-- Vérifiez que `src/js/tests.js` est dans le bon dossier
+- Vérifiez que [`src/js/tests.js`](../src/js/tests.js) est dans le bon dossier
 - Ouvrez la console du navigateur (F12) pour voir les erreurs
 
 ## 💡 Conseils
 
-- **Pour les élèves** : Commencez par la version enfant (`src/index-enfant.html`)
+- **Pour les élèves** : Commencez par la version enfant ([`src/index-enfant.html`](../src/index-enfant.html))
 - **Pour modifier** : Utilisez un éditeur de texte simple, pas besoin d'IDE complexe
 - **Pour partager** : Copiez tout le dossier, ça fonctionnera partout
 - **Pas de dépendances** : Tout fonctionne avec juste un navigateur moderne
@@ -131,6 +131,6 @@ broken-calculator/
 
 Juste :
 1. Ouvrir les fichiers HTML dans `src/`
-2. Modifier `src/js/calculator.js` si besoin
+2. Modifier [`src/js/calculator.js`](../src/js/calculator.js) si besoin
 3. C'est tout !
 

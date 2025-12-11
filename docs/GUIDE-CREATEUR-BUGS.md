@@ -51,7 +51,7 @@ Vous voulez que vos élèves se concentrent sur un type spécifique d'erreur :
 
 ### Étape 1 : Ouvrir l'outil
 
-1. Ouvrez le fichier `src/bug-creator.html` dans votre navigateur
+1. Ouvrez le fichier [`src/bug-creator.html`](../src/bug-creator.html) dans votre navigateur
    - Double-cliquez sur le fichier, ou
    - Faites un clic droit → "Ouvrir avec" → votre navigateur
 
@@ -93,12 +93,12 @@ Vous voulez que vos élèves se concentrent sur un type spécifique d'erreur :
 
 ### Étape 5 : Utiliser avec vos élèves
 
-1. **Remplacez** le fichier `src/js/calculator.js` existant par celui que vous venez de télécharger
-   - Localisez le fichier `src/js/calculator.js` dans le dossier du projet
+1. **Remplacez** le fichier [`src/js/calculator.js`](../src/js/calculator.js) existant par celui que vous venez de télécharger
+   - Localisez le fichier [`src/js/calculator.js`](../src/js/calculator.js) dans le dossier du projet
    - Supprimez l'ancien fichier (ou renommez-le en `calculator-backup.js`)
    - Copiez le nouveau fichier téléchargé à la place
 
-2. **Ouvrez** `src/index.html` ou `src/index-enfant.html` dans le navigateur
+2. **Ouvrez** [`src/index.html`](../src/index.html) ou [`src/index-enfant.html`](../src/index-enfant.html) dans le navigateur
    - Vos élèves verront maintenant la calculatrice avec les bugs que vous avez choisis !
 
 3. **Lancez les tests** pour vérifier que les bugs fonctionnent comme prévu
@@ -144,7 +144,7 @@ Vous voulez que vos élèves se concentrent sur un type spécifique d'erreur :
 ### Q : Puis-je modifier le fichier après l'avoir téléchargé ?
 
 **R :** Oui ! Vous pouvez :
-1. Revenir sur `src/bug-creator.html`
+1. Revenir sur [`src/bug-creator.html`](../src/bug-creator.html)
 2. Modifier vos sélections
 3. Régénérer et télécharger un nouveau fichier
 4. Remplacer l'ancien fichier
@@ -212,12 +212,12 @@ Commencez toujours par les bugs faciles et progressez !
 - Essayez avec un autre navigateur (Chrome, Firefox, Edge)
 
 ### La calculatrice ne fonctionne pas après remplacement
-- Vérifiez que vous avez bien remplacé le fichier `src/js/calculator.js`
+- Vérifiez que vous avez bien remplacé le fichier [`src/js/calculator.js`](../src/js/calculator.js)
 - Rechargez la page (F5 ou Ctrl+R)
 - Vérifiez la console du navigateur (F12) pour voir s'il y a des erreurs
 
 ### Je veux revenir à la version originale
-- Le fichier `src/js/calculator.js` original est toujours disponible dans le projet
+- Le fichier [`src/js/calculator.js`](../src/js/calculator.js) original est toujours disponible dans le projet
 - Vous pouvez aussi créer une version sans bugs dans le créateur
 
 ---
@@ -226,7 +226,7 @@ Commencez toujours par les bugs faciles et progressez !
 
 - **Guide des versions** : Voir `GUIDE-VERSIONS.md` pour choisir la bonne interface
 - **Installation** : Voir `INSTALLATION.md` pour les instructions de base
-- **Outil Enseignant** : Utilisez `src/enseignant-viewer.html` pour visualiser le code avec vos élèves
+- **Outil Enseignant** : Utilisez [`src/enseignant-viewer.html`](../src/enseignant-viewer.html) pour visualiser le code avec vos élèves
 
 ---
 

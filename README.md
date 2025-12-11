@@ -64,28 +64,28 @@ Réparer une calculatrice qui contient des bugs intentionnels en :
 
 1. **Télécharger le projet** (ZIP ou git clone)
 2. **Ouvrir directement** les fichiers HTML dans votre navigateur :
-   - `src/index.html` → Version standard
-   - `src/index-enfant.html` → Version enfant
-   - `src/enseignant-viewer.html` → Outil enseignant
+   - [`src/index.html`](src/index.html) → Version standard
+   - [`src/index-enfant.html`](src/index-enfant.html) → Version enfant
+   - [`src/enseignant-viewer.html`](src/enseignant-viewer.html) → Outil enseignant
 3. **C'est tout !** 
 
-**Voir `docs/INSTALLATION.md` pour plus de détails.**
+**Voir [`docs/INSTALLATION.md`](docs/INSTALLATION.md) pour plus de détails.**
 
 ### 🧩 Versions Blockly par Tranche d'Âge
 
 Le projet inclut maintenant des **versions Blockly adaptées** aux référentiels PER et Eduscol :
 
 #### 🇨🇭 Suisse - PER
-- **3P** : `suisse-per/cycle-1-1p-4p/3P/blockly-calculator.html` - Algorithmes simples, bugs
-- **4P** : `suisse-per/cycle-1-1p-4p/4P/blockly-calculator.html` - Algorithmes avec tests et boucles
-- **6P** : `suisse-per/cycle-2-5p-8p/6P/blockly-calculator.html` - Variables et conditions simples
-- **9P** : `suisse-per/cycle-3-9p-11p/9P/blockly-avance.html` - Programmation événementielle avec code JavaScript généré ⭐
+- **3P** : [`suisse-per/cycle-1-1p-4p/3P/blockly-calculator.html`](suisse-per/cycle-1-1p-4p/3P/blockly-calculator.html) - Algorithmes simples, bugs
+- **4P** : [`suisse-per/cycle-1-1p-4p/4P/blockly-calculator.html`](suisse-per/cycle-1-1p-4p/4P/blockly-calculator.html) - Algorithmes avec tests et boucles
+- **6P** : [`suisse-per/cycle-2-5p-8p/6P/blockly-calculator.html`](suisse-per/cycle-2-5p-8p/6P/blockly-calculator.html) - Variables et conditions simples
+- **9P** : [`suisse-per/cycle-3-9p-11p/9P/blockly-avance.html`](suisse-per/cycle-3-9p-11p/9P/blockly-avance.html) - Programmation événementielle avec code JavaScript généré ⭐
 
 #### 🇫🇷 France - Eduscol
-- **4e** : `france-eduscol/cycle-4-5e-3e/4e/blockly-avance.html` - Variables, boucles et conditions avancées ⭐
-- **3e** : `france-eduscol/cycle-4-5e-3e/3e/blockly-avance.html` - Scripts parallèles et structures complexes ⭐
+- **4e** : [`france-eduscol/cycle-4-5e-3e/4e/blockly-avance.html`](france-eduscol/cycle-4-5e-3e/4e/blockly-avance.html) - Variables, boucles et conditions avancées ⭐
+- **3e** : [`france-eduscol/cycle-4-5e-3e/3e/blockly-avance.html`](france-eduscol/cycle-4-5e-3e/3e/blockly-avance.html) - Scripts parallèles et structures complexes ⭐
 
-**📖 Voir `docs/BLOCKLY-VERSIONS-README.md` pour la liste complète et `docs/REFERENTIELS-SYNTHESE.md` pour les détails des référentiels.**
+**📖 Voir [`docs/BLOCKLY-VERSIONS-README.md`](docs/BLOCKLY-VERSIONS-README.md) pour la liste complète et [`docs/REFERENTIELS-SYNTHESE.md`](docs/REFERENTIELS-SYNTHESE.md) pour les détails des référentiels.**
 
 ### 🎓 Approche Différenciée pour les Plus Grands
 
@@ -101,50 +101,50 @@ Pour les **9P-11P / 4e-3e**, le projet propose **deux approches complémentaires
    - Tests unitaires
    - Préparation aux études supérieures
 
-**💡 Voir `docs/APPROCHE-DIFFERENCIEE.md` pour la stratégie pédagogique complète.**
+**💡 Voir [`docs/APPROCHE-DIFFERENCIEE.md`](docs/APPROCHE-DIFFERENCIEE.md) pour la stratégie pédagogique complète.**
 
 ### Versions disponibles
 
-1. **Version Standard** (`src/index.html`) : Pour CM2/6P et plus - Code visible
-2. **Version Enfant** (`src/index-enfant.html`) ⭐ : Pour CP-CE2/3P-5P - Interface visuelle simplifiée
-3. **Outil Enseignant** (`src/enseignant-viewer.html`) ⭐ : Pour les enseignants - Visualisation du code
-4. **Créateur de Bugs** (`src/bug-creator.html`) ⭐ : Pour les enseignants - Créer des bugs personnalisés
+1. **Version Standard** ([`src/index.html`](src/index.html)) : Pour CM2/6P et plus - Code visible
+2. **Version Enfant** ([`src/index-enfant.html`](src/index-enfant.html)) ⭐ : Pour CP-CE2/3P-5P - Interface visuelle simplifiée
+3. **Outil Enseignant** ([`src/enseignant-viewer.html`](src/enseignant-viewer.html)) ⭐ : Pour les enseignants - Visualisation du code
+4. **Créateur de Bugs** ([`src/bug-creator.html`](src/bug-creator.html)) ⭐ : Pour les enseignants - Créer des bugs personnalisés
 
-**📖 Voir `docs/GUIDE-CREATEUR-BUGS.md` pour un guide complet et détaillé.**
+**📖 Voir [`docs/GUIDE-CREATEUR-BUGS.md`](docs/GUIDE-CREATEUR-BUGS.md) pour un guide complet et détaillé.**
 
-**Voir `docs/GUIDE-VERSIONS.md` pour choisir la bonne version.**
+**Voir [`docs/GUIDE-VERSIONS.md`](docs/GUIDE-VERSIONS.md) pour choisir la bonne version.**
 
 ### 🔄 Comment passer d'un mode à l'autre ?
 
 **C'est très simple !** Il suffit d'ouvrir le fichier HTML correspondant dans votre navigateur :
 
 #### Mode Enfant → Mode Standard
-1. Fermer `src/index-enfant.html`
-2. Ouvrir `src/index.html` dans le navigateur
-3. **C'est tout !** Les deux utilisent le même `src/js/calculator.js` en arrière-plan
+1. Fermer [`src/index-enfant.html`](src/index-enfant.html)
+2. Ouvrir [`src/index.html`](src/index.html) dans le navigateur
+3. **C'est tout !** Les deux utilisent le même [`src/js/calculator.js`](src/js/calculator.js) en arrière-plan
 
 #### Mode Standard → Mode Enfant
-1. Fermer `src/index.html`
-2. Ouvrir `src/index-enfant.html` dans le navigateur
+1. Fermer [`src/index.html`](src/index.html)
+2. Ouvrir [`src/index-enfant.html`](src/index-enfant.html) dans le navigateur
 3. L'interface change automatiquement (plus simple, plus visuelle)
 
 #### Accéder à l'Outil Enseignant
-1. Ouvrir `src/enseignant-viewer.html` dans le navigateur
+1. Ouvrir [`src/enseignant-viewer.html`](src/enseignant-viewer.html) dans le navigateur
 2. Cliquer sur "Afficher le code" pour voir le code coloré
 3. Cliquer sur "Comparaison Avant/Après" pour voir les deux versions côte à côte
 
 #### Créer des bugs personnalisés
-1. Ouvrir `src/bug-creator.html` dans le navigateur
+1. Ouvrir [`src/bug-creator.html`](src/bug-creator.html) dans le navigateur
 2. Cocher les bugs que vous voulez introduire
 3. Cliquer sur "Générer le code"
 4. Cliquer sur "Télécharger calculator.js" pour obtenir votre version personnalisée
-5. Remplacer le fichier `src/js/calculator.js` existant par celui téléchargé
+5. Remplacer le fichier [`src/js/calculator.js`](src/js/calculator.js) existant par celui téléchargé
 
 **💡 Astuce :** Vous pouvez avoir plusieurs onglets ouverts en même temps pour comparer les modes !
 
 ### Modifier le code
 
-1. Ouvrir `src/js/calculator.js` avec un éditeur de texte
+1. Ouvrir [`src/js/calculator.js`](src/js/calculator.js) avec un éditeur de texte
 2. Modifier le code
 3. Sauvegarder
 4. Recharger la page (F5)
@@ -201,14 +201,14 @@ broken-calculator/
 │       ├── styles.css       # Style glassmorphism
 │       └── styles-enfant.css # Styles version enfant
 ├── docs/                    # Documentation
-│   ├── INSTALLATION.md
-│   ├── GUIDE-CREATEUR-BUGS.md
-│   ├── GUIDE-VERSIONS.md
-│   ├── BLOCKLY-VERSIONS-README.md
-│   ├── REFERENTIELS-SYNTHESE.md
-│   ├── APPROCHE-DIFFERENCIEE.md
-│   ├── TEST-INTERFACE.md
-│   └── SCRATCH_GUIDE.md
+│   ├── [INSTALLATION.md](docs/INSTALLATION.md)
+│   ├── [GUIDE-CREATEUR-BUGS.md](docs/GUIDE-CREATEUR-BUGS.md)
+│   ├── [GUIDE-VERSIONS.md](docs/GUIDE-VERSIONS.md)
+│   ├── [BLOCKLY-VERSIONS-README.md](docs/BLOCKLY-VERSIONS-README.md)
+│   ├── [REFERENTIELS-SYNTHESE.md](docs/REFERENTIELS-SYNTHESE.md)
+│   ├── [APPROCHE-DIFFERENCIEE.md](docs/APPROCHE-DIFFERENCIEE.md)
+│   ├── [TEST-INTERFACE.md](docs/TEST-INTERFACE.md)
+│   └── [SCRATCH_GUIDE.md](docs/SCRATCH_GUIDE.md)
 ├── suisse-per/              # Versions PER (Suisse)
 ├── france-eduscol/          # Versions Eduscol (France)
 ├── assets/                  # Assets (Scratch, etc.)
@@ -224,7 +224,7 @@ L'interface utilise un style **glassmorphism** (liquid glass) avec :
 
 ### Contrôles d'accessibilité
 
-Dans la version standard (`index.html`), vous trouverez en haut à droite :
+Dans la version standard ([`src/index.html`](src/index.html)), vous trouverez en haut à droite :
 - **A-** / **A+** : Ajuster la taille de la police (80% à 150%)
 - **🌓** : Basculer entre mode clair et mode sombre
 - **🎨** : Activer le mode daltonien (formes + bordures en plus des couleurs)
@@ -249,9 +249,9 @@ Chaque niveau contient :
 ## 📝 Notes
 
 - Les versions Scratch nécessitent des fichiers `.sb3` (non inclus, arborescence créée)
-- **Créer les fichiers .sb3** : Voir `assets/scratch/CREER-SB3.md` pour le guide complet
-- **Générateur Python** : Utiliser `assets/scratch/generate-scratch-project.py` pour créer la structure de base
-- **Assets Scratch** : Voir le dossier `assets/scratch/` pour les guides de création des sprites
+- **Créer les fichiers .sb3** : Voir [`assets/scratch/CREER-SB3.md`](assets/scratch/CREER-SB3.md) pour le guide complet
+- **Générateur Python** : Utiliser [`assets/scratch/generate-scratch-project.py`](assets/scratch/generate-scratch-project.py) pour créer la structure de base
+- **Assets Scratch** : Voir le dossier [`assets/scratch/`](assets/scratch/) pour les guides de création des sprites
 - Les niveaux sans code utilisent des activités manuelles
 - Chaque version est adaptée au niveau de difficulté approprié
 
@@ -262,7 +262,7 @@ Le dossier `assets/scratch/` contient :
 - **Références** : Descriptions détaillées, palette de couleurs, positionnement
 - **Guide rapide** : Version condensée pour création rapide
 
-Voir `assets/README.md` pour plus d'informations.
+Voir [`assets/README.md`](assets/README.md) pour plus d'informations.
 
 ## 🎓 Compétences Développées
 

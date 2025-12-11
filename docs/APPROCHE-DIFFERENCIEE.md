@@ -49,7 +49,7 @@ Blockly reste **très pertinent** même pour les plus grands, notamment pour :
 ## 📊 Structure des Versions pour 9P-11P / 4e-3e
 
 ### Option 1 : Blockly Avancé (avec code généré)
-**Fichier** : `suisse-per/cycle-3-9p-11p/9P/blockly-avance.html`
+**Fichier** : [`suisse-per/cycle-3-9p-11p/9P/blockly-avance.html`](../suisse-per/cycle-3-9p-11p/9P/blockly-avance.html)
 
 **Caractéristiques** :
 - ✅ Tous les blocs avancés (boucles, conditions, événements)
@@ -63,7 +63,7 @@ Blockly reste **très pertinent** même pour les plus grands, notamment pour :
 - Compréhension de la traduction Blockly → JavaScript
 
 ### Option 2 : JavaScript (pour les plus doués)
-**Fichier** : `suisse-per/cycle-3-9p-11p/9P/js-debutant/`
+**Fichier** : [`suisse-per/cycle-3-9p-11p/9P/js-debutant/`](../suisse-per/cycle-3-9p-11p/9P/js-debutant/)
 
 **Caractéristiques** :
 - ✅ Code JavaScript pur
@@ -87,8 +87,8 @@ Blockly reste **très pertinent** même pour les plus grands, notamment pour :
 
 ### Phase 2 : Différenciation
 1. **Élèves à l'aise** : Passer à la version JavaScript
-   - Utiliser `js-debutant/` pour commencer
-   - Puis `js-intermediaire/` et `js-avance/`
+   - Utiliser [`js-debutant/`](../suisse-per/cycle-3-9p-11p/9P/js-debutant/) pour commencer
+   - Puis [`js-intermediaire/`](../suisse-per/cycle-3-9p-11p/10P/js-intermediaire/) et [`js-avance/`](../suisse-per/cycle-3-9p-11p/11P/js-avance/)
    
 2. **Élèves en difficulté** : Continuer avec Blockly
    - Utiliser la version Blockly avancée
@@ -145,18 +145,18 @@ Blockly reste **très pertinent** même pour les plus grands, notamment pour :
 ## 🔗 Fichiers Disponibles
 
 ### Blockly
-- `suisse-per/cycle-3-9p-11p/9P/blockly-avance.html` - Blockly avec code généré
+- [`suisse-per/cycle-3-9p-11p/9P/blockly-avance.html`](../suisse-per/cycle-3-9p-11p/9P/blockly-avance.html) - Blockly avec code généré
 
 ### JavaScript
-- `suisse-per/cycle-3-9p-11p/9P/js-debutant/` - JavaScript débutant
-- `suisse-per/cycle-3-9p-11p/10P/js-intermediaire/` - JavaScript intermédiaire
-- `suisse-per/cycle-3-9p-11p/11P/js-avance/` - JavaScript avancé
+- [`suisse-per/cycle-3-9p-11p/9P/js-debutant/`](../suisse-per/cycle-3-9p-11p/9P/js-debutant/) - JavaScript débutant
+- [`suisse-per/cycle-3-9p-11p/10P/js-intermediaire/`](../suisse-per/cycle-3-9p-11p/10P/js-intermediaire/) - JavaScript intermédiaire
+- [`suisse-per/cycle-3-9p-11p/11P/js-avance/`](../suisse-per/cycle-3-9p-11p/11P/js-avance/) - JavaScript avancé
 
 ## 📚 Références
 
-- Voir `REFERENTIELS-SYNTHESE.md` pour les compétences PER et Eduscol
-- Voir `BLOCKLY-VERSIONS-README.md` pour toutes les versions Blockly
-- Voir `README.md` pour la documentation générale
+- Voir [`REFERENTIELS-SYNTHESE.md`](REFERENTIELS-SYNTHESE.md) pour les compétences PER et Eduscol
+- Voir [`BLOCKLY-VERSIONS-README.md`](BLOCKLY-VERSIONS-README.md) pour toutes les versions Blockly
+- Voir [`../README.md`](../README.md) pour la documentation générale
 
 ---
 

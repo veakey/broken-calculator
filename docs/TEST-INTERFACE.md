@@ -17,7 +17,7 @@
 
 ### Ouvrir directement (Recommandé)
 
-**Double-cliquer sur `src/index.html`** ou faire glisser le fichier dans le navigateur.
+**Double-cliquer sur [`src/index.html`](../src/index.html)** ou faire glisser le fichier dans le navigateur.
 
 **C'est tout !** Pas besoin de serveur, npm, git, ou autre installation.
 
@@ -142,7 +142,7 @@ Résultat correct (après réparation) : 1 (tan(45°))
 
 ## 🔧 Après réparation
 
-Une fois les bugs corrigés dans `src/js/calculator.js` :
+Une fois les bugs corrigés dans [`src/js/calculator.js`](../src/js/calculator.js) :
 
 - [ ] Tous les tests doivent passer (✅)
 - [ ] Le score doit être "12/12 tests réussis"

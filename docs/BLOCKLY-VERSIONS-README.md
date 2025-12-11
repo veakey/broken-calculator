@@ -22,13 +22,13 @@ Ce document liste toutes les versions du projet Blockly adaptées aux différent
 
 #### Cycle 1 (1P-4P)
 
-**3P** - `suisse-per/cycle-1-1p-4p/3P/blockly-calculator.html`
+**3P** - [`suisse-per/cycle-1-1p-4p/3P/blockly-calculator.html`](../suisse-per/cycle-1-1p-4p/3P/blockly-calculator.html)
 - **Compétences** : Algorithmes simples, détection de bugs
 - **Blocs disponibles** : Addition, soustraction (avec bugs et corrects)
 - **Concepts** : Séquences d'instructions, variables simples
 - **Objectif** : Comprendre qu'un algorithme est une méthode pour résoudre un problème, reconnaître les bugs
 
-**4P** - `suisse-per/cycle-1-1p-4p/4P/blockly-calculator.html`
+**4P** - [`suisse-per/cycle-1-1p-4p/4P/blockly-calculator.html`](../suisse-per/cycle-1-1p-4p/4P/blockly-calculator.html)
 - **Compétences** : Algorithmes avec tests et boucles simples
 - **Blocs disponibles** : Addition, soustraction, multiplication (avec bugs et corrects), conditions
 - **Concepts** : Tests (si... alors...), boucles simples
@@ -36,7 +36,7 @@ Ce document liste toutes les versions du projet Blockly adaptées aux différent
 
 #### Cycle 2 (5P-8P)
 
-**5P-6P** - À créer
+**6P** - [`suisse-per/cycle-2-5p-8p/6P/blockly-calculator.html`](../suisse-per/cycle-2-5p-8p/6P/blockly-calculator.html)
 - **Compétences** : Logique séquentielle, instructions conditionnelles simples, variables
 - **Blocs disponibles** : Toutes les opérations, conditions avancées, variables
 - **Concepts** : Variables, conditions simples, ordre des instructions
@@ -50,7 +50,7 @@ Ce document liste toutes les versions du projet Blockly adaptées aux différent
 
 #### Cycle 3 (9P-11P)
 
-**9P** - `suisse-per/cycle-3-9p-11p/9P/blockly-avance.html` ⭐
+**9P** - [`suisse-per/cycle-3-9p-11p/9P/blockly-avance.html`](../suisse-per/cycle-3-9p-11p/9P/blockly-avance.html) ⭐
 - **Compétences** : Programmes complexes, structures de données, programmation événementielle
 - **Blocs disponibles** : Toutes les opérations, conditions, boucles, événements, structures de données
 - **Concepts** : Programmation événementielle, scripts parallèles, structures de données
@@ -76,7 +76,7 @@ Ce document liste toutes les versions du projet Blockly adaptées aux différent
 
 #### Cycle 4 (5e, 4e, 3e)
 
-**4e** - `france-eduscol/cycle-4-5e-3e/4e/blockly-avance.html` ⭐
+**4e** - [`france-eduscol/cycle-4-5e-3e/4e/blockly-avance.html`](../france-eduscol/cycle-4-5e-3e/4e/blockly-avance.html) ⭐
 - **Compétences** : Variables, boucles, instructions conditionnelles
 - **Blocs disponibles** : Toutes les opérations, conditions, boucles, variables
 - **Concepts** : Variables, boucles, conditions avancées
@@ -84,7 +84,7 @@ Ce document liste toutes les versions du projet Blockly adaptées aux différent
 - **Spécificité** : **Affiche le code JavaScript généré** pour faire le pont vers la programmation textuelle
 - **Approche différenciée** : Peut être utilisé en parallèle avec la version JavaScript pour les plus doués
 
-**3e** - `france-eduscol/cycle-4-5e-3e/3e/blockly-avance.html` ⭐
+**3e** - [`france-eduscol/cycle-4-5e-3e/3e/blockly-avance.html`](../france-eduscol/cycle-4-5e-3e/3e/blockly-avance.html) ⭐
 - **Compétences** : Scripts parallèles, structures complexes, projets intégrés
 - **Blocs disponibles** : Toutes les opérations, conditions, boucles, événements, structures de données
 - **Concepts** : Scripts parallèles, structures de données, projets complexes
@@ -128,5 +128,5 @@ Ce document liste toutes les versions du projet Blockly adaptées aux différent
 
 ## 🔗 Références
 
-- Voir `REFERENTIELS-SYNTHESE.md` pour les détails des référentiels
-- Voir `README.md` pour la documentation générale du projet
+- Voir [`REFERENTIELS-SYNTHESE.md`](REFERENTIELS-SYNTHESE.md) pour les détails des référentiels
+- Voir [`../README.md`](../README.md) pour la documentation générale du projet
