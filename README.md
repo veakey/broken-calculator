@@ -49,11 +49,29 @@ Le projet inclut maintenant des **versions Blockly adaptées** aux référentiel
 - **3P** : `suisse-per/cycle-1-1p-4p/3P/blockly-calculator.html` - Algorithmes simples, bugs
 - **4P** : `suisse-per/cycle-1-1p-4p/4P/blockly-calculator.html` - Algorithmes avec tests et boucles
 - **6P** : `suisse-per/cycle-2-5p-8p/6P/blockly-calculator.html` - Variables et conditions simples
+- **9P** : `suisse-per/cycle-3-9p-11p/9P/blockly-avance.html` - Programmation événementielle avec code JavaScript généré ⭐
 
 #### 🇫🇷 France - Eduscol
-- Les versions Eduscol correspondantes seront créées dans `france-eduscol/`
+- **4e** : `france-eduscol/cycle-4-5e-3e/4e/blockly-avance.html` - Variables, boucles et conditions avancées ⭐
+- **3e** : `france-eduscol/cycle-4-5e-3e/3e/blockly-avance.html` - Scripts parallèles et structures complexes ⭐
 
 **📖 Voir `BLOCKLY-VERSIONS-README.md` pour la liste complète et `REFERENTIELS-SYNTHESE.md` pour les détails des référentiels.**
+
+### 🎓 Approche Différenciée pour les Plus Grands
+
+Pour les **9P-11P / 4e-3e**, le projet propose **deux approches complémentaires** :
+
+1. **Blockly Avancé** (avec code JavaScript généré) - Pour tous les élèves
+   - Visualisation de la logique algorithmique
+   - Bouton pour voir le code JavaScript généré
+   - Pont vers la programmation textuelle
+
+2. **JavaScript** - Pour les élèves plus doués
+   - Code textuel pur avec bugs à corriger
+   - Tests unitaires
+   - Préparation aux études supérieures
+
+**💡 Voir `APPROCHE-DIFFERENCIEE.md` pour la stratégie pédagogique complète.**
 
 ### Versions disponibles
 

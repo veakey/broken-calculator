@@ -36,11 +36,13 @@ Ce document liste toutes les versions du projet Blockly adaptées aux différent
 
 #### Cycle 3 (9P-11P)
 
-**9P-11P** - À créer
+**9P** - `suisse-per/cycle-3-9p-11p/9P/blockly-avance.html` ⭐
 - **Compétences** : Programmes complexes, structures de données, programmation événementielle
-- **Blocs disponibles** : Toutes les opérations, conditions, boucles, événements
+- **Blocs disponibles** : Toutes les opérations, conditions, boucles, événements, structures de données
 - **Concepts** : Programmation événementielle, scripts parallèles, structures de données
 - **Objectif** : Créer des projets complexes intégrant plusieurs concepts
+- **Spécificité** : **Affiche le code JavaScript généré** pour faire le pont vers la programmation textuelle
+- **Approche différenciée** : Peut être utilisé en parallèle avec la version JavaScript pour les plus doués
 
 ### 🇫🇷 France - Eduscol
 
@@ -60,17 +62,21 @@ Ce document liste toutes les versions du projet Blockly adaptées aux différent
 
 #### Cycle 4 (5e, 4e, 3e)
 
-**5e** - À créer (identique à 7P-8P PER)
-- **Compétences** : Programmation événementielle, boucles, conditions avancées
-- **Blocs disponibles** : Toutes les opérations, conditions, boucles, événements
-- **Concepts** : Programmation événementielle, boucles, conditions avancées
-- **Objectif** : Créer des programmes événementiels avec boucles
+**4e** - `france-eduscol/cycle-4-5e-3e/4e/blockly-avance.html` ⭐
+- **Compétences** : Variables, boucles, instructions conditionnelles
+- **Blocs disponibles** : Toutes les opérations, conditions, boucles, variables
+- **Concepts** : Variables, boucles, conditions avancées
+- **Objectif** : Créer des programmes avec variables et conditions
+- **Spécificité** : **Affiche le code JavaScript généré** pour faire le pont vers la programmation textuelle
+- **Approche différenciée** : Peut être utilisé en parallèle avec la version JavaScript pour les plus doués
 
-**4e-3e** - À créer (identique à 9P-11P PER)
+**3e** - `france-eduscol/cycle-4-5e-3e/3e/blockly-avance.html` ⭐
 - **Compétences** : Scripts parallèles, structures complexes, projets intégrés
 - **Blocs disponibles** : Toutes les opérations, conditions, boucles, événements, structures de données
 - **Concepts** : Scripts parallèles, structures de données, projets complexes
 - **Objectif** : Créer des projets complexes avec plusieurs concepts
+- **Spécificité** : **Affiche le code JavaScript généré** pour faire le pont vers la programmation textuelle
+- **Approche différenciée** : Peut être utilisé en parallèle avec la version JavaScript pour les plus doués
 
 ## 🎯 Progression des Compétences
 
