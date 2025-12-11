@@ -13,6 +13,11 @@ function appendNumber(number) {
         shouldResetDisplay = false;
     }
     
+    // CORRIGÉ: Vérifie si on ajoute un deuxième point décimal
+    if (number === '.' && currentInput.includes('.')) {
+        return; // Ne pas ajouter un deuxième point
+    }
+    
     if (currentInput === '0' && number !== '.') {
         currentInput = number;
     } else {
@@ -22,6 +27,7 @@ function appendNumber(number) {
     updateDisplay();
 }
 
+// CORRIGÉ: La fonction appendOperator réinitialise correctement
 function appendOperator(op) {
     if (previousInput !== '' && operator !== null) {
         calculate();
@@ -29,7 +35,9 @@ function appendOperator(op) {
     
     previousInput = currentInput;
     operator = op;
+    // CORRIGÉ: shouldResetDisplay est maintenant défini et currentInput réinitialisé
     shouldResetDisplay = true;
+    currentInput = '0';
     updateDisplay();
 }
 
@@ -60,6 +68,9 @@ function calculate() {
             return;
     }
     
+    // CORRIGÉ: Gestion correcte des nombres décimaux avec arrondi si nécessaire
+    // Limiter à 10 décimales pour éviter les erreurs de précision
+    result = Math.round(result * 10000000000) / 10000000000;
     currentInput = result.toString();
     previousInput = '';
     operator = null;
@@ -75,10 +86,23 @@ function clearDisplay() {
     updateDisplay();
 }
 
+// CORRIGÉ: La fonction updateDisplay limite la longueur de l'affichage
 function updateDisplay() {
-    display.textContent = currentInput;
+    // CORRIGÉ: Limite la longueur de l'affichage à 15 caractères
+    let displayValue = currentInput;
+    if (displayValue.length > 15) {
+        // Si c'est un nombre décimal, on peut le formater en notation scientifique
+        const num = parseFloat(displayValue);
+        if (!isNaN(num)) {
+            displayValue = num.toExponential(8);
+        } else {
+            displayValue = displayValue.substring(0, 15);
+        }
+    }
+    display.textContent = displayValue;
 }
 
+// Fonction utilitaire pour obtenir l'état actuel (utilisée par les tests)
 function getCalculatorState() {
     return {
         currentInput: currentInput,
@@ -88,6 +112,7 @@ function getCalculatorState() {
     };
 }
 
+// Fonction utilitaire pour exécuter un calcul directement (utilisée par les tests)
 function testCalculate(a, op, b) {
     clearDisplay();
     currentInput = a.toString();

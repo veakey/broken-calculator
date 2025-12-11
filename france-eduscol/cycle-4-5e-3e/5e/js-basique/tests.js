@@ -6,12 +6,17 @@ function runTests() {
     const resultsDiv = document.getElementById('test-results');
     resultsDiv.innerHTML = '<p>🔄 Exécution des tests en cours...</p>';
     
+    // Tests unitaires - Opérations de base uniquement
     testAddition();
     testSubtraction();
     testMultiplication();
     testDivision();
+    testDecimalNumbers();
     testClearFunction();
+    testMultipleOperations();
+    testDecimalInput();
     
+    // Afficher les résultats
     displayTestResults();
 }
 
@@ -67,6 +72,19 @@ function testDivision() {
     });
 }
 
+function testDecimalNumbers() {
+    const result = testCalculate(3.5, '+', 2.5);
+    const expected = 6;
+    const passed = Math.abs(result - expected) < 0.0001; // Tolérance pour les erreurs d'arrondi
+    
+    testResults.push({
+        name: 'Nombres décimaux : 3.5 + 2.5 = 6',
+        passed: passed,
+        expected: expected,
+        actual: result
+    });
+}
+
 function testClearFunction() {
     clearDisplay();
     const state = getCalculatorState();
@@ -79,6 +97,45 @@ function testClearFunction() {
         passed: passed,
         expected: 'État réinitialisé',
         actual: passed ? 'OK' : 'Échec'
+    });
+}
+
+function testMultipleOperations() {
+    // Test d'une chaîne d'opérations : 2 + 3
+    clearDisplay();
+    currentInput = '2';
+    updateDisplay();
+    appendOperator('+');
+    currentInput = '3';
+    updateDisplay();
+    calculate();
+    
+    const firstResult = parseFloat(currentInput);
+    const passed = firstResult === 5;
+    
+    testResults.push({
+        name: 'Opérations multiples : 2 + 3 = 5',
+        passed: passed,
+        expected: 5,
+        actual: firstResult
+    });
+}
+
+function testDecimalInput() {
+    clearDisplay();
+    appendNumber('3');
+    appendNumber('.');
+    appendNumber('1');
+    appendNumber('4');
+    
+    const state = getCalculatorState();
+    const passed = state.currentInput === '3.14';
+    
+    testResults.push({
+        name: 'Saisie décimale : 3.14',
+        passed: passed,
+        expected: '3.14',
+        actual: state.currentInput
     });
 }
 
@@ -103,13 +160,14 @@ function displayTestResults() {
     testResults.forEach(test => {
         const status = test.passed ? '✅' : '❌';
         const className = test.passed ? 'pass' : 'fail';
+        const failedClass = test.passed ? '' : 'failed';
         
         html += `
-            <div class="test-item ${className}">
+            <div class="test-item ${className} ${failedClass}">
                 <span style="font-size: 1.2em;">${status}</span>
                 <div>
-                    <strong>${test.name}</strong><br>
-                    <small style="opacity: 0.9;">Attendu: ${test.expected} | Obtenu: ${test.actual}</small>
+                    <strong class="test-name">${test.name}</strong><br>
+                    <small class="test-details" style="opacity: 0.9;">Attendu: ${test.expected} | Obtenu: ${test.actual}</small>
                 </div>
             </div>
         `;
@@ -125,4 +183,45 @@ function displayTestResults() {
     }
     
     resultsDiv.innerHTML = html;
+}
+
+// Fonction pour exporter les résultats des tests
+function exportTestResults() {
+    if (testResults.length === 0) {
+        alert('Aucun test à exporter. Lancez d\'abord les tests.');
+        return;
+    }
+    
+    const passedCount = testResults.filter(t => t.passed).length;
+    const totalCount = testResults.length;
+    const date = new Date().toLocaleString('fr-FR');
+    
+    let exportText = `RÉSULTATS DES TESTS - CALCULATRICE CASSÉE\n`;
+    exportText += `Date: ${date}\n`;
+    exportText += `Score: ${passedCount}/${totalCount} tests réussis\n`;
+    exportText += `Pourcentage: ${((passedCount / totalCount) * 100).toFixed(1)}%\n`;
+    exportText += `\n${'='.repeat(50)}\n\n`;
+    
+    testResults.forEach((test, index) => {
+        const status = test.passed ? '✅ RÉUSSI' : '❌ ÉCHOUÉ';
+        exportText += `${index + 1}. ${test.name}\n`;
+        exportText += `   Statut: ${status}\n`;
+        exportText += `   Attendu: ${test.expected}\n`;
+        exportText += `   Obtenu: ${test.actual}\n`;
+        exportText += `\n`;
+    });
+    
+    exportText += `\n${'='.repeat(50)}\n`;
+    exportText += `FIN DU RAPPORT\n`;
+    
+    // Créer un blob et télécharger
+    const blob = new Blob([exportText], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `resultats-tests-${date.replace(/[\/\s:]/g, '-')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
 }

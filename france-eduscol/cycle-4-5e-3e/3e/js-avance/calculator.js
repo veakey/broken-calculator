@@ -7,9 +7,31 @@ let currentInput = '0';
 let previousInput = '';
 let operator = null;
 let shouldResetDisplay = false;
+let pendingAdvancedFunction = null; // Pour gérer la notation préfixe (tan puis 60)
 
 // BUG 1: La fonction appendNumber ne gère pas correctement le zéro initial
+// Supporte aussi la notation préfixe pour les fonctions avancées (tan puis 60)
 function appendNumber(number) {
+    // Si une fonction avancée est en attente (notation préfixe : "tan 60")
+    if (pendingAdvancedFunction !== null) {
+        // Construire le nombre progressivement
+        if (shouldResetDisplay) {
+            currentInput = '0';
+            shouldResetDisplay = false;
+        }
+        
+        // BUG: Ne vérifie pas si on ajoute un deuxième point décimal
+        if (currentInput === '0' && number !== '.') {
+            currentInput = number;
+        } else {
+            currentInput += number;
+        }
+        
+        updateDisplay();
+        return; // Ne pas exécuter la fonction tout de suite, attendre que l'utilisateur appuie sur =
+    }
+    
+    // Comportement normal (notation postfixe ou opérations normales)
     if (shouldResetDisplay) {
         currentInput = '0';
         shouldResetDisplay = false;
@@ -34,12 +56,22 @@ function appendOperator(op) {
     previousInput = currentInput;
     operator = op;
     // BUG: shouldResetDisplay n'est pas défini ici
+    shouldResetDisplay = true;
     currentInput = '0';
     updateDisplay();
 }
 
 // BUG 3: La fonction calculate contient plusieurs erreurs logiques
 function calculate() {
+    // Si une fonction avancée est en attente (notation préfixe), l'exécuter d'abord
+    if (pendingAdvancedFunction !== null) {
+        const value = parseFloat(currentInput);
+        if (!isNaN(value)) {
+            executeAdvancedFunction(pendingAdvancedFunction, value);
+            return; // Ne pas continuer avec le calcul normal
+        }
+    }
+    
     if (previousInput === '' || operator === null) {
         return;
     }
@@ -75,7 +107,7 @@ function calculate() {
             return;
     }
     
-    // BUG: Ne gère pas correctement les nombres décimaux
+    // BUG: Ne gère pas correctement les nombres décimaux (pas d'arrondi)
     currentInput = result.toString();
     previousInput = '';
     operator = null;
@@ -83,34 +115,36 @@ function calculate() {
     updateDisplay();
 }
 
-function clearDisplay() {
-    currentInput = '0';
-    previousInput = '';
-    operator = null;
-    shouldResetDisplay = false;
-    updateDisplay();
-}
-
-// BUG 4: La fonction updateDisplay peut afficher des valeurs incorrectes
-function updateDisplay() {
-    // BUG: Ne limite pas la longueur de l'affichage
-    display.textContent = currentInput;
-}
-
-// Fonction utilitaire pour obtenir l'état actuel (utilisée par les tests)
-function getCalculatorState() {
-    return {
-        currentInput: currentInput,
-        previousInput: previousInput,
-        operator: operator,
-        display: display.textContent
-    };
-}
-
-
 // Fonctions mathématiques avancées (avec bugs)
+// Supporte deux notations :
+// - Postfixe : "60 tan" (entrer 60 puis appuyer sur tan) - exécution immédiate
+// - Préfixe : "tan 60" (appuyer sur tan puis entrer 60) - exécution après entrée du nombre
 function calculateAdvanced(func) {
-    let value = parseFloat(currentInput);
+    const value = parseFloat(currentInput);
+    
+    // Détecter si on a une valeur à utiliser (notation postfixe : "60 tan")
+    // On exécute immédiatement si :
+    // - La valeur est valide (pas NaN)
+    // - L'affichage n'est pas en attente de réinitialisation
+    // - ET soit currentInput n'est pas "0", soit c'est "0" mais qu'il y a eu une interaction (operator ou previousInput)
+    const hasValue = !isNaN(value) && !shouldResetDisplay && 
+                     (currentInput !== '0' || operator !== null || previousInput !== '');
+    
+    if (hasValue) {
+        // Exécuter immédiatement avec la valeur actuelle (notation postfixe : "60 tan")
+        executeAdvancedFunction(func, value);
+    } else {
+        // Sinon, stocker la fonction pour l'exécuter quand l'utilisateur entrera une valeur (notation préfixe : "tan 60")
+        pendingAdvancedFunction = func;
+        // Réinitialiser l'affichage pour que l'utilisateur puisse entrer une nouvelle valeur
+        currentInput = '0';
+        shouldResetDisplay = false;
+        updateDisplay();
+    }
+}
+
+// Fonction pour exécuter réellement la fonction avancée
+function executeAdvancedFunction(func, value) {
     let result = 0;
     
     // Convertir en radians si nécessaire
@@ -131,16 +165,46 @@ function calculateAdvanced(func) {
             break;
         case 'hyp':
             // BUG: Calcul hypothénuse incorrect (additionne au lieu de sqrt(a²+b²))
-            // Pour simplifier, on utilise juste la valeur actuelle
-            result = value + value; // Devrait calculer l'hypoténuse
+            // Pour simplifier, on calcule l'hypoténuse d'un triangle rectangle
+            // avec les deux côtés égaux à la valeur actuelle
+            // hyp = sqrt(a² + b²) où a = b = value
+            result = value + value; // Devrait être: Math.sqrt(value * value + value * value)
             break;
         default:
             return;
     }
     
+    // Arrondir pour éviter les erreurs de précision
+    result = Math.round(result * 10000000000) / 10000000000;
     currentInput = result.toString();
     shouldResetDisplay = true;
+    pendingAdvancedFunction = null; // Réinitialiser
     updateDisplay();
+}
+
+function clearDisplay() {
+    currentInput = '0';
+    previousInput = '';
+    operator = null;
+    shouldResetDisplay = false;
+    pendingAdvancedFunction = null; // Réinitialiser la fonction en attente
+    updateDisplay();
+}
+
+// BUG 4: La fonction updateDisplay peut afficher des valeurs incorrectes
+function updateDisplay() {
+    // BUG: Ne limite pas la longueur de l'affichage
+    display.textContent = currentInput;
+}
+
+// Fonction utilitaire pour obtenir l'état actuel (utilisée par les tests)
+function getCalculatorState() {
+    return {
+        currentInput: currentInput,
+        previousInput: previousInput,
+        operator: operator,
+        display: display.textContent
+    };
 }
 
 // Fonction utilitaire pour exécuter un calcul directement (utilisée par les tests)
@@ -154,6 +218,7 @@ function testCalculate(a, op, b) {
     calculate();
     return parseFloat(currentInput);
 }
+
 // Fonction utilitaire pour tester les fonctions avancées (utilisée par les tests)
 function testAdvancedFunction(value, func) {
     clearDisplay();
@@ -162,6 +227,3 @@ function testAdvancedFunction(value, func) {
     calculateAdvanced(func);
     return parseFloat(currentInput);
 }
-
-
-
