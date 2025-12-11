@@ -217,7 +217,8 @@ header h1 {
     color: white;
 }
 
-.btn.advanced:hover {
+.btn.advanced:hover,
+.btn.advanced.keyboard-active {
     background: rgba(142, 68, 173, 0.5);
 }
 
@@ -261,11 +262,17 @@ header h1 {
     border-color: rgba(255, 255, 255, 0.3);
 }
 
-.btn:active {
-    transform: translateY(0);
+.btn:active,
+.btn.keyboard-active {
+    transform: translateY(-2px);
     box-shadow: 
-        0 2px 10px rgba(0,0,0,0.2),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+        0 8px 25px rgba(0,0,0,0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn.keyboard-active::before {
+    left: 100%;
 }
 
 .btn.number {
@@ -273,7 +280,8 @@ header h1 {
     color: white;
 }
 
-.btn.number:hover {
+.btn.number:hover,
+.btn.number.keyboard-active {
     background: rgba(61, 86, 110, 0.5);
 }
 
@@ -282,7 +290,8 @@ header h1 {
     color: white;
 }
 
-.btn.operator:hover {
+.btn.operator:hover,
+.btn.operator.keyboard-active {
     background: rgba(192, 57, 43, 0.5);
 }
 
@@ -291,7 +300,8 @@ header h1 {
     color: white;
 }
 
-.btn.clear:hover {
+.btn.clear:hover,
+.btn.clear.keyboard-active {
     background: rgba(127, 140, 141, 0.5);
 }
 
@@ -301,7 +311,8 @@ header h1 {
     grid-row: span 2;
 }
 
-.btn.equals:hover {
+.btn.equals:hover,
+.btn.equals.keyboard-active {
     background: rgba(34, 153, 84, 0.5);
 }
 
@@ -643,6 +654,39 @@ body.dark-mode .info-panel {
     border-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Amélioration du contraste pour les tests unitaires en mode sombre */
+body.dark-mode .test-item.pass {
+    background: rgba(39, 174, 96, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(39, 174, 96, 0.5);
+    border-left: 4px solid rgba(39, 174, 96, 0.8);
+}
+
+body.dark-mode .test-item.pass .test-name {
+    color: rgba(76, 217, 100, 1);
+}
+
+body.dark-mode .test-item.pass small {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 1 !important;
+}
+
+body.dark-mode .test-item.fail {
+    background: rgba(231, 76, 60, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(231, 76, 60, 0.5);
+    border-left: 4px solid rgba(231, 76, 60, 0.8);
+}
+
+body.dark-mode .test-item.fail .test-name {
+    color: rgba(255, 107, 107, 1);
+}
+
+body.dark-mode .test-item.fail small {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 1 !important;
+}
+
 /* Mode daltonien - Utilise des formes en plus des couleurs */
 body.colorblind-mode .test-item.pass::before {
     content: '✓ ';
@@ -769,6 +813,12 @@ body.colorblind-mode .history-item.history-error {
     margin-bottom: 10px;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Styles pour les détails des tests (Attendu/Obtenu) en mode sombre */
+body.dark-mode .test-details {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 1 !important;
 }
 
 @media (max-width: 900px) {

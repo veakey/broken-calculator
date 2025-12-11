@@ -1,5 +1,6 @@
-// CALCULATRICE CASSÉE - VERSION PYTHON (TRANSPOSÉE EN JS)
-// Cette version simule les bugs qu'on pourrait avoir en Python
+// CALCULATRICE CASSÉE - VERSION PYTHON BASIQUE (TRANSPOSÉE EN JS)
+// Cette version simule les bugs qu'on pourrait avoir en Python (niveau débutant)
+// Cette calculatrice contient 2 bugs simples à identifier et corriger
 
 let display = document.getElementById('display');
 let currentInput = '0';
@@ -13,6 +14,11 @@ function appendNumber(number) {
         shouldResetDisplay = false;
     }
     
+    // CORRIGÉ: Vérifie si on ajoute un deuxième point décimal
+    if (number === '.' && currentInput.includes('.')) {
+        return; // Ne pas ajouter un deuxième point
+    }
+    
     if (currentInput === '0' && number !== '.') {
         currentInput = number;
     } else {
@@ -22,6 +28,7 @@ function appendNumber(number) {
     updateDisplay();
 }
 
+// CORRIGÉ: La fonction appendOperator réinitialise correctement
 function appendOperator(op) {
     if (previousInput !== '' && operator !== null) {
         calculate();
@@ -29,7 +36,9 @@ function appendOperator(op) {
     
     previousInput = currentInput;
     operator = op;
+    // CORRIGÉ: shouldResetDisplay est maintenant défini et currentInput réinitialisé
     shouldResetDisplay = true;
+    currentInput = '0';
     updateDisplay();
 }
 
@@ -42,25 +51,27 @@ function calculate() {
     let current = parseFloat(currentInput);
     let result = 0;
     
-    // BUGS similaires à ceux qu'on pourrait avoir en Python
+    // BUG 1: L'addition est inversée (soustrait au lieu d'additionner)
     switch(operator) {
         case '+':
-            result = prev - current; // BUG: Addition inversée
+            result = prev - current; // BUG ICI
             break;
         case '-':
-            result = prev + current; // BUG: Soustraction inversée
+            result = prev - current;
             break;
         case '*':
-            result = prev / current; // BUG: Multiplication inversée
+            result = prev * current;
             break;
         case '/':
-            result = prev * current; // BUG: Division inversée
+            result = prev / current;
             break;
         default:
             return;
     }
     
-    // BUG: Gestion incorrecte des types (comme en Python sans conversion)
+    // CORRIGÉ: Gestion correcte des nombres décimaux avec arrondi si nécessaire
+    // Limiter à 10 décimales pour éviter les erreurs de précision
+    result = Math.round(result * 10000000000) / 10000000000;
     currentInput = result.toString();
     previousInput = '';
     operator = null;
@@ -76,10 +87,23 @@ function clearDisplay() {
     updateDisplay();
 }
 
+// CORRIGÉ: La fonction updateDisplay limite la longueur de l'affichage
 function updateDisplay() {
-    display.textContent = currentInput;
+    // CORRIGÉ: Limite la longueur de l'affichage à 15 caractères
+    let displayValue = currentInput;
+    if (displayValue.length > 15) {
+        // Si c'est un nombre décimal, on peut le formater en notation scientifique
+        const num = parseFloat(displayValue);
+        if (!isNaN(num)) {
+            displayValue = num.toExponential(8);
+        } else {
+            displayValue = displayValue.substring(0, 15);
+        }
+    }
+    display.textContent = displayValue;
 }
 
+// Fonction utilitaire pour obtenir l'état actuel (utilisée par les tests)
 function getCalculatorState() {
     return {
         currentInput: currentInput,
@@ -89,6 +113,7 @@ function getCalculatorState() {
     };
 }
 
+// Fonction utilitaire pour exécuter un calcul directement (utilisée par les tests)
 function testCalculate(a, op, b) {
     clearDisplay();
     currentInput = a.toString();

@@ -206,7 +206,7 @@ function highlightCode(code, isCorrected = false, highlightBugs = false) {
         }
         
         const bugClass = isBug && highlightBugs ? 'bug' : '';
-        const bugMarker = isBug && highlightBugs ? '<span class="bug-marker">🐛</span> ' : '';
+        const bugMarker = isBug && highlightBugs ? '<span class="bug-marker">[BUG]</span> ' : '';
         
         html += `
             <div class="code-line ${bugClass}">
@@ -310,25 +310,25 @@ function displayBugList() {
     
     let html = `
         <div class="explanation">
-            <h3>🐛 Bugs identifiés dans le code</h3>
+            <h3>Bugs identifiés dans le code</h3>
             <p>Voici tous les bugs intentionnels présents dans la calculatrice :</p>
         </div>
         <ul class="bug-list">
     `;
     
     bugs.forEach((bug, index) => {
-        const typeEmoji = {
-            'logique': '🧠',
-            'variable': '📦',
-            'opération': '➕',
-            'sécurité': '🔒',
-            'affichage': '📺',
-            'fonction': '⚙️'
+        const typeLabel = {
+            'logique': '[Logique]',
+            'variable': '[Variable]',
+            'opération': '[Opération]',
+            'sécurité': '[Sécurité]',
+            'affichage': '[Affichage]',
+            'fonction': '[Fonction]'
         };
         
         html += `
             <li>
-                <strong>Bug ${index + 1} (Ligne ${bug.line})</strong> ${typeEmoji[bug.type] || '🐛'}
+                <strong>Bug ${index + 1} (Ligne ${bug.line})</strong> ${typeLabel[bug.type] || '[Bug]'}
                 <br>
                 ${bug.description}
                 <br>
@@ -360,7 +360,7 @@ function showExplanations() {
         </div>
         
         <div class="explanation">
-            <h3>🔍 Comment trouver les bugs ?</h3>
+            <h3>Comment trouver les bugs ?</h3>
             <p>Pour aider les élèves à trouver les bugs :</p>
             <ol style="margin-top: 10px; margin-left: 20px;">
                 <li>Regardez les commentaires dans le code (lignes avec //)</li>
@@ -371,7 +371,7 @@ function showExplanations() {
         </div>
         
         <div class="explanation">
-            <h3>💡 Conseils pédagogiques</h3>
+            <h3>Conseils pédagogiques</h3>
             <ul style="margin-top: 10px; margin-left: 20px;">
                 <li>Commencez par montrer le code sans les bugs mis en évidence</li>
                 <li>Demandez aux élèves de tester la calculatrice d'abord</li>
@@ -381,7 +381,7 @@ function showExplanations() {
         </div>
         
         <div class="explanation">
-            <h3>🎯 Objectifs pédagogiques</h3>
+            <h3>Objectifs pédagogiques</h3>
             <p>Cet outil permet de :</p>
             <ul style="margin-top: 10px; margin-left: 20px;">
                 <li>Visualiser le code de manière claire</li>

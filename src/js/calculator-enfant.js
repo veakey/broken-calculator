@@ -15,10 +15,10 @@ function addVisualStep(message, type = 'info') {
     const step = document.createElement('div');
     step.className = `step-item ${type}`;
     
-    let icon = 'ℹ️';
+    let icon = 'i';
     if (type === 'correct') icon = '✅';
     if (type === 'error') icon = '❌';
-    if (type === 'info') icon = '🔢';
+    if (type === 'info') icon = '#';
     
     step.innerHTML = `
         <span class="step-icon">${icon}</span>
@@ -155,7 +155,7 @@ window.addEventListener('load', function() {
     
     // Message d'accueil
     setTimeout(() => {
-        addVisualStep('👋 Bienvenue ! Teste la calculatrice pour trouver les erreurs.', 'info');
+        addVisualStep('Bienvenue ! Teste la calculatrice pour trouver les erreurs.', 'info');
     }, 500);
 });
 

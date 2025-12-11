@@ -44,7 +44,7 @@ function displayStatistics() {
         return;
     }
     
-    let html = '<h3 style="color: rgba(255,255,255,0.95); margin-bottom: 15px;">📊 Statistiques des Erreurs</h3>';
+    let html = '<h3 style="color: rgba(255,255,255,0.95); margin-bottom: 15px;">Statistiques des Erreurs</h3>';
     
     // Statistiques générales
     html += `<div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 10px; margin-bottom: 20px;">
