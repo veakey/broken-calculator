@@ -41,6 +41,20 @@ Réparer une calculatrice qui contient des bugs intentionnels en :
 
 **Voir `INSTALLATION.md` pour plus de détails.**
 
+### 🧩 Versions Blockly par Tranche d'Âge
+
+Le projet inclut maintenant des **versions Blockly adaptées** aux référentiels PER et Eduscol :
+
+#### 🇨🇭 Suisse - PER
+- **3P** : `suisse-per/cycle-1-1p-4p/3P/blockly-calculator.html` - Algorithmes simples, bugs
+- **4P** : `suisse-per/cycle-1-1p-4p/4P/blockly-calculator.html` - Algorithmes avec tests et boucles
+- **6P** : `suisse-per/cycle-2-5p-8p/6P/blockly-calculator.html` - Variables et conditions simples
+
+#### 🇫🇷 France - Eduscol
+- Les versions Eduscol correspondantes seront créées dans `france-eduscol/`
+
+**📖 Voir `BLOCKLY-VERSIONS-README.md` pour la liste complète et `REFERENTIELS-SYNTHESE.md` pour les détails des référentiels.**
+
 ### Versions disponibles
 
 1. **Version Standard** (`index.html`) : Pour CM2/6P et plus - Code visible
