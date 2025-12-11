@@ -440,3 +440,39 @@
     }
 }
 
+/* Mode sombre pour la version enfant */
+body.dark-mode .test-item-enfant {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .test-item-enfant.pass {
+    border-color: rgba(76, 217, 100, 0.6);
+    background: rgba(39, 174, 96, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+body.dark-mode .test-item-enfant.pass .test-details-enfant {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 1 !important;
+}
+
+body.dark-mode .test-item-enfant.pass > div > div:first-child {
+    color: rgba(76, 217, 100, 1) !important;
+}
+
+body.dark-mode .test-item-enfant.fail {
+    border-color: rgba(255, 107, 107, 0.6);
+    background: rgba(231, 76, 60, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+body.dark-mode .test-item-enfant.fail .test-details-enfant {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 1 !important;
+}
+
+body.dark-mode .test-item-enfant.fail > div > div:first-child {
+    color: rgba(255, 107, 107, 1) !important;
+}
+

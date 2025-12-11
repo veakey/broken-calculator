@@ -7,15 +7,45 @@ let currentInput = '0';
 let previousInput = '';
 let operator = null;
 let shouldResetDisplay = false;
+let pendingAdvancedFunction = null; // Pour gérer la notation préfixe (tan puis 60)
 
-// BUG 1: La fonction appendNumber ne gère pas correctement le zéro initial
+// CORRIGÉ: La fonction appendNumber gère correctement le zéro initial et les points décimaux
+// Supporte aussi la notation préfixe pour les fonctions avancées (tan puis 60)
 function appendNumber(number) {
+    // Si une fonction avancée est en attente (notation préfixe : "tan 60")
+    if (pendingAdvancedFunction !== null) {
+        // Construire le nombre progressivement
+        if (shouldResetDisplay) {
+            currentInput = '0';
+            shouldResetDisplay = false;
+        }
+        
+        // CORRIGÉ: Vérifie si on ajoute un deuxième point décimal
+        if (number === '.' && currentInput.includes('.')) {
+            return; // Ne pas ajouter un deuxième point
+        }
+        
+        if (currentInput === '0' && number !== '.') {
+            currentInput = number;
+        } else {
+            currentInput += number;
+        }
+        
+        updateDisplay();
+        return; // Ne pas exécuter la fonction tout de suite, attendre que l'utilisateur appuie sur =
+    }
+    
+    // Comportement normal (notation postfixe ou opérations normales)
     if (shouldResetDisplay) {
         currentInput = '0';
         shouldResetDisplay = false;
     }
     
-    // BUG: Ne vérifie pas si on ajoute un deuxième point décimal
+    // CORRIGÉ: Vérifie si on ajoute un deuxième point décimal
+    if (number === '.' && currentInput.includes('.')) {
+        return; // Ne pas ajouter un deuxième point
+    }
+    
     if (currentInput === '0' && number !== '.') {
         currentInput = number;
     } else {
@@ -25,7 +55,7 @@ function appendNumber(number) {
     updateDisplay();
 }
 
-// BUG 2: La fonction appendOperator ne réinitialise pas correctement
+// CORRIGÉ: La fonction appendOperator réinitialise correctement
 function appendOperator(op) {
     if (previousInput !== '' && operator !== null) {
         calculate();
@@ -33,13 +63,23 @@ function appendOperator(op) {
     
     previousInput = currentInput;
     operator = op;
-    // BUG: shouldResetDisplay n'est pas défini ici
+    // CORRIGÉ: shouldResetDisplay est maintenant défini
+    shouldResetDisplay = true;
     currentInput = '0';
     updateDisplay();
 }
 
-// BUG 3: La fonction calculate contient plusieurs erreurs logiques
+// CORRIGÉ: La fonction calculate contient toutes les corrections
 function calculate() {
+    // Si une fonction avancée est en attente (notation préfixe), l'exécuter d'abord
+    if (pendingAdvancedFunction !== null) {
+        const value = parseFloat(currentInput);
+        if (!isNaN(value)) {
+            executeAdvancedFunction(pendingAdvancedFunction, value);
+            return; // Ne pas continuer avec le calcul normal
+        }
+    }
+    
     if (previousInput === '' || operator === null) {
         return;
     }
@@ -48,34 +88,43 @@ function calculate() {
     let current = parseFloat(currentInput);
     let result = 0;
     
-    // BUGS dans les opérations:
+    // CORRIGÉ: Toutes les opérations sont maintenant correctes
     switch(operator) {
         case '+':
-            // BUG: Addition incorrecte (soustrait au lieu d'additionner)
-            result = prev - current;
-            break;
-        case '-':
-            // BUG: Soustraction incorrecte (additionne au lieu de soustraire)
+            // CORRIGÉ: Addition correcte
             result = prev + current;
             break;
+        case '-':
+            // CORRIGÉ: Soustraction correcte
+            result = prev - current;
+            break;
         case '*':
-            // BUG: Multiplication incorrecte (divise au lieu de multiplier)
-            result = prev / current;
+            // CORRIGÉ: Multiplication correcte
+            result = prev * current;
             break;
         case '/':
-            // BUG: Division incorrecte (multiplie au lieu de diviser)
-            result = prev * current;
-            // BUG: Ne vérifie pas la division par zéro
+            // CORRIGÉ: Division correcte avec vérification de division par zéro
+            if (current === 0) {
+                currentInput = 'Erreur';
+                previousInput = '';
+                operator = null;
+                shouldResetDisplay = true;
+                updateDisplay();
+                return;
+            }
+            result = prev / current;
             break;
         case '%':
-            // BUG: Pourcentage incorrect (multiplie au lieu de calculer le pourcentage)
-            result = prev * current; // Devrait être: prev * (current / 100)
+            // CORRIGÉ: Pourcentage correct
+            result = prev * (current / 100);
             break;
         default:
             return;
     }
     
-    // BUG: Ne gère pas correctement les nombres décimaux
+    // CORRIGÉ: Gestion correcte des nombres décimaux avec arrondi si nécessaire
+    // Limiter à 10 décimales pour éviter les erreurs de précision
+    result = Math.round(result * 10000000000) / 10000000000;
     currentInput = result.toString();
     previousInput = '';
     operator = null;
@@ -83,9 +132,36 @@ function calculate() {
     updateDisplay();
 }
 
-// Fonctions mathématiques avancées (avec bugs)
+// CORRIGÉ: Fonctions mathématiques avancées
+// Supporte deux notations :
+// - Postfixe : "60 tan" (entrer 60 puis appuyer sur tan) - exécution immédiate
+// - Préfixe : "tan 60" (appuyer sur tan puis entrer 60) - exécution après entrée du nombre
 function calculateAdvanced(func) {
-    let value = parseFloat(currentInput);
+    const value = parseFloat(currentInput);
+    
+    // Détecter si on a une valeur à utiliser (notation postfixe : "60 tan")
+    // On exécute immédiatement si :
+    // - La valeur est valide (pas NaN)
+    // - L'affichage n'est pas en attente de réinitialisation
+    // - ET soit currentInput n'est pas "0", soit c'est "0" mais qu'il y a eu une interaction (operator ou previousInput)
+    const hasValue = !isNaN(value) && !shouldResetDisplay && 
+                     (currentInput !== '0' || operator !== null || previousInput !== '');
+    
+    if (hasValue) {
+        // Exécuter immédiatement avec la valeur actuelle (notation postfixe : "60 tan")
+        executeAdvancedFunction(func, value);
+    } else {
+        // Sinon, stocker la fonction pour l'exécuter quand l'utilisateur entrera une valeur (notation préfixe : "tan 60")
+        pendingAdvancedFunction = func;
+        // Réinitialiser l'affichage pour que l'utilisateur puisse entrer une nouvelle valeur
+        currentInput = '0';
+        shouldResetDisplay = false;
+        updateDisplay();
+    }
+}
+
+// Fonction pour exécuter réellement la fonction avancée
+function executeAdvancedFunction(func, value) {
     let result = 0;
     
     // Convertir en radians si nécessaire
@@ -93,28 +169,33 @@ function calculateAdvanced(func) {
     
     switch(func) {
         case 'sin':
-            // BUG: Utilise cos au lieu de sin
-            result = Math.cos(radians);
-            break;
-        case 'cos':
-            // BUG: Utilise tan au lieu de cos
-            result = Math.tan(radians);
-            break;
-        case 'tan':
-            // BUG: Utilise sin au lieu de tan
+            // CORRIGÉ: Utilise la bonne fonction sin
             result = Math.sin(radians);
             break;
+        case 'cos':
+            // CORRIGÉ: Utilise la bonne fonction cos
+            result = Math.cos(radians);
+            break;
+        case 'tan':
+            // CORRIGÉ: Utilise la bonne fonction tan
+            result = Math.tan(radians);
+            break;
         case 'hyp':
-            // BUG: Calcul hypothénuse incorrect (additionne au lieu de sqrt(a²+b²))
-            // Pour simplifier, on utilise juste la valeur actuelle
-            result = value + value; // Devrait calculer l'hypoténuse
+            // CORRIGÉ: Calcul de l'hypoténuse
+            // Pour simplifier, on calcule l'hypoténuse d'un triangle rectangle
+            // avec les deux côtés égaux à la valeur actuelle
+            // hyp = sqrt(a² + b²) où a = b = value
+            result = Math.sqrt(value * value + value * value);
             break;
         default:
             return;
     }
     
+    // Arrondir pour éviter les erreurs de précision
+    result = Math.round(result * 10000000000) / 10000000000;
     currentInput = result.toString();
     shouldResetDisplay = true;
+    pendingAdvancedFunction = null; // Réinitialiser
     updateDisplay();
 }
 
@@ -123,13 +204,24 @@ function clearDisplay() {
     previousInput = '';
     operator = null;
     shouldResetDisplay = false;
+    pendingAdvancedFunction = null; // Réinitialiser la fonction en attente
     updateDisplay();
 }
 
-// BUG 4: La fonction updateDisplay peut afficher des valeurs incorrectes
+// CORRIGÉ: La fonction updateDisplay limite la longueur de l'affichage
 function updateDisplay() {
-    // BUG: Ne limite pas la longueur de l'affichage
-    display.textContent = currentInput;
+    // CORRIGÉ: Limite la longueur de l'affichage à 15 caractères
+    let displayValue = currentInput;
+    if (displayValue.length > 15) {
+        // Si c'est un nombre décimal, on peut le formater en notation scientifique
+        const num = parseFloat(displayValue);
+        if (!isNaN(num)) {
+            displayValue = num.toExponential(8);
+        } else {
+            displayValue = displayValue.substring(0, 15);
+        }
+    }
+    display.textContent = displayValue;
 }
 
 // Fonction utilitaire pour obtenir l'état actuel (utilisée par les tests)

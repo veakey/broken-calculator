@@ -184,36 +184,36 @@
         <div class="main-content">
             <!-- Panneau Blockly -->
             <div class="panel">
-                <h2>🔧 Blocs de Programmation</h2>
+                <h2>Blocs de Programmation</h2>
                 <div id="blocklyDiv"></div>
                 <div style="margin-top: 15px;">
-                    <button class="btn btn-secondary" onclick="generateCode()">📝 Générer le Code</button>
-                    <button class="btn btn-secondary" onclick="clearWorkspace()">🗑️ Effacer</button>
+                    <button class="btn btn-secondary" onclick="generateCode()">Générer le Code</button>
+                    <button class="btn btn-secondary" onclick="clearWorkspace()">Effacer</button>
                 </div>
             </div>
             
             <!-- Panneau Code et Tests -->
             <div class="panel">
-                <h2>💻 Code Généré</h2>
+                <h2>Code Généré</h2>
                 <div id="codePreview" class="code-preview">
                     Glisse des blocs dans la zone de gauche, puis clique sur "Générer le Code"
                 </div>
                 
                 <div class="test-section">
-                    <h3 style="color: white; margin-top: 0;">🧪 Tester le Calcul</h3>
+                    <h3 style="color: white; margin-top: 0;">Tester le Calcul</h3>
                     <div class="test-inputs">
                         <input type="number" id="num1" placeholder="Nombre 1" value="5">
                         <input type="text" id="operator" placeholder="Opération" value="+" maxlength="1">
                         <input type="number" id="num2" placeholder="Nombre 2" value="3">
                     </div>
-                    <button class="btn" onclick="testCalculation()">▶️ Tester</button>
+                    <button class="btn" onclick="testCalculation()">Tester</button>
                     <div id="testResult" class="result" style="display: none;"></div>
                 </div>
             </div>
         </div>
         
         <div class="panel">
-            <h2>ℹ️ Instructions</h2>
+            <h2>Instructions</h2>
             <div class="info-box">
                 <p><strong>Comment utiliser :</strong></p>
                 <ol style="line-height: 1.8;">
@@ -222,7 +222,7 @@
                     <li>Clique sur "Générer le Code" pour voir le JavaScript</li>
                     <li>Teste avec des nombres pour trouver les bugs !</li>
                 </ol>
-                <p style="margin-top: 15px;"><strong>🐛 Astuce :</strong> Certains blocs d'opération ont des bugs intentionnels. Peux-tu les trouver ?</p>
+                <p style="margin-top: 15px;"><strong>Astuce :</strong> Certains blocs d'opération ont des bugs intentionnels. Peux-tu les trouver ?</p>
             </div>
         </div>
     </div>
@@ -463,7 +463,7 @@
                     }
                 } else {
                     resultDiv.className = 'result';
-                    resultDiv.innerHTML = `📊 Résultat : ${result}`;
+                    resultDiv.innerHTML = `Résultat : ${result}`;
                 }
             } catch (error) {
                 document.getElementById('testResult').style.display = 'block';

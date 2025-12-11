@@ -3,70 +3,70 @@
 
 const hints = {
     addition: [
-        "💡 Indice 1 : L'erreur concerne l'addition",
-        "💡 Indice 2 : L'addition ne fait pas ce qu'elle devrait faire",
-        "💡 Indice 3 : L'addition fait l'opération inverse",
-        "💡 Indice 4 : Regarde la ligne 55 dans calculator.js"
+        "Indice 1 : L'erreur concerne l'addition",
+        "Indice 2 : L'addition ne fait pas ce qu'elle devrait faire",
+        "Indice 3 : L'addition fait l'opération inverse",
+        "Indice 4 : Regarde la ligne 55 dans calculator.js"
     ],
     soustraction: [
-        "💡 Indice 1 : L'erreur concerne la soustraction",
-        "💡 Indice 2 : La soustraction ne fait pas ce qu'elle devrait faire",
-        "💡 Indice 3 : La soustraction fait l'opération inverse",
-        "💡 Indice 4 : Regarde la ligne 59 dans calculator.js"
+        "Indice 1 : L'erreur concerne la soustraction",
+        "Indice 2 : La soustraction ne fait pas ce qu'elle devrait faire",
+        "Indice 3 : La soustraction fait l'opération inverse",
+        "Indice 4 : Regarde la ligne 59 dans calculator.js"
     ],
     multiplication: [
-        "💡 Indice 1 : L'erreur concerne la multiplication",
-        "💡 Indice 2 : La multiplication ne fait pas ce qu'elle devrait faire",
-        "💡 Indice 3 : La multiplication fait une autre opération",
-        "💡 Indice 4 : Regarde la ligne 63 dans calculator.js"
+        "Indice 1 : L'erreur concerne la multiplication",
+        "Indice 2 : La multiplication ne fait pas ce qu'elle devrait faire",
+        "Indice 3 : La multiplication fait une autre opération",
+        "Indice 4 : Regarde la ligne 63 dans calculator.js"
     ],
     division: [
-        "💡 Indice 1 : L'erreur concerne la division",
-        "💡 Indice 2 : La division ne fait pas ce qu'elle devrait faire",
-        "💡 Indice 3 : La division fait l'opération inverse",
-        "💡 Indice 4 : Regarde la ligne 67 dans calculator.js"
+        "Indice 1 : L'erreur concerne la division",
+        "Indice 2 : La division ne fait pas ce qu'elle devrait faire",
+        "Indice 3 : La division fait l'opération inverse",
+        "Indice 4 : Regarde la ligne 67 dans calculator.js"
     ],
     decimal: [
-        "💡 Indice 1 : L'erreur concerne les nombres décimaux",
-        "💡 Indice 2 : On peut ajouter plusieurs points décimaux",
-        "💡 Indice 3 : Il manque une vérification dans appendNumber",
-        "💡 Indice 4 : Regarde la ligne 18 dans calculator.js"
+        "Indice 1 : L'erreur concerne les nombres décimaux",
+        "Indice 2 : On peut ajouter plusieurs points décimaux",
+        "Indice 3 : Il manque une vérification dans appendNumber",
+        "Indice 4 : Regarde la ligne 18 dans calculator.js"
     ],
     divisionZero: [
-        "💡 Indice 1 : L'erreur concerne la division par zéro",
-        "💡 Indice 2 : On peut diviser par zéro sans vérification",
-        "💡 Indice 3 : Il manque une vérification avant de diviser",
-        "💡 Indice 4 : Regarde la ligne 68 dans calculator.js"
+        "Indice 1 : L'erreur concerne la division par zéro",
+        "Indice 2 : On peut diviser par zéro sans vérification",
+        "Indice 3 : Il manque une vérification avant de diviser",
+        "Indice 4 : Regarde la ligne 68 dans calculator.js"
     ],
     pourcentage: [
-        "💡 Indice 1 : L'erreur concerne le pourcentage",
-        "💡 Indice 2 : Le pourcentage ne calcule pas correctement",
-        "💡 Indice 3 : Le pourcentage multiplie au lieu de calculer",
-        "💡 Indice 4 : Regarde la ligne 72 dans calculator.js"
+        "Indice 1 : L'erreur concerne le pourcentage",
+        "Indice 2 : Le pourcentage ne calcule pas correctement",
+        "Indice 3 : Le pourcentage multiplie au lieu de calculer",
+        "Indice 4 : Regarde la ligne 72 dans calculator.js"
     ],
     sin: [
-        "💡 Indice 1 : L'erreur concerne la fonction sin",
-        "💡 Indice 2 : La fonction sin utilise une autre fonction",
-        "💡 Indice 3 : La fonction sin utilise cos au lieu de sin",
-        "💡 Indice 4 : Regarde la ligne 97 dans calculator.js"
+        "Indice 1 : L'erreur concerne la fonction sin",
+        "Indice 2 : La fonction sin utilise une autre fonction",
+        "Indice 3 : La fonction sin utilise cos au lieu de sin",
+        "Indice 4 : Regarde la ligne 97 dans calculator.js"
     ],
     cos: [
-        "💡 Indice 1 : L'erreur concerne la fonction cos",
-        "💡 Indice 2 : La fonction cos utilise une autre fonction",
-        "💡 Indice 3 : La fonction cos utilise tan au lieu de cos",
-        "💡 Indice 4 : Regarde la ligne 101 dans calculator.js"
+        "Indice 1 : L'erreur concerne la fonction cos",
+        "Indice 2 : La fonction cos utilise une autre fonction",
+        "Indice 3 : La fonction cos utilise tan au lieu de cos",
+        "Indice 4 : Regarde la ligne 101 dans calculator.js"
     ],
     tan: [
-        "💡 Indice 1 : L'erreur concerne la fonction tan",
-        "💡 Indice 2 : La fonction tan utilise une autre fonction",
-        "💡 Indice 3 : La fonction tan utilise sin au lieu de tan",
-        "💡 Indice 4 : Regarde la ligne 105 dans calculator.js"
+        "Indice 1 : L'erreur concerne la fonction tan",
+        "Indice 2 : La fonction tan utilise une autre fonction",
+        "Indice 3 : La fonction tan utilise sin au lieu de tan",
+        "Indice 4 : Regarde la ligne 105 dans calculator.js"
     ],
     hyp: [
-        "💡 Indice 1 : L'erreur concerne la fonction hyp",
-        "💡 Indice 2 : La fonction hyp ne calcule pas l'hypoténuse",
-        "💡 Indice 3 : La fonction hyp additionne au lieu de calculer sqrt(a²+b²)",
-        "💡 Indice 4 : Regarde la ligne 110 dans calculator.js"
+        "Indice 1 : L'erreur concerne la fonction hyp",
+        "Indice 2 : La fonction hyp ne calcule pas l'hypoténuse",
+        "Indice 3 : La fonction hyp additionne au lieu de calculer sqrt(a²+b²)",
+        "Indice 4 : Regarde la ligne 110 dans calculator.js"
     ]
 };
 
@@ -90,7 +90,7 @@ function showHint(bugType) {
     
     const level = hintLevels[bugType];
     if (level >= hintType.length) {
-        return "💡 Tu as déjà tous les indices pour ce bug !";
+        return "Tu as déjà tous les indices pour ce bug !";
     }
     
     const hint = hintType[level];

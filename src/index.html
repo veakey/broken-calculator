@@ -11,14 +11,14 @@
         <header>
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <div>
-                    <h1>🔧 Calculatrice Cassée</h1>
+                    <h1>Calculatrice Cassée</h1>
                     <p class="subtitle">Votre mission : réparer cette calculatrice qui fait des erreurs !</p>
                 </div>
                 <div class="accessibility-controls" style="display: flex; gap: 10px; align-items: center;">
                     <button class="btn-accessibility" onclick="decreaseFontSize()" title="Réduire la taille">A-</button>
                     <button class="btn-accessibility" onclick="increaseFontSize()" title="Augmenter la taille">A+</button>
-                    <button class="btn-accessibility" onclick="toggleDarkMode()" title="Mode sombre/clair">🌓</button>
-                    <button class="btn-accessibility" onclick="toggleColorblindMode()" title="Mode daltonien">🎨</button>
+                    <button class="btn-accessibility" onclick="toggleDarkMode()" title="Mode sombre/clair">☀</button>
+                    <button class="btn-accessibility" onclick="toggleColorblindMode()" title="Mode daltonien">C</button>
                 </div>
             </div>
         </header>
@@ -60,32 +60,32 @@
             </div>
 
             <div class="test-panel">
-                <h2>🧪 Tests de Validation</h2>
+                <h2>Tests de Validation</h2>
                 <div style="display: flex; gap: 10px; margin-bottom: 15px;">
                     <button class="btn-test" onclick="runTests()">Lancer les Tests</button>
-                    <button class="btn-export" onclick="exportTestResults()">📥 Exporter les résultats</button>
+                    <button class="btn-export" onclick="exportTestResults()">Exporter les résultats</button>
                 </div>
                 <div id="test-results"></div>
                 <div class="hints-section">
-                    <h3>💡 Indices</h3>
+                    <h3>Indices</h3>
                     <button class="btn-hint" onclick="showHintForSelectedBug()">Obtenir un indice</button>
                     <div id="hints-container" class="hints-container"></div>
                 </div>
                 <div class="history-section">
-                    <h3>📊 Historique</h3>
-                    <button class="btn-clear-history" onclick="clearHistory()">🗑️ Effacer</button>
+                    <h3>Historique</h3>
+                    <button class="btn-clear-history" onclick="clearHistory()">Effacer</button>
                     <div id="calculation-history" class="history-container"></div>
                 </div>
                 <div class="statistics-section">
-                    <h3>📈 Statistiques</h3>
-                    <button class="btn-clear-stats" onclick="clearStats()">🗑️ Effacer</button>
+                    <h3>Statistiques</h3>
+                    <button class="btn-clear-stats" onclick="clearStats()">Effacer</button>
                     <div id="error-statistics" class="statistics-container"></div>
                 </div>
             </div>
         </div>
 
         <div class="info-panel">
-            <h2>ℹ️ Instructions</h2>
+            <h2>Instructions</h2>
             <p>Cette calculatrice a plusieurs bugs. Utilisez les tests pour identifier et corriger les erreurs dans le code JavaScript.</p>
             <p><strong>Objectif :</strong> Tous les tests doivent passer (✅) pour que la calculatrice soit considérée comme réparée.</p>
         </div>
@@ -113,14 +113,14 @@
             });
             
             if (failedTests.length === 0) {
-                alert('🎉 Tous les tests passent ! Pas besoin d\'indices.');
+                alert('Tous les tests passent ! Pas besoin d\'indices.');
                 return;
             }
             
             // Prendre le premier test qui échoue
             const hint = getHintForFailedTest(failedTests[0]);
             if (!hint) {
-                alert('💡 Indice : Regarde les tests qui échouent pour identifier les bugs !');
+                alert('Indice : Regarde les tests qui échouent pour identifier les bugs !');
             }
         }
     </script>

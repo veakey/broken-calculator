@@ -214,16 +214,16 @@
         <div class="main-layout">
             <!-- Panneau Blockly -->
             <div class="panel">
-                <h2>🔧 Blocs de Programmation</h2>
+                <h2>Blocs de Programmation</h2>
                 <div id="blocklyDiv"></div>
                 <div class="status disconnected" id="status">
-                    ⚠️ Aucune fonction de calcul définie
+                    Aucune fonction de calcul définie
                 </div>
             </div>
             
             <!-- Panneau Calculatrice -->
             <div class="panel">
-                <h2>🔢 Calculatrice</h2>
+                <h2>Calculatrice</h2>
                 <div class="calculator-container">
                     <div class="calculator">
                         <div class="display" id="display">0</div>
@@ -256,17 +256,17 @@
         </div>
         
         <div class="panel">
-            <h2>ℹ️ Comment ça marche ?</h2>
+            <h2>Comment ça marche ?</h2>
             <div class="info-box">
-                <p><strong>🎯 Objectif :</strong> Réparer la calculatrice en modifiant les blocs !</p>
-                <p><strong>📝 Étapes :</strong></p>
+                <p><strong>Objectif :</strong> Réparer la calculatrice en modifiant les blocs !</p>
+                <p><strong>Étapes :</strong></p>
                 <ol style="line-height: 1.8;">
                     <li>Glisse des blocs depuis la boîte à outils à gauche</li>
                     <li>Crée une fonction "calculer" qui prend deux nombres et une opération</li>
                     <li>Teste la calculatrice à droite - elle utilisera ton code !</li>
                     <li>Si les calculs sont faux, modifie les blocs pour corriger</li>
                 </ol>
-                <p style="margin-top: 15px;"><strong>🐛 Astuce :</strong> Les blocs d'opération ont des bugs. Trouve-les et corrige-les !</p>
+                <p style="margin-top: 15px;"><strong>Astuce :</strong> Les blocs d'opération ont des bugs. Trouve-les et corrige-les !</p>
             </div>
         </div>
     </div>
@@ -669,13 +669,13 @@
                         status.textContent = '✅ Fonction connectée - La calculatrice utilise tes blocs !';
                     } else {
                         status.className = 'status disconnected';
-                        status.textContent = '⚠️ Fonction "calculer" non trouvée';
+                        status.textContent = 'Fonction "calculer" non trouvée';
                     }
                 } else {
                     calculateFunction = null;
                     var status = document.getElementById('status');
                     status.className = 'status disconnected';
-                    status.textContent = '⚠️ Crée une fonction "calculer" avec des blocs d\'opération';
+                    status.textContent = 'Crée une fonction "calculer" avec des blocs d\'opération';
                 }
             } catch (error) {
                 console.error('Erreur lors de la génération du code:', error);

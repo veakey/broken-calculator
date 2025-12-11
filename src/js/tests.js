@@ -276,7 +276,7 @@ function displayTestResults() {
                 <span style="font-size: 1.2em;">${status}</span>
                 <div>
                     <strong class="test-name">${test.name}</strong><br>
-                    <small style="opacity: 0.9;">Attendu: ${test.expected} | Obtenu: ${test.actual}</small>
+                    <small class="test-details" style="opacity: 0.9;">Attendu: ${test.expected} | Obtenu: ${test.actual}</small>
                 </div>
             </div>
         `;
@@ -285,7 +285,7 @@ function displayTestResults() {
     if (passedCount === totalCount) {
         html += `
             <div style="margin-top: 20px; padding: 20px; background: rgba(212, 237, 218, 0.3); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border-radius: 15px; text-align: center; border: 1px solid rgba(40, 167, 69, 0.4); box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-                <h2 style="color: rgba(21, 87, 36, 0.95); margin-bottom: 10px;">🎉 Félicitations !</h2>
+                <h2 style="color: rgba(21, 87, 36, 0.95); margin-bottom: 10px;">Félicitations !</h2>
                 <p style="color: rgba(21, 87, 36, 0.9);">La calculatrice est complètement réparée ! Tous les tests passent.</p>
             </div>
         `;

@@ -26,9 +26,9 @@ displayTestResults = function() {
         color: white;
     `;
     
-    const emoji = passedCount === totalCount ? '🎉' : '⚠️';
+    const statusText = passedCount === totalCount ? 'Réussi' : 'En cours';
     scoreDiv.innerHTML = `
-        <div style="font-size: 2em; margin-bottom: 10px;">${emoji}</div>
+        <div style="font-size: 1.2em; margin-bottom: 10px; font-weight: bold;">${statusText}</div>
         <div>Score : ${passedCount} / ${totalCount} tests réussis</div>
     `;
     
@@ -48,7 +48,7 @@ displayTestResults = function() {
                 <div style="font-weight: bold; margin-bottom: 5px; color: ${color};">
                     ${test.name}
                 </div>
-                <div style="font-size: 0.9em; opacity: 0.9;">
+                <div class="test-details-enfant" style="font-size: 0.9em; opacity: 0.9;">
                     Attendu : <strong>${test.expected}</strong> | 
                     Obtenu : <strong>${test.actual}</strong>
                 </div>
@@ -75,8 +75,8 @@ displayTestResults = function() {
             font-weight: bold;
         `;
         successDiv.innerHTML = `
-            <div style="font-size: 2em; margin-bottom: 10px;">🎉</div>
-            <div>Bravo ! Tu as réparé la calculatrice !</div>
+            <div style="font-size: 1.5em; margin-bottom: 10px; font-weight: bold;">Bravo !</div>
+            <div>Tu as réparé la calculatrice !</div>
         `;
         resultsDiv.appendChild(successDiv);
     } else {
@@ -93,7 +93,7 @@ displayTestResults = function() {
             color: white;
         `;
         continueDiv.innerHTML = `
-            <div style="font-size: 1.5em; margin-bottom: 5px;">🔍</div>
+            <div style="font-size: 1.2em; margin-bottom: 5px; font-weight: bold;">Continue !</div>
             <div>Continue à chercher les erreurs !</div>
         `;
         resultsDiv.appendChild(continueDiv);
