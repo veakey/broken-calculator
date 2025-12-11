@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Créateur de Bugs - Outil Enseignant</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         .bug-creator-panel {
             background: rgba(255, 255, 255, 0.15);
@@ -153,7 +153,7 @@
             <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 20px; line-height: 1.6;">
                 <strong>Comment ça marche ?</strong> Cochez les bugs que vous voulez introduire dans votre calculatrice personnalisée. 
                 Cliquez sur "Générer le code" pour voir l'aperçu, puis "Télécharger" pour obtenir votre fichier. 
-                Remplacez ensuite le fichier <code>calculator.js</code> du projet par celui téléchargé.
+                Remplacez ensuite le fichier <code>src/js/calculator.js</code> du projet par celui téléchargé.
             </p>
             
             <div class="bug-option">
@@ -244,7 +244,7 @@
                     <li>Cochez les bugs que vous voulez introduire</li>
                     <li>Cliquez sur "Générer le code" pour voir l'aperçu</li>
                     <li>Cliquez sur "Télécharger calculator.js"</li>
-                    <li>Remplacez le fichier <code>calculator.js</code> du projet par celui téléchargé</li>
+                    <li>Remplacez le fichier <code>src/js/calculator.js</code> du projet par celui téléchargé</li>
                     <li>Ouvrez <code>index.html</code> dans le navigateur - c'est prêt !</li>
                 </ol>
             </div>
@@ -253,7 +253,7 @@
         <div class="bug-creator-panel">
             <h2>👁️ Aperçu du code généré</h2>
             <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">
-                Le code ci-dessous sera dans le fichier <code>calculator.js</code> que vous téléchargerez. 
+                Le code ci-dessous sera dans le fichier <code>src/js/calculator.js</code> que vous téléchargerez. 
                 Les lignes avec <strong style="color: #e74c3c;">BUG</strong> contiennent les erreurs, 
                 celles avec <strong style="color: #27ae60;">CORRIGÉ</strong> sont correctes.
             </p>
@@ -265,14 +265,14 @@
                 <ul style="margin-top: 10px; margin-left: 20px; color: rgba(255, 255, 255, 0.9); line-height: 1.8;">
                     <li>Vérifiez que l'aperçu correspond à ce que vous voulez</li>
                     <li>Téléchargez le fichier <code>calculator.js</code></li>
-                    <li>Remplacez l'ancien fichier dans le dossier du projet</li>
+                    <li>Remplacez l'ancien fichier <code>src/js/calculator.js</code> dans le projet</li>
                     <li>Ouvrez <code>index.html</code> pour tester avec vos élèves</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <script src="bug-creator.js"></script>
+    <script src="js/bug-creator.js"></script>
 </body>
 </html>
 

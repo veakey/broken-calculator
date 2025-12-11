@@ -34,12 +34,12 @@ Réparer une calculatrice qui contient des bugs intentionnels en :
 
 1. **Télécharger le projet** (ZIP ou git clone)
 2. **Ouvrir directement** les fichiers HTML dans votre navigateur :
-   - `index.html` → Version standard
-   - `index-enfant.html` → Version enfant
-   - `enseignant-viewer.html` → Outil enseignant
+   - `src/index.html` → Version standard
+   - `src/index-enfant.html` → Version enfant
+   - `src/enseignant-viewer.html` → Outil enseignant
 3. **C'est tout !** 
 
-**Voir `INSTALLATION.md` pour plus de détails.**
+**Voir `docs/INSTALLATION.md` pour plus de détails.**
 
 ### 🧩 Versions Blockly par Tranche d'Âge
 
@@ -55,7 +55,7 @@ Le projet inclut maintenant des **versions Blockly adaptées** aux référentiel
 - **4e** : `france-eduscol/cycle-4-5e-3e/4e/blockly-avance.html` - Variables, boucles et conditions avancées ⭐
 - **3e** : `france-eduscol/cycle-4-5e-3e/3e/blockly-avance.html` - Scripts parallèles et structures complexes ⭐
 
-**📖 Voir `BLOCKLY-VERSIONS-README.md` pour la liste complète et `REFERENTIELS-SYNTHESE.md` pour les détails des référentiels.**
+**📖 Voir `docs/BLOCKLY-VERSIONS-README.md` pour la liste complète et `docs/REFERENTIELS-SYNTHESE.md` pour les détails des référentiels.**
 
 ### 🎓 Approche Différenciée pour les Plus Grands
 
@@ -71,50 +71,50 @@ Pour les **9P-11P / 4e-3e**, le projet propose **deux approches complémentaires
    - Tests unitaires
    - Préparation aux études supérieures
 
-**💡 Voir `APPROCHE-DIFFERENCIEE.md` pour la stratégie pédagogique complète.**
+**💡 Voir `docs/APPROCHE-DIFFERENCIEE.md` pour la stratégie pédagogique complète.**
 
 ### Versions disponibles
 
-1. **Version Standard** (`index.html`) : Pour CM2/6P et plus - Code visible
-2. **Version Enfant** (`index-enfant.html`) ⭐ : Pour CP-CE2/3P-5P - Interface visuelle simplifiée
-3. **Outil Enseignant** (`enseignant-viewer.html`) ⭐ : Pour les enseignants - Visualisation du code
-4. **Créateur de Bugs** (`bug-creator.html`) ⭐ : Pour les enseignants - Créer des bugs personnalisés
+1. **Version Standard** (`src/index.html`) : Pour CM2/6P et plus - Code visible
+2. **Version Enfant** (`src/index-enfant.html`) ⭐ : Pour CP-CE2/3P-5P - Interface visuelle simplifiée
+3. **Outil Enseignant** (`src/enseignant-viewer.html`) ⭐ : Pour les enseignants - Visualisation du code
+4. **Créateur de Bugs** (`src/bug-creator.html`) ⭐ : Pour les enseignants - Créer des bugs personnalisés
 
-**📖 Voir `GUIDE-CREATEUR-BUGS.md` pour un guide complet et détaillé.**
+**📖 Voir `docs/GUIDE-CREATEUR-BUGS.md` pour un guide complet et détaillé.**
 
-**Voir `GUIDE-VERSIONS.md` pour choisir la bonne version.**
+**Voir `docs/GUIDE-VERSIONS.md` pour choisir la bonne version.**
 
 ### 🔄 Comment passer d'un mode à l'autre ?
 
 **C'est très simple !** Il suffit d'ouvrir le fichier HTML correspondant dans votre navigateur :
 
 #### Mode Enfant → Mode Standard
-1. Fermer `index-enfant.html`
-2. Ouvrir `index.html` dans le navigateur
-3. **C'est tout !** Les deux utilisent le même `calculator.js` en arrière-plan
+1. Fermer `src/index-enfant.html`
+2. Ouvrir `src/index.html` dans le navigateur
+3. **C'est tout !** Les deux utilisent le même `src/js/calculator.js` en arrière-plan
 
 #### Mode Standard → Mode Enfant
-1. Fermer `index.html`
-2. Ouvrir `index-enfant.html` dans le navigateur
+1. Fermer `src/index.html`
+2. Ouvrir `src/index-enfant.html` dans le navigateur
 3. L'interface change automatiquement (plus simple, plus visuelle)
 
 #### Accéder à l'Outil Enseignant
-1. Ouvrir `enseignant-viewer.html` dans le navigateur
+1. Ouvrir `src/enseignant-viewer.html` dans le navigateur
 2. Cliquer sur "Afficher le code" pour voir le code coloré
 3. Cliquer sur "Comparaison Avant/Après" pour voir les deux versions côte à côte
 
 #### Créer des bugs personnalisés
-1. Ouvrir `bug-creator.html` dans le navigateur
+1. Ouvrir `src/bug-creator.html` dans le navigateur
 2. Cocher les bugs que vous voulez introduire
 3. Cliquer sur "Générer le code"
 4. Cliquer sur "Télécharger calculator.js" pour obtenir votre version personnalisée
-5. Remplacer le fichier `calculator.js` existant par celui téléchargé
+5. Remplacer le fichier `src/js/calculator.js` existant par celui téléchargé
 
 **💡 Astuce :** Vous pouvez avoir plusieurs onglets ouverts en même temps pour comparer les modes !
 
 ### Modifier le code
 
-1. Ouvrir `calculator.js` avec un éditeur de texte
+1. Ouvrir `src/js/calculator.js` avec un éditeur de texte
 2. Modifier le code
 3. Sauvegarder
 4. Recharger la page (F5)
@@ -146,27 +146,43 @@ Chaque version inclut un système de tests qui :
 
 ```
 broken-calculator/
-├── index.html              # Version principale (CM2/6P+)
-├── index-enfant.html        # Version enfant (CP-CE2/3P-5P)
-├── enseignant-viewer.html   # Outil enseignant (visualisation code)
-├── bug-creator.html         # Créateur de bugs personnalisés
-├── calculator.js            # Code de la calculatrice (avec bugs)
-├── calculator-corrected.js  # Version corrigée (pour comparaison)
-├── tests.js                 # Système de tests
-├── styles.css               # Style glassmorphism
-├── styles-enfant.css        # Styles version enfant
-├── keyboard-support.js      # Support clavier
-├── display-feedback.js      # Animations de feedback
-├── hints-system.js          # Système d'indices progressifs
-├── calculation-history.js   # Historique des calculs
-├── error-statistics.js      # Statistiques des erreurs
-├── accessibility-controls.js # Contrôles d'accessibilité
-├── bug-creator.js           # Logique du créateur de bugs
-├── calculator-enfant.js     # Logique version enfant
-├── tests-enfant.js          # Tests version enfant
+├── src/                     # Fichiers sources principaux
+│   ├── index.html           # Version principale (CM2/6P+)
+│   ├── index-enfant.html    # Version enfant (CP-CE2/3P-5P)
+│   ├── enseignant-viewer.html # Outil enseignant
+│   ├── bug-creator.html     # Créateur de bugs personnalisés
+│   ├── blockly-calculator.html # Version Blockly prototype
+│   ├── blockly-calculator-interactive.html # Version Blockly interactive
+│   ├── js/                  # Fichiers JavaScript
+│   │   ├── calculator.js    # Code de la calculatrice (avec bugs)
+│   │   ├── calculator-corrected.js # Version corrigée
+│   │   ├── calculator-enfant.js # Logique version enfant
+│   │   ├── tests.js         # Système de tests
+│   │   ├── tests-enfant.js  # Tests version enfant
+│   │   ├── keyboard-support.js # Support clavier
+│   │   ├── display-feedback.js # Animations de feedback
+│   │   ├── hints-system.js  # Système d'indices progressifs
+│   │   ├── calculation-history.js # Historique des calculs
+│   │   ├── error-statistics.js # Statistiques des erreurs
+│   │   ├── accessibility-controls.js # Contrôles d'accessibilité
+│   │   ├── bug-creator.js   # Logique du créateur de bugs
+│   │   └── enseignant-viewer.js # Logique outil enseignant
+│   └── css/                 # Fichiers CSS
+│       ├── styles.css       # Style glassmorphism
+│       └── styles-enfant.css # Styles version enfant
+├── docs/                    # Documentation
+│   ├── INSTALLATION.md
+│   ├── GUIDE-CREATEUR-BUGS.md
+│   ├── GUIDE-VERSIONS.md
+│   ├── BLOCKLY-VERSIONS-README.md
+│   ├── REFERENTIELS-SYNTHESE.md
+│   ├── APPROCHE-DIFFERENCIEE.md
+│   ├── TEST-INTERFACE.md
+│   └── SCRATCH_GUIDE.md
 ├── suisse-per/              # Versions PER (Suisse)
 ├── france-eduscol/          # Versions Eduscol (France)
-└── prompts/                  # Documentation du projet
+├── assets/                  # Assets (Scratch, etc.)
+└── README.md                # Ce fichier
 ```
 
 ## 🎨 Design
