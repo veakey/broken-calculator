@@ -1,0 +1,478 @@
+/* Styles pour la version enfant - Interface simplifiée et colorée */
+
+/* Layout en 3 blocs : Calculatrice | Étapes | Tests */
+.main-content-enfant {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1200px) {
+    .main-content-enfant {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .test-block {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content-enfant {
+        grid-template-columns: 1fr;
+    }
+    
+    .calculator-block,
+    .steps-block,
+    .test-block {
+        height: auto;
+        min-height: 400px;
+    }
+}
+
+.calculator-block,
+.steps-block,
+.test-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator-block h2,
+.steps-block h2,
+.test-block h2 {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+.steps-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.steps-header h2 {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.btn-clear-steps {
+    background: rgba(231, 76, 60, 0.7);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-clear-steps:hover {
+    background: rgba(231, 76, 60, 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-clear-steps:active {
+    transform: scale(0.95);
+}
+
+.calculator-block {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    height: 500px; /* Hauteur fixe */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    animation: blockFadeIn 0.5s ease-out;
+}
+
+@keyframes blockFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.calculator-enfant {
+    max-width: 100%;
+    width: 100%;
+    padding: 0;
+    height: 100%; /* Prendre toute la hauteur du bloc */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background: transparent; /* Pas de fond supplémentaire */
+}
+
+.display-enfant {
+    font-size: 2.5em;
+    height: 100px; /* Hauteur fixe */
+    padding: 20px;
+    margin-bottom: 15px;
+    border: 3px solid rgba(0, 255, 0, 0.4);
+    box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+    flex-shrink: 0; /* Ne pas rétrécir */
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.display-enfant.error {
+    animation: blinkRedEnfant 0.5s ease 3;
+    border-color: #e74c3c;
+    box-shadow: 0 0 30px rgba(231, 76, 60, 0.6);
+}
+
+.display-enfant.correct {
+    animation: blinkGreenEnfant 0.5s ease 3;
+    border-color: #27ae60;
+    box-shadow: 0 0 30px rgba(39, 174, 96, 0.6);
+}
+
+@keyframes blinkRedEnfant {
+    0%, 100% { 
+        background: rgba(0, 0, 0, 0.3);
+        border-color: rgba(0, 255, 0, 0.4);
+    }
+    50% { 
+        background: rgba(231, 76, 60, 0.5);
+        border-color: #e74c3c;
+    }
+}
+
+@keyframes blinkGreenEnfant {
+    0%, 100% { 
+        background: rgba(0, 0, 0, 0.3);
+        border-color: rgba(0, 255, 0, 0.4);
+    }
+    50% { 
+        background: rgba(39, 174, 96, 0.5);
+        border-color: #27ae60;
+    }
+}
+
+.buttons-enfant {
+    gap: 10px;
+    flex: 1; /* Prendre l'espace restant */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow: hidden; /* Empêcher l'agrandissement */
+    min-height: 0; /* Important pour le flex */
+}
+
+.btn-enfant {
+    font-size: 1.8em;
+    padding: 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-enfant:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-enfant.number {
+    background: rgba(52, 73, 94, 0.6);
+    color: white;
+}
+
+.btn-enfant.number:hover {
+    background: rgba(52, 73, 94, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn-enfant.operator {
+    background: rgba(231, 76, 60, 0.6);
+    color: white;
+}
+
+.btn-enfant.operator:hover {
+    background: rgba(231, 76, 60, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn-enfant.equals {
+    background: rgba(39, 174, 96, 0.6);
+    color: white;
+    font-size: 2em;
+    grid-row: span 2;
+}
+
+.btn-enfant.equals:hover {
+    background: rgba(39, 174, 96, 0.8);
+    transform: translateY(-2px);
+}
+
+.btn-enfant.zero {
+    grid-column: span 2;
+}
+
+.btn-enfant.clear {
+    background: rgba(149, 165, 166, 0.6);
+    color: white;
+}
+
+.btn-enfant.clear:hover {
+    background: rgba(149, 165, 166, 0.8);
+    transform: translateY(-2px);
+}
+
+/* Bloc Étapes */
+.steps-block {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    height: 500px; /* Hauteur fixe identique à la calculatrice */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    animation: blockFadeIn 0.5s ease-out 0.1s backwards;
+}
+
+/* Zone d'affichage visuel des calculs */
+.visual-steps {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px;
+    flex: 1; /* Prendre tout l'espace disponible */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto; /* Scroll si nécessaire */
+    min-height: 0; /* Important pour le scroll */
+    transition: all 0.3s ease;
+}
+
+.visual-steps:hover {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.step-item {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    animation: slideIn 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-item:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateX(5px) scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.step-item.correct {
+    border-left: 4px solid #27ae60;
+    background: rgba(39, 174, 96, 0.2);
+}
+
+.step-item.error {
+    border-left: 4px solid #e74c3c;
+    background: rgba(231, 76, 60, 0.2);
+}
+
+.step-item.info {
+    border-left: 4px solid #3498db;
+    background: rgba(52, 152, 219, 0.2);
+}
+
+.step-icon {
+    font-size: 1.3em;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Bloc Tests */
+.test-block {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    height: 500px; /* Hauteur fixe identique */
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    animation: blockFadeIn 0.5s ease-out 0.2s backwards;
+}
+
+.btn-test-enfant {
+    font-size: 1.3em;
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-weight: bold;
+    background: rgba(52, 152, 219, 0.6);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-test-enfant:hover {
+    background: rgba(52, 152, 219, 0.8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.test-results-enfant {
+    margin-top: 15px;
+    flex: 1; /* Prendre l'espace restant */
+    overflow-y: auto; /* Scroll si nécessaire */
+    min-height: 0; /* Important pour le scroll */
+}
+
+.test-item-enfant {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1em;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.test-item-enfant.pass {
+    border-color: rgba(39, 174, 96, 0.5);
+    background: rgba(39, 174, 96, 0.15);
+}
+
+.test-item-enfant.fail {
+    border-color: rgba(231, 76, 60, 0.5);
+    background: rgba(231, 76, 60, 0.15);
+}
+
+.test-icon-enfant {
+    font-size: 1.5em;
+    min-width: 30px;
+}
+
+.info-panel-enfant {
+    padding: 20px;
+    font-size: 1.1em;
+}
+
+.info-panel-enfant h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.info-panel-enfant p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Responsive pour enfants */
+@media (max-width: 1200px) {
+    .main-content-enfant {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .calculator-enfant,
+    .steps-block,
+    .test-block {
+        height: auto; /* Hauteur automatique sur mobile */
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 900px) {
+    .calculator-enfant {
+        max-width: 100%;
+    }
+    
+    .btn-enfant {
+        font-size: 1.5em;
+        padding: 15px;
+    }
+}
+
+/* Mode sombre pour la version enfant */
+body.dark-mode .test-item-enfant {
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-mode .test-item-enfant.pass {
+    border-color: rgba(76, 217, 100, 0.6);
+    background: rgba(39, 174, 96, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+body.dark-mode .test-item-enfant.pass .test-details-enfant {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 1 !important;
+}
+
+body.dark-mode .test-item-enfant.pass > div > div:first-child {
+    color: rgba(76, 217, 100, 1) !important;
+}
+
+body.dark-mode .test-item-enfant.fail {
+    border-color: rgba(255, 107, 107, 0.6);
+    background: rgba(231, 76, 60, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+body.dark-mode .test-item-enfant.fail .test-details-enfant {
+    color: rgba(255, 255, 255, 0.9) !important;
+    opacity: 1 !important;
+}
+
+body.dark-mode .test-item-enfant.fail > div > div:first-child {
+    color: rgba(255, 107, 107, 1) !important;
+}
+
