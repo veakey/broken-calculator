@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice Blockly Avancée - 3e (Eduscol)</title>
+    
+    <!-- Blockly via CDN -->
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/msg/fr.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/blockly/blockly.min.css">
+    
+    <!-- Styles modulaires -->
+    <link rel="stylesheet" href="src/css/base.css">
+    <link rel="stylesheet" href="src/css/calculator.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧩 Calculatrice Blockly Avancée - 3e</h1>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">
+                Programme avec scripts parallèles et structures complexes !
+            </p>
+            <div style="margin-top: 10px;">
+                <span class="competencer-badge">📚 Eduscol Cycle 4</span>
+                <span class="competencer-badge">🎯 Scripts parallèles</span>
+                <span class="competencer-badge">🔄 Structures complexes</span>
+                <span class="competencer-badge">📝 Voir le code JavaScript</span>
+            </div>
+        </header>
+        
+        <div class="main-layout">
+            <div class="panel">
+                <h2>🔧 Blocs de Programmation</h2>
+                <div id="blocklyDiv"></div>
+                <div class="status disconnected" id="status">
+                    ⚠️ Crée une fonction "calculer" avec des structures complexes
+                </div>
+                <button class="toggle-code" onclick="toggleCodePreview()">👁️ Afficher/Masquer le code JavaScript</button>
+                <div id="codePreview" class="code-preview" style="display: none;">
+                    Le code JavaScript généré apparaîtra ici...
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h2>🔢 Calculatrice</h2>
+                <div class="calculator">
+                    <div class="display" id="display">0</div>
+                    <div class="buttons">
+                        <button class="btn clear" onclick="clearDisplay()">C</button>
+                        <button class="btn operator" onclick="appendOperator('/')">÷</button>
+                        <button class="btn operator" onclick="appendOperator('*')">×</button>
+                        <button class="btn operator" onclick="appendOperator('-')">-</button>
+                        
+                        <button class="btn number" onclick="appendNumber('7')">7</button>
+                        <button class="btn number" onclick="appendNumber('8')">8</button>
+                        <button class="btn number" onclick="appendNumber('9')">9</button>
+                        <button class="btn operator" onclick="appendOperator('+')">+</button>
+                        
+                        <button class="btn number" onclick="appendNumber('4')">4</button>
+                        <button class="btn number" onclick="appendNumber('5')">5</button>
+                        <button class="btn number" onclick="appendNumber('6')">6</button>
+                        <button class="btn number" onclick="appendNumber('.')">.</button>
+                        
+                        <button class="btn number" onclick="appendNumber('1')">1</button>
+                        <button class="btn number" onclick="appendNumber('2')">2</button>
+                        <button class="btn number" onclick="appendNumber('3')">3</button>
+                        <button class="btn number" onclick="appendNumber('0')">0</button>
+                        
+                        <button class="btn equals" onclick="calculate()">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel">
+            <h2>ℹ️ Comment ça marche ?</h2>
+            <div class="info-box">
+                <p><strong>🎯 Objectif :</strong> Créer un programme avec scripts parallèles et structures complexes !</p>
+                <p><strong>📝 Étapes :</strong></p>
+                <ol style="line-height: 1.8;">
+                    <li>Crée une fonction "calculer" qui utilise la variable "operation"</li>
+                    <li>Utilise des conditions "si... alors... sinon..." pour choisir l'opération</li>
+                    <li>Utilise des boucles pour tester plusieurs opérations ou créer des scripts parallèles</li>
+                    <li>Clique sur "Afficher le code JavaScript" pour voir le code généré</li>
+                    <li>Teste la calculatrice - elle utilisera ton programme !</li>
+                </ol>
+                <p style="margin-top: 15px;"><strong>💡 Astuce :</strong> Regarde le code JavaScript généré pour comprendre comment Blockly se traduit en code !</p>
+                <p style="margin-top: 10px;"><strong>📚 Compétences Eduscol :</strong> Scripts parallèles, utilisation simultanée de boucles et conditions, projets complexes.</p>
+                <p style="margin-top: 10px;"><strong>🎓 Pour aller plus loin :</strong> Si tu maîtrises Blockly, essaie la version JavaScript dans <code>js-avance/</code> !</p>
+            </div>
+        </div>
+    </div>
+    
+    <xml id="toolbox" style="display: none">
+        <category name="Fonctions" colour="290">
+            <block type="procedures_defnoreturn">
+                <field name="NAME">calculer</field>
+            </block>
+        </category>
+        <category name="Opérations" colour="230">
+            <block type="calculator_add_bug"></block>
+            <block type="calculator_subtract_bug"></block>
+            <block type="calculator_multiply_bug"></block>
+            <block type="calculator_divide_bug"></block>
+            <block type="calculator_add_correct"></block>
+            <block type="calculator_subtract_correct"></block>
+            <block type="calculator_multiply_correct"></block>
+            <block type="calculator_divide_correct"></block>
+        </category>
+        <category name="Nombres" colour="120">
+            <block type="math_number"></block>
+            <block type="variables_get">
+                <field name="VAR">nombre1</field>
+            </block>
+            <block type="variables_get">
+                <field name="VAR">nombre2</field>
+            </block>
+            <block type="variables_get">
+                <field name="VAR">operation</field>
+            </block>
+        </category>
+        <category name="Variables" colour="330">
+            <block type="variables_set">
+                <field name="VAR">resultat</field>
+            </block>
+        </category>
+        <category name="Logique" colour="210">
+            <block type="controls_if"></block>
+            <block type="controls_ifelse"></block>
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+        </category>
+        <category name="Boucles" colour="120">
+            <block type="controls_repeat_ext"></block>
+            <block type="controls_for"></block>
+            <block type="controls_whileUntil"></block>
+        </category>
+        <category name="Texte" colour="160">
+            <block type="text"></block>
+            <block type="text_join"></block>
+        </category>
+        <category name="Math" colour="230">
+            <block type="math_arithmetic"></block>
+            <block type="math_number_property"></block>
+        </category>
+    </xml>
+    
+    <!-- JavaScript modulaire -->
+    <script src="src/js/blocks.js"></script>
+    <script src="src/js/generators.js"></script>
+    <script src="src/js/calculator.js"></script>
+    <script src="src/js/runtime.js"></script>
+</body>
+</html>
