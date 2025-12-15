@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.panel {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.panel h2 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.panel h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+#blocklyDiv {
+    height: 600px;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+}
+
+.code-preview {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    min-height: 550px;
+    max-height: 550px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.code-preview:empty::before {
+    content: "Le code JavaScript généré apparaîtra ici...";
+    color: #666;
+    font-style: italic;
+}
+
+.btn {
+    background: rgba(39, 174, 96, 0.8);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.btn:hover {
+    background: rgba(39, 174, 96, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(52, 152, 219, 0.8);
+}
+
+.btn-secondary:hover {
+    background: rgba(52, 152, 219, 1);
+}
+
+.btn-danger {
+    background: rgba(231, 76, 60, 0.8);
+}
+
+.btn-danger:hover {
+    background: rgba(231, 76, 60, 1);
+}
+
+.btn-run {
+    background: rgba(241, 196, 15, 0.8);
+}
+
+.btn-run:hover {
+    background: rgba(241, 196, 15, 1);
+}
+
+.info-box {
+    background: rgba(52, 152, 219, 0.2);
+    border-left: 4px solid rgba(52, 152, 219, 0.8);
+    padding: 15px 20px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 15px;
+}
+
+.info-box p {
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.info-box code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+.output-panel {
+    background: #1e1e1e;
+    color: #0f0;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    min-height: 150px;
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    line-height: 1.6;
+    margin-top: 15px;
+    border: 2px solid rgba(15, 255, 0, 0.3);
+}
+
+.output-panel:empty::before {
+    content: "Les résultats d'exécution apparaîtront ici...";
+    color: #666;
+    font-style: italic;
+}
+
+.output-panel .output-line {
+    margin: 2px 0;
+}
+
+.output-panel .output-error {
+    color: #f44;
+}
+
+.button-group {
+    margin-top: 15px;
+}
+
