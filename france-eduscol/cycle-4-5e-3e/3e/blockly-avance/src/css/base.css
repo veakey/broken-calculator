@@ -1,0 +1,130 @@
+/* Styles de base pour Blockly Avancé - 3e */
+
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 1400px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.panel {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.panel h2 {
+    color: white;
+    margin-top: 0;
+    font-size: 1.3em;
+}
+
+#blocklyDiv {
+    height: 600px;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+}
+
+.info-box {
+    background: rgba(52, 152, 219, 0.2);
+    border-left: 4px solid rgba(52, 152, 219, 0.8);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    color: white;
+    font-size: 0.95em;
+}
+
+.competencer-badge {
+    display: inline-block;
+    background: rgba(39, 174, 96, 0.3);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.85em;
+    margin: 5px 5px 5px 0;
+}
+
+.status {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-size: 1em;
+}
+
+.status.connected {
+    background: rgba(39, 174, 96, 0.3);
+    border: 2px solid rgba(39, 174, 96, 0.8);
+}
+
+.status.disconnected {
+    background: rgba(231, 76, 60, 0.3);
+    border: 2px solid rgba(231, 76, 60, 0.8);
+}
+
+.code-preview {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    margin-top: 15px;
+}
+
+.toggle-code {
+    background: rgba(52, 152, 219, 0.8);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.toggle-code:hover {
+    background: rgba(52, 152, 219, 1);
+    transform: translateY(-2px);
+}
+

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice Blockly - 4P (PER)</title>
+    
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="https://unpkg.com/blockly/blocks_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/javascript_compressed.js"></script>
+    <script src="https://unpkg.com/blockly/msg/fr.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/blockly/blockly.min.css">
+    
+        <!-- Styles modulaires -->
+    <link rel="stylesheet" href="src/css/base.css">
+    <link rel="stylesheet" href="src/css/calculator.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧩 Calculatrice Blockly - 4P</h1>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">
+                Crée des algorithmes avec des tests et des boucles simples !
+            </p>
+            <div style="margin-top: 10px;">
+                <span class="competencer-badge">📚 PER Cycle 1</span>
+                <span class="competencer-badge">🎯 Algorithmes avec tests</span>
+                <span class="competencer-badge">🔄 Boucles simples</span>
+                <span class="competencer-badge">🐛 Détection de bugs</span>
+            </div>
+        </header>
+        
+        <div class="main-layout">
+            <div class="panel">
+                <h2>🔧 Blocs de Programmation</h2>
+                <div id="blocklyDiv"></div>
+                <div class="status disconnected" id="status">
+                    ⚠️ Crée une fonction "calculer" avec des blocs
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h2>🔢 Calculatrice</h2>
+                <div class="calculator">
+                    <div class="display" id="display">0</div>
+                    <div class="buttons">
+                        <button class="btn clear" onclick="clearDisplay()">C</button>
+                        <button class="btn operator" onclick="appendOperator('+')">+</button>
+                        <button class="btn operator" onclick="appendOperator('-')">-</button>
+                        <button class="btn operator" onclick="appendOperator('*')">×</button>
+                        
+                        <button class="btn number" onclick="appendNumber('7')">7</button>
+                        <button class="btn number" onclick="appendNumber('8')">8</button>
+                        <button class="btn number" onclick="appendNumber('9')">9</button>
+                        
+                        <button class="btn number" onclick="appendNumber('4')">4</button>
+                        <button class="btn number" onclick="appendNumber('5')">5</button>
+                        <button class="btn number" onclick="appendNumber('6')">6</button>
+                        
+                        <button class="btn number" onclick="appendNumber('1')">1</button>
+                        <button class="btn number" onclick="appendNumber('2')">2</button>
+                        <button class="btn number" onclick="appendNumber('3')">3</button>
+                        <button class="btn number" onclick="appendNumber('0')">0</button>
+                        
+                        <button class="btn equals" onclick="calculate()">=</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="panel">
+            <h2>ℹ️ Comment ça marche ?</h2>
+            <div class="info-box">
+                <p><strong>🎯 Objectif :</strong> Créer un algorithme avec des tests et des boucles !</p>
+                <p><strong>📝 Étapes :</strong></p>
+                <ol style="line-height: 1.8;">
+                    <li>Glisse des blocs depuis la boîte à outils</li>
+                    <li>Crée une fonction "calculer" avec des blocs d'opération</li>
+                    <li>Utilise des blocs "si... alors..." pour choisir l'opération</li>
+                    <li>Teste la calculatrice - elle utilisera ton algorithme !</li>
+                    <li>Si les calculs sont faux, trouve le bug et corrige-le</li>
+                </ol>
+                <p style="margin-top: 15px;"><strong>🐛 Astuce :</strong> Certains blocs ont des bugs. Peux-tu les trouver ?</p>
+                <p style="margin-top: 10px;"><strong>📚 Compétences PER :</strong> Créer des algorithmes avec tests et boucles simples, comprendre les bugs, utiliser des conditions.</p>
+            </div>
+        </div>
+    </div>
+    
+    <xml id="toolbox" style="display: none">
+        <category name="Fonctions" colour="290">
+            <block type="procedures_defnoreturn">
+                <field name="NAME">calculer</field>
+            </block>
+        </category>
+        <category name="Opérations" colour="230">
+            <block type="calculator_add_bug"></block>
+            <block type="calculator_subtract_bug"></block>
+            <block type="calculator_multiply_bug"></block>
+            <block type="calculator_add_correct"></block>
+            <block type="calculator_subtract_correct"></block>
+            <block type="calculator_multiply_correct"></block>
+        </category>
+        <category name="Nombres" colour="120">
+            <block type="math_number"></block>
+            <block type="variables_get">
+                <field name="VAR">nombre1</field>
+            </block>
+            <block type="variables_get">
+                <field name="VAR">nombre2</field>
+            </block>
+            <block type="variables_get">
+                <field name="VAR">operation</field>
+            </block>
+        </category>
+        <category name="Variables" colour="330">
+            <block type="variables_set">
+                <field name="VAR">resultat</field>
+            </block>
+        </category>
+        <category name="Logique" colour="210">
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+        </category>
+    </xml>
+    
+        <!-- JavaScript modulaire -->
+    <script src="src/js/blocks.js"></script>
+    <script src="src/js/generators.js"></script>
+    <script src="src/js/calculator.js"></script>
+    <script src="src/js/runtime.js"></script>
+</body>
+</html>

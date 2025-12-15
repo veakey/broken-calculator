@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice Blockly Runtime</title>
+
+    <!-- Dépendances Blockly locales -->
+    <script src="../src/blockly/blockly_compressed.js"></script>
+    <script src="../src/blockly/blocks_compressed.js"></script>
+    <script src="../src/blockly/javascript_compressed.js"></script>
+    <script src="../src/blockly/fr.js"></script>
+
+    <!-- Styles globaux du projet -->
+    <link rel="stylesheet" href="../src/styles.css">
+    
+    <!-- Styles modulaires -->
+    <link rel="stylesheet" href="../src/css/base.css">
+    <link rel="stylesheet" href="../src/css/calculator.css">
+    <link rel="stylesheet" href="../src/css/tabs.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧩 Calculatrice Blockly (Runtime)</h1>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1em;">
+                Tu vas créer la fonction de calcul au runtime avec les blocs.
+            </p>
+        </header>
+
+        <div class="main-layout">
+            <!-- Panneau Blockly -->
+            <div class="panel">
+                <h2>Blocs de Programmation</h2>
+                <div id="blocklyDiv"></div>
+                <div class="status disconnected" id="runtime-status">
+                    Aucune fonction runtime définie pour l'instant
+                </div>
+            </div>
+
+            <!-- Panneau Calculatrice -->
+            <div class="panel">
+                <h2>Calculatrice</h2>
+                <div class="calculator-container">
+                    <!-- Onglets -->
+                    <div class="calculator-tabs">
+                        <button class="tab-button active" data-tab="calculator">Calculatrice</button>
+                        <button class="tab-button" data-tab="console">Console (Code)</button>
+                    </div>
+
+                    <!-- Contenu onglet Calculatrice -->
+                    <div class="tab-content active" id="tab-calculator">
+                        <div class="calculator" id="calculator">
+                            <div class="display" id="display">0</div>
+                            <div class="buttons">
+                                <!-- Ligne 1 -->
+                                <button class="btn clear" data-action="clear">C</button>
+                                <button class="btn operator" data-operator="/">÷</button>
+                                <button class="btn operator" data-operator="*">×</button>
+                                <button class="btn operator" data-operator="-">-</button>
+
+                                <!-- Ligne 2 -->
+                                <button class="btn number" data-number="7">7</button>
+                                <button class="btn number" data-number="8">8</button>
+                                <button class="btn number" data-number="9">9</button>
+                                <button class="btn operator" data-operator="+">+</button>
+
+                                <!-- Ligne 3 -->
+                                <button class="btn number" data-number="4">4</button>
+                                <button class="btn number" data-number="5">5</button>
+                                <button class="btn number" data-number="6">6</button>
+                                <button class="btn number" data-number=".">.</button>
+
+                                <!-- Ligne 4 -->
+                                <button class="btn number" data-number="1">1</button>
+                                <button class="btn number" data-number="2">2</button>
+                                <button class="btn number" data-number="3">3</button>
+                                <button class="btn number" data-number="0">0</button>
+
+                                <!-- Ligne 5 -->
+                                <button class="btn equals" data-action="equals">=</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contenu onglet Console -->
+                    <div class="tab-content" id="tab-console">
+                        <div class="code-console" id="code-console"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zone tuto -->
+        <div class="panel" id="tuto-panel">
+            <h2>Tuto : créer ta fonction de calcul en runtime</h2>
+            <div class="info-box">
+                <p><strong>Objectif :</strong> Construire une fonction de calcul à partir de blocs, qui sera créée au runtime.</p>
+                <p><strong>Idée générale :</strong></p>
+                <ol style="line-height: 1.8;">
+                    <li>Dans la zone Blockly, tu définis une fonction (par exemple <code>calc_add</code>).</li>
+                    <li>Le code JavaScript correspondant sera généré et chargé dynamiquement.</li>
+                    <li>La calculatrice utilisera cette fonction pour exécuter les opérations quand tu appuies sur <strong>=</strong>.</li>
+                </ol>
+                <p style="margin-top: 15px;">
+                    <strong>Astuce :</strong> Utilise l'onglet "Console (Code)" pour voir le code généré en temps réel.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toolbox XML pour Blockly (tous les blocs "généraux" du projet) -->
+    <xml id="toolbox" style="display: none">
+        <category name="Logique" colour="210">
+            <block type="controls_if"></block>
+            <block type="logic_compare"></block>
+            <block type="logic_operation"></block>
+            <block type="logic_negate"></block>
+            <block type="logic_boolean"></block>
+        </category>
+        <category name="Boucles" colour="120">
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_for"></block>
+            <block type="controls_forEach"></block>
+            <block type="controls_whileUntil"></block>
+        </category>
+        <category name="Math" colour="230">
+            <block type="math_number"></block>
+            <block type="math_arithmetic">
+                <value name="A">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="B">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+            </block>
+            <block type="math_single"></block>
+            <block type="math_trig"></block>
+            <block type="math_constant"></block>
+            <block type="math_number_property"></block>
+            <block type="math_round"></block>
+            <block type="math_on_list"></block>
+            <block type="math_modulo"></block>
+            <block type="math_constrain"></block>
+            <block type="math_random_int">
+                <value name="FROM">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="TO">
+                    <block type="math_number">
+                        <field name="NUM">100</field>
+                    </block>
+                </value>
+            </block>
+            <block type="math_random_float"></block>
+        </category>
+        <category name="Texte" colour="160">
+            <block type="text"></block>
+            <block type="text_join"></block>
+            <block type="text_append">
+                <value name="TEXT">
+                    <block type="text"></block>
+                </value>
+            </block>
+            <block type="text_length"></block>
+            <block type="text_isEmpty"></block>
+            <block type="text_indexOf">
+                <value name="VALUE">
+                    <block type="variables_get">
+                        <field name="VAR">text</field>
+                    </block>
+                </value>
+            </block>
+            <block type="text_charAt"></block>
+            <block type="text_getSubstring"></block>
+            <block type="text_changeCase"></block>
+            <block type="text_trim"></block>
+            <block type="text_count"></block>
+            <block type="text_replace"></block>
+            <block type="text_reverse"></block>
+        </category>
+        <category name="Listes" colour="260">
+            <block type="lists_create_with">
+                <mutation items="0"></mutation>
+            </block>
+            <block type="lists_create_with"></block>
+            <block type="lists_repeat">
+                <value name="NUM">
+                    <block type="math_number">
+                        <field name="NUM">5</field>
+                    </block>
+                </value>
+            </block>
+            <block type="lists_length"></block>
+            <block type="lists_isEmpty"></block>
+            <block type="lists_indexOf"></block>
+            <block type="lists_getIndex"></block>
+            <block type="lists_setIndex"></block>
+            <block type="lists_getSublist"></block>
+            <block type="lists_split"></block>
+            <block type="lists_sort"></block>
+        </category>
+        <category name="Variables" colour="330" custom="VARIABLE">
+            <block type="variables_set">
+                <value name="VALUE">
+                    <block type="math_number">
+                        <field name="NUM">0</field>
+                    </block>
+                </value>
+            </block>
+        </category>
+        <category name="Affichage" colour="20">
+            <block type="text_print"></block>
+            <block type="console_log"></block>
+        </category>
+        <category name="Fonctions" colour="290" custom="PROCEDURE"></category>
+    </xml>
+
+    <!-- Scripts JavaScript modulaires -->
+    <script src="../src/js/utils.js"></script>
+    <script src="../src/js/calculator.js"></script>
+    <script src="../src/js/keyboard.js"></script>
+    <script src="../src/js/tabs.js"></script>
+    <script src="../src/js/runtime.js"></script>
+    
+    <!-- Initialisation -->
+    <script>
+        function initPage() {
+            initCalculator();
+            initRuntimeBlockly();
+            initKeyboard();
+            initTabs();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initPage);
+        } else {
+            initPage();
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+/* Styles spécifiques à la calculatrice */
+
+.calculator {
+    background: rgba(44, 62, 80, 0.9);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.display {
+    background: #1a1a1a;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 2em;
+    padding: 20px;
+    text-align: right;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.3em;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn.number {
+    background: rgba(52, 73, 94, 0.8);
+}
+
+.btn.operator {
+    background: rgba(231, 76, 60, 0.8);
+}
+
+.btn.equals {
+    background: rgba(39, 174, 96, 0.8);
+    grid-column: span 2;
+}
+
+.btn.clear {
+    background: rgba(241, 196, 15, 0.8);
+}
+
