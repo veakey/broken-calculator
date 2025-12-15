@@ -33,7 +33,7 @@
                 </div>
             </div>
             
-            <!-- Panneau Calculatrice -->
+            <!-- Panneau Calculatrice + Tests -->
             <div class="panel">
                 <h2>Calculatrice</h2>
                 <div class="calculator-container">
@@ -63,6 +63,13 @@
                             <button class="btn equals" onclick="calculate()">=</button>
                         </div>
                     </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 20px;">
+                    <h3>Tests rapides</h3>
+                    <p>Clique sur le bouton pour vérifier si ta fonction <code>calculer</code> se comporte bien sur quelques calculs de base.</p>
+                    <button class="btn" onclick="runBasicBlocklyTests()">Lancer les tests de base</button>
+                    <div id="blockly-tests" style="margin-top: 10px;"></div>
                 </div>
             </div>
         </div>
@@ -422,6 +429,80 @@
         
         function updateDisplay() {
             display.textContent = currentInput;
+        }
+
+        // Tests basiques pour la fonction Blockly
+        function runBasicBlocklyTests() {
+            const status = document.getElementById('status');
+            const testsContainer = document.getElementById('blockly-tests');
+            
+            if (!testsContainer) {
+                console.warn('Conteneur de tests Blockly manquant (#blockly-tests)');
+                return;
+            }
+            
+            testsContainer.innerHTML = '';
+            
+            if (!calculateFunction) {
+                status.className = 'status disconnected';
+                status.textContent = '❌ Aucune fonction de calcul Blockly détectée. Crée une fonction "calculer" avec tes blocs.';
+                testsContainer.innerHTML = '<p>Crée d\'abord une fonction <code>calculer(nombre1, nombre2)</code> avec les blocs.</p>';
+                return;
+            }
+            
+            const testCases = [
+                { a: 2,  b: 3,  op: '+', label: '2 + 3' },
+                { a: 7,  b: 5,  op: '-', label: '7 - 5' },
+                { a: 4,  b: 6,  op: '*', label: '4 × 6' },
+                { a: 8,  b: 2,  op: '/', label: '8 ÷ 2' }
+            ];
+            
+            let allOk = true;
+            const ul = document.createElement('ul');
+            ul.style.listStyle = 'none';
+            ul.style.paddingLeft = '0';
+            
+            for (const tc of testCases) {
+                let expected = performCalculation(tc.a, tc.b, tc.op);
+                let actual = null;
+                let ok = false;
+                let error = null;
+                
+                try {
+                    window.nombre1 = tc.a;
+                    window.nombre2 = tc.b;
+                    window.resultat = 0;
+                    calculateFunction();
+                    actual = window.resultat;
+                    const diff = Math.abs(actual - expected);
+                    ok = !Number.isNaN(actual) && diff < 1e-9;
+                } catch (e) {
+                    error = e;
+                    ok = false;
+                }
+                
+                if (!ok) {
+                    allOk = false;
+                }
+                
+                const li = document.createElement('li');
+                li.style.marginBottom = '4px';
+                li.textContent = `${ok ? '✅' : '❌'} ${tc.label} = ${expected} (Blockly a donné: ${actual})`;
+                if (error) {
+                    li.textContent += ` [Erreur: ${error.message}]`;
+                }
+                ul.appendChild(li);
+            }
+            
+            testsContainer.appendChild(ul);
+            
+            if (allOk) {
+                status.className = 'status connected';
+                status.textContent = '✅ Tous les tests de base sont passés. Ta fonction "calculer" se comporte comme prévu.';
+            } else {
+                status.className = 'status disconnected';
+                status.textContent = '⚠ Certains tests de base échouent. Il reste des bugs dans tes blocs.';
+            }
         }
         
         // Mettre à jour la fonction de calcul quand Blockly change
