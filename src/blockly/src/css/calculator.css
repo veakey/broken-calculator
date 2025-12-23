@@ -1,81 +1,201 @@
-/* Styles pour la calculatrice */
+/* Styles pour la calculatrice - alignés sur la version JavaScript */
 .calculator-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .calculator {
-    background: rgba(44, 62, 80, 0.9);
+    background: rgba(44, 62, 80, 0.25);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
     width: 100%;
     max-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    height: fit-content;
+    animation: calculatorSlideIn 0.5s ease-out;
+}
+
+@keyframes calculatorSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px) scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
 }
 
 .display {
-    background: #1a1a1a;
-    color: #0f0;
-    font-family: 'Courier New', monospace;
+    background: rgba(26, 26, 26, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: #00ff00;
     font-size: 2.5em;
     padding: 20px;
     text-align: right;
     border-radius: 10px;
     margin-bottom: 20px;
-    min-height: 60px;
+    min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+    box-shadow: 
+        inset 0 2px 10px rgba(0,0,0,0.3),
+        0 0 20px rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.display.error {
+    animation: blinkRed 0.5s ease 3;
+    border-color: #e74c3c;
+    box-shadow: 
+        inset 0 2px 10px rgba(0,0,0,0.3),
+        0 0 30px rgba(231, 76, 60, 0.6);
+}
+
+.display.correct {
+    animation: blinkGreen 0.5s ease 3;
+    border-color: #27ae60;
+    box-shadow: 
+        inset 0 2px 10px rgba(0,0,0,0.3),
+        0 0 30px rgba(39, 174, 96, 0.6);
+}
+
+@keyframes blinkRed {
+    0%, 100% { 
+        background: rgba(26, 26, 26, 0.4);
+        color: #00ff00;
+    }
+    50% { 
+        background: rgba(231, 76, 60, 0.5);
+        color: #fff;
+    }
+}
+
+@keyframes blinkGreen {
+    0%, 100% { 
+        background: rgba(26, 26, 26, 0.4);
+        color: #00ff00;
+    }
+    50% { 
+        background: rgba(39, 174, 96, 0.5);
+        color: #fff;
+    }
 }
 
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 10px;
 }
 
 .btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 1.5em;
     padding: 20px;
+    font-size: 1.5em;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     font-weight: bold;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 
+        0 4px 15px rgba(0,0,0,0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn:hover {
-    background: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 .btn:active,
-.btn.keyboard-pressed {
-    transform: scale(0.95);
-    background: rgba(255, 255, 255, 0.4);
+.btn.keyboard-active {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(0,0,0,0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn.keyboard-active::before {
+    left: 100%;
 }
 
 .btn.number {
-    background: rgba(52, 73, 94, 0.8);
+    background: rgba(52, 73, 94, 0.4);
+    color: white;
+}
+
+.btn.number:hover,
+.btn.number.keyboard-active {
+    background: rgba(61, 86, 110, 0.5);
 }
 
 .btn.operator {
-    background: rgba(231, 76, 60, 0.8);
+    background: rgba(231, 76, 60, 0.4);
+    color: white;
 }
 
-.btn.equals {
-    background: rgba(39, 174, 96, 0.8);
-    grid-column: span 2;
+.btn.operator:hover,
+.btn.operator.keyboard-active {
+    background: rgba(192, 57, 43, 0.5);
 }
 
 .btn.clear {
-    background: rgba(241, 196, 15, 0.8);
+    background: rgba(149, 165, 166, 0.4);
+    color: white;
+}
+
+.btn.clear:hover,
+.btn.clear.keyboard-active {
+    background: rgba(127, 140, 141, 0.5);
+}
+
+.btn.equals {
+    background: rgba(39, 174, 96, 0.4);
+    color: white;
+    grid-row: span 2;
+}
+
+.btn.equals:hover,
+.btn.equals.keyboard-active {
+    background: rgba(34, 153, 84, 0.5);
+}
+
+.btn.zero {
+    grid-column: span 2;
 }
 
 /* Bouton d'opération désactivé (fonction non implémentée) */

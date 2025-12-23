@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculatrice Cassée - Réparation</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/tabs.css">
 </head>
 <body>
     <div class="container">
@@ -23,41 +24,6 @@
         </header>
 
         <div class="main-content">
-            <div class="calculator-wrapper">
-                <div class="calculator" id="calculator">
-                    <div class="display" id="display">0</div>
-                    <div class="buttons">
-                        <button class="btn advanced" onclick="calculateAdvanced('sin')">sin</button>
-                        <button class="btn advanced" onclick="calculateAdvanced('cos')">cos</button>
-                        <button class="btn advanced" onclick="calculateAdvanced('tan')">tan</button>
-                        <button class="btn advanced" onclick="calculateAdvanced('hyp')">hyp</button>
-                        
-                        <button class="btn clear" onclick="clearDisplay()">C</button>
-                        <button class="btn operator" onclick="appendOperator('/')">/</button>
-                        <button class="btn operator" onclick="appendOperator('*')">×</button>
-                        <button class="btn operator" onclick="appendOperator('%')">%</button>
-                        
-                        <button class="btn number" onclick="appendNumber('7')">7</button>
-                        <button class="btn number" onclick="appendNumber('8')">8</button>
-                        <button class="btn number" onclick="appendNumber('9')">9</button>
-                        <button class="btn operator" onclick="appendOperator('-')">-</button>
-                        
-                        <button class="btn number" onclick="appendNumber('4')">4</button>
-                        <button class="btn number" onclick="appendNumber('5')">5</button>
-                        <button class="btn number" onclick="appendNumber('6')">6</button>
-                        <button class="btn operator" onclick="appendOperator('+')">+</button>
-                        
-                        <button class="btn number" onclick="appendNumber('1')">1</button>
-                        <button class="btn number" onclick="appendNumber('2')">2</button>
-                        <button class="btn number" onclick="appendNumber('3')">3</button>
-                        <button class="btn equals" onclick="calculate()">=</button>
-                        
-                        <button class="btn number zero" onclick="appendNumber('0')">0</button>
-                        <button class="btn number" onclick="appendNumber('.')">.</button>
-                    </div>
-                </div>
-            </div>
-
             <div class="test-panel">
                 <h2>Tests de Validation</h2>
                 <div style="display: flex; gap: 10px; margin-bottom: 15px;">
@@ -81,6 +47,60 @@
                     <div id="error-statistics" class="statistics-container"></div>
                 </div>
             </div>
+
+            <div class="calculator-wrapper">
+                <div class="panel">
+                    <h2>Calculatrice</h2>
+                    <div class="calculator-container">
+                        <!-- Onglets -->
+                        <div class="calculator-tabs">
+                            <button class="tab-button active" data-tab="calculator">Calculatrice</button>
+                            <button class="tab-button" data-tab="console">Console (Code)</button>
+                        </div>
+
+                        <!-- Contenu onglet Calculatrice -->
+                        <div class="tab-content active" id="tab-calculator">
+                            <div class="calculator" id="calculator">
+                                <div class="display" id="display">0</div>
+                                <div class="buttons">
+                                    <button class="btn advanced" onclick="calculateAdvanced('sin')">sin</button>
+                                    <button class="btn advanced" onclick="calculateAdvanced('cos')">cos</button>
+                                    <button class="btn advanced" onclick="calculateAdvanced('tan')">tan</button>
+                                    <button class="btn advanced" onclick="calculateAdvanced('hyp')">hyp</button>
+                                    
+                                    <button class="btn clear" onclick="clearDisplay()">C</button>
+                                    <button class="btn operator" onclick="appendOperator('/')">/</button>
+                                    <button class="btn operator" onclick="appendOperator('*')">×</button>
+                                    <button class="btn operator" onclick="appendOperator('%')">%</button>
+                                    
+                                    <button class="btn number" onclick="appendNumber('7')">7</button>
+                                    <button class="btn number" onclick="appendNumber('8')">8</button>
+                                    <button class="btn number" onclick="appendNumber('9')">9</button>
+                                    <button class="btn operator" onclick="appendOperator('-')">-</button>
+                                    
+                                    <button class="btn number" onclick="appendNumber('4')">4</button>
+                                    <button class="btn number" onclick="appendNumber('5')">5</button>
+                                    <button class="btn number" onclick="appendNumber('6')">6</button>
+                                    <button class="btn operator" onclick="appendOperator('+')">+</button>
+                                    
+                                    <button class="btn number" onclick="appendNumber('1')">1</button>
+                                    <button class="btn number" onclick="appendNumber('2')">2</button>
+                                    <button class="btn number" onclick="appendNumber('3')">3</button>
+                                    <button class="btn equals" onclick="calculate()">=</button>
+                                    
+                                    <button class="btn number zero" onclick="appendNumber('0')">0</button>
+                                    <button class="btn number" onclick="appendNumber('.')">.</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contenu onglet Console -->
+                        <div class="tab-content" id="tab-console">
+                            <div class="code-console" id="code-console"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="info-panel">
@@ -98,6 +118,7 @@
     <script src="js/error-statistics.js"></script>
     <script src="js/accessibility-controls.js"></script>
     <script src="js/tests.js"></script>
+    <script src="js/tabs.js"></script>
     <script>
         // Fonction pour obtenir un indice basé sur les tests qui échouent
         function showHintForSelectedBug() {
@@ -122,6 +143,13 @@
                 alert('Indice : Regarde les tests qui échouent pour identifier les bugs !');
             }
         }
+
+        // Initialiser les onglets de la calculatrice
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof initTabs === 'function') {
+                initTabs();
+            }
+        });
     </script>
 </body>
 </html>
