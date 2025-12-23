@@ -94,9 +94,15 @@
                             </div>
                         </div>
 
-                        <!-- Contenu onglet Console -->
+                        <!-- Contenu onglet Console (Code modifiable par l'utilisateur) -->
                         <div class="tab-content" id="tab-console">
-                            <div class="code-console" id="code-console"></div>
+                            <div class="code-console-editor">
+                                <textarea id="code-editor" spellcheck="false"></textarea>
+                                <div class="code-console-actions">
+                                    <button class="btn-apply-code" type="button" onclick="applyUserCode()">Appliquer le code</button>
+                                    <span class="code-status" id="code-status"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -144,10 +150,13 @@
             }
         }
 
-        // Initialiser les onglets de la calculatrice
+        // Initialiser les onglets de la calculatrice et l'éditeur de code
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof initTabs === 'function') {
                 initTabs();
+            }
+            if (typeof initCodeEditor === 'function') {
+                initCodeEditor();
             }
         });
     </script>
