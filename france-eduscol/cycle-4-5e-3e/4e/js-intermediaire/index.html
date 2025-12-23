@@ -5,16 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculatrice Cassée - 4e Intermédiaire</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/tabs.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>🔧 Calculatrice Cassée - 4e Intermédiaire</h1>
             <p class="subtitle">Votre mission : réparer cette calculatrice !</p>
-        </header>
+                        <div class="accessibility-controls" style="display: flex; gap: 10px; align-items: center;">
+                    <button class="btn-accessibility" onclick="decreaseFontSize()" title="Réduire la taille">A-</button>
+                    <button class="btn-accessibility" onclick="increaseFontSize()" title="Augmenter la taille">A+</button>
+                    <button class="btn-accessibility" onclick="toggleDarkMode()" title="Mode sombre/clair">☀</button>
+                </div>
+            </header>
 
         <div class="calculator-wrapper">
-            <div class="calculator" id="calculator">
+                            <div class="calculator-container">
+                    <!-- Onglets -->
+                    <div class="calculator-tabs">
+                        <button class="tab-button active" data-tab="calculator">Calculatrice</button>
+                        <button class="tab-button" data-tab="console">Console (Code)</button>
+                    </div>
+
+                    <!-- Contenu onglet Calculatrice -->
+                    <div class="tab-content active" id="tab-calculator">
+                        
                 <div class="display" id="display">0</div>
                 <div class="buttons">
                     <button class="btn clear" onclick="clearDisplay()">C</button>
@@ -38,9 +53,21 @@
                     
                     <button class="btn number zero" onclick="appendNumber('0')">0</button>
                     <button class="btn number" onclick="appendNumber('.')">.</button>
+                                    </div>
+                    </div>
+
+                    <!-- Contenu onglet Console (Code modifiable par l'utilisateur) -->
+                    <div class="tab-content" id="tab-console">
+                        <div class="code-console-editor">
+                            <textarea id="code-editor" spellcheck="false"></textarea>
+                            <div class="code-console-actions">
+                                <button class="btn-apply-code" type="button" onclick="applyUserCode()">Appliquer le code</button>
+                                <span class="code-status" id="code-status"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <div class="test-panel">
             <h2>🧪 Tests de Validation</h2>
@@ -58,5 +85,8 @@
 
     <script src="calculator.js"></script>
     <script src="tests.js"></script>
+    <script src="js/accessibility-controls.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/page-init.js"></script>
 </body>
 </html>
