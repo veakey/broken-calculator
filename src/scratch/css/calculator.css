@@ -1,8 +1,6 @@
 /* Styles pour la calculatrice - alignés sur la version JavaScript */
 .calculator-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    /* Pas de flex, flow normal pour que les onglets soient au-dessus du contenu */
 }
 
 .calculator {

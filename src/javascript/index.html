@@ -23,8 +23,9 @@
             </div>
         </header>
 
-        <div class="main-content">
-            <div class="test-panel">
+        <div class="main-layout">
+            <!-- Panneau Tests -->
+            <div class="panel">
                 <h2>Tests de Validation</h2>
                 <div style="display: flex; gap: 10px; margin-bottom: 15px;">
                     <button class="btn-test" onclick="runTests()">Lancer les Tests</button>
@@ -48,60 +49,59 @@
                 </div>
             </div>
 
-            <div class="calculator-wrapper">
-                <div class="panel">
-                    <h2>Calculatrice</h2>
-                    <div class="calculator-container">
-                        <!-- Onglets -->
-                        <div class="calculator-tabs">
-                            <button class="tab-button active" data-tab="calculator">Calculatrice</button>
-                            <button class="tab-button" data-tab="console">Console (Code)</button>
-                        </div>
+            <!-- Panneau Calculatrice -->
+            <div class="panel">
+                <h2>Calculatrice</h2>
+                <div class="calculator-container">
+                    <!-- Onglets -->
+                    <div class="calculator-tabs">
+                        <button class="tab-button active" data-tab="calculator">Calculatrice</button>
+                        <button class="tab-button" data-tab="console">Console (Code)</button>
+                    </div>
 
-                        <!-- Contenu onglet Calculatrice -->
-                        <div class="tab-content active" id="tab-calculator">
-                            <div class="calculator" id="calculator">
-                                <div class="display" id="display">0</div>
-                                <div class="buttons">
-                                    <button class="btn advanced" onclick="calculateAdvanced('sin')">sin</button>
-                                    <button class="btn advanced" onclick="calculateAdvanced('cos')">cos</button>
-                                    <button class="btn advanced" onclick="calculateAdvanced('tan')">tan</button>
-                                    <button class="btn advanced" onclick="calculateAdvanced('hyp')">hyp</button>
-                                    
-                                    <button class="btn clear" onclick="clearDisplay()">C</button>
-                                    <button class="btn operator" onclick="appendOperator('/')">/</button>
-                                    <button class="btn operator" onclick="appendOperator('*')">×</button>
-                                    <button class="btn operator" onclick="appendOperator('%')">%</button>
-                                    
-                                    <button class="btn number" onclick="appendNumber('7')">7</button>
-                                    <button class="btn number" onclick="appendNumber('8')">8</button>
-                                    <button class="btn number" onclick="appendNumber('9')">9</button>
-                                    <button class="btn operator" onclick="appendOperator('-')">-</button>
-                                    
-                                    <button class="btn number" onclick="appendNumber('4')">4</button>
-                                    <button class="btn number" onclick="appendNumber('5')">5</button>
-                                    <button class="btn number" onclick="appendNumber('6')">6</button>
-                                    <button class="btn operator" onclick="appendOperator('+')">+</button>
-                                    
-                                    <button class="btn number" onclick="appendNumber('1')">1</button>
-                                    <button class="btn number" onclick="appendNumber('2')">2</button>
-                                    <button class="btn number" onclick="appendNumber('3')">3</button>
-                                    <button class="btn equals" onclick="calculate()">=</button>
-                                    
-                                    <button class="btn number zero" onclick="appendNumber('0')">0</button>
-                                    <button class="btn number" onclick="appendNumber('.')">.</button>
-                                </div>
+                    <!-- Contenu onglet Calculatrice -->
+                    <div class="tab-content active" id="tab-calculator">
+                        <div class="calculator" id="calculator">
+                            <div class="display" id="display">0</div>
+                            <div class="buttons">
+                                <button class="btn advanced" onclick="calculateAdvanced('sin')">sin</button>
+                                <button class="btn advanced" onclick="calculateAdvanced('cos')">cos</button>
+                                <button class="btn advanced" onclick="calculateAdvanced('tan')">tan</button>
+                                <button class="btn advanced" onclick="calculateAdvanced('hyp')">hyp</button>
+                                
+                                <button class="btn clear" onclick="clearDisplay()">C</button>
+                                <button class="btn operator" onclick="appendOperator('/')">/</button>
+                                <button class="btn operator" onclick="appendOperator('*')">×</button>
+                                <button class="btn operator" onclick="appendOperator('%')">%</button>
+                                
+                                <button class="btn number" onclick="appendNumber('7')">7</button>
+                                <button class="btn number" onclick="appendNumber('8')">8</button>
+                                <button class="btn number" onclick="appendNumber('9')">9</button>
+                                <button class="btn operator" onclick="appendOperator('-')">-</button>
+                                
+                                <button class="btn number" onclick="appendNumber('4')">4</button>
+                                <button class="btn number" onclick="appendNumber('5')">5</button>
+                                <button class="btn number" onclick="appendNumber('6')">6</button>
+                                <button class="btn operator" onclick="appendOperator('+')">+</button>
+                                
+                                <button class="btn number" onclick="appendNumber('1')">1</button>
+                                <button class="btn number" onclick="appendNumber('2')">2</button>
+                                <button class="btn number" onclick="appendNumber('3')">3</button>
+                                <button class="btn equals" onclick="calculate()">=</button>
+                                
+                                <button class="btn number zero" onclick="appendNumber('0')">0</button>
+                                <button class="btn number" onclick="appendNumber('.')">.</button>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Contenu onglet Console (Code modifiable par l'utilisateur) -->
-                        <div class="tab-content" id="tab-console">
-                            <div class="code-console-editor">
-                                <textarea id="code-editor" spellcheck="false"></textarea>
-                                <div class="code-console-actions">
-                                    <button class="btn-apply-code" type="button" onclick="applyUserCode()">Appliquer le code</button>
-                                    <span class="code-status" id="code-status"></span>
-                                </div>
+                    <!-- Contenu onglet Console (Code modifiable par l'utilisateur) -->
+                    <div class="tab-content" id="tab-console">
+                        <div class="code-console-editor">
+                            <textarea id="code-editor" spellcheck="false"></textarea>
+                            <div class="code-console-actions">
+                                <button class="btn-apply-code" type="button" onclick="applyUserCode()">Appliquer le code</button>
+                                <span class="code-status" id="code-status"></span>
                             </div>
                         </div>
                     </div>
@@ -109,10 +109,13 @@
             </div>
         </div>
 
-        <div class="info-panel">
+        <!-- Zone instructions -->
+        <div class="panel" id="info-panel">
             <h2>Instructions</h2>
-            <p>Cette calculatrice a plusieurs bugs. Utilisez les tests pour identifier et corriger les erreurs dans le code JavaScript.</p>
-            <p><strong>Objectif :</strong> Tous les tests doivent passer (✅) pour que la calculatrice soit considérée comme réparée.</p>
+            <div class="info-box">
+                <p>Cette calculatrice a plusieurs bugs. Utilisez les tests pour identifier et corriger les erreurs dans le code JavaScript.</p>
+                <p><strong>Objectif :</strong> Tous les tests doivent passer (✅) pour que la calculatrice soit considérée comme réparée.</p>
+            </div>
         </div>
     </div>
 

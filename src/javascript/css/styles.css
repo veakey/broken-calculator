@@ -111,6 +111,20 @@ header h1 {
     align-items: start; /* Empêche les colonnes de s'étirer */
 }
 
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+    align-items: start; /* Empêche les colonnes de s'étirer */
+}
+
+@media (max-width: 1200px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
 .calculator-wrapper {
     display: flex;
     justify-content: flex-start;
@@ -334,6 +348,30 @@ header h1 {
     animation: panelFadeIn 0.5s ease-out;
 }
 
+.panel {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.panel h2 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+#info-panel {
+    grid-column: 1 / -1;
+    animation: panelFadeIn 0.6s ease-out 0.2s backwards;
+}
+
 @keyframes panelFadeIn {
     0% {
         opacity: 0;
@@ -365,6 +403,20 @@ header h1 {
     margin-bottom: 15px;
     font-size: 1.5em;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+.panel .info-box {
+    background: rgba(52, 152, 219, 0.2);
+    border-left: 4px solid rgba(52, 152, 219, 0.8);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    color: white;
+}
+
+.panel .info-box p {
+    margin: 5px 0;
+    line-height: 1.6;
 }
 
 .hints-section {
