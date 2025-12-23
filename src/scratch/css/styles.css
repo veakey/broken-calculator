@@ -687,58 +687,6 @@ body.dark-mode .test-item.fail small {
     opacity: 1 !important;
 }
 
-/* Mode daltonien - Utilise des formes en plus des couleurs */
-body.colorblind-mode .test-item.pass::before {
-    content: '✓ ';
-    font-weight: bold;
-}
-
-body.colorblind-mode .test-item.fail::before {
-    content: '✗ ';
-    font-weight: bold;
-}
-
-body.colorblind-mode .history-item.history-correct::before {
-    content: '✓ ';
-    font-weight: bold;
-}
-
-body.colorblind-mode .history-item.history-error::before {
-    content: '✗ ';
-    font-weight: bold;
-}
-
-body.colorblind-mode .step-item.correct::before {
-    content: '✓ ';
-    font-weight: bold;
-}
-
-body.colorblind-mode .step-item.error::before {
-    content: '✗ ';
-    font-weight: bold;
-}
-
-/* Utiliser des bordures plus épaisses pour le mode daltonien */
-body.colorblind-mode .test-item.pass {
-    border-left: 6px solid #27ae60;
-    border-style: solid;
-}
-
-body.colorblind-mode .test-item.fail {
-    border-left: 6px solid #e74c3c;
-    border-style: dashed;
-}
-
-body.colorblind-mode .history-item.history-correct {
-    border-left: 6px solid #27ae60;
-    border-style: solid;
-}
-
-body.colorblind-mode .history-item.history-error {
-    border-left: 6px solid #e74c3c;
-    border-style: dashed;
-}
-
 #test-results {
     margin-top: 20px;
 }

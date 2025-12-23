@@ -22,6 +22,12 @@
             <p style="color: rgba(255, 255, 255, 0.9); font-size: 1em;">
                 Utilise des variables et des conditions pour choisir l'opération !
             </p>
+                </div>
+                <div class="accessibility-controls" style="display: flex; gap: 10px; align-items: center;">
+                    <button class="btn-accessibility" onclick="decreaseFontSize()" title="Réduire la taille">A-</button>
+                    <button class="btn-accessibility" onclick="increaseFontSize()" title="Augmenter la taille">A+</button>
+                    <button class="btn-accessibility" onclick="toggleDarkMode()" title="Mode sombre/clair">☀</button>
+                </div>
             <div style="margin-top: 10px;">
                 <span class="competencer-badge">📚 PER Cycle 2</span>
                 <span class="competencer-badge">🎯 Variables</span>
@@ -137,5 +143,6 @@
     <script src="src/js/generators.js"></script>
     <script src="src/js/calculator.js"></script>
     <script src="src/js/runtime.js"></script>
+    <script src="./src/js/accessibility-controls.js"></script>
 </body>
 </html>

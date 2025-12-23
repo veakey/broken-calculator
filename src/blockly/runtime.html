@@ -6,26 +6,35 @@
     <title>Calculatrice Blockly Runtime</title>
 
     <!-- Dépendances Blockly locales -->
-    <script src="../src/blockly/blockly_compressed.js"></script>
-    <script src="../src/blockly/blocks_compressed.js"></script>
-    <script src="../src/blockly/javascript_compressed.js"></script>
-    <script src="../src/blockly/fr.js"></script>
+    <script src="./src/blockly/blockly_compressed.js"></script>
+    <script src="./src/blockly/blocks_compressed.js"></script>
+    <script src="./src/blockly/javascript_compressed.js"></script>
+    <script src="./src/blockly/fr.js"></script>
 
-    <!-- Styles globaux du projet -->
-    <link rel="stylesheet" href="../src/styles.css">
+    <!-- Styles globaux du projet (version Blockly) -->
+    <link rel="stylesheet" href="./src/styles.css">
     
-    <!-- Styles modulaires -->
-    <link rel="stylesheet" href="../src/css/base.css">
-    <link rel="stylesheet" href="../src/css/calculator.css">
-    <link rel="stylesheet" href="../src/css/tabs.css">
+    <!-- Styles modulaires (version Blockly) -->
+    <link rel="stylesheet" href="./src/css/base.css">
+    <link rel="stylesheet" href="./src/css/calculator.css">
+    <link rel="stylesheet" href="./src/css/tabs.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🧩 Calculatrice Blockly (Runtime)</h1>
-            <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1em;">
-                Tu vas créer la fonction de calcul au runtime avec les blocs.
-            </p>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div>
+                    <h1>🧩 Calculatrice Blockly (Runtime)</h1>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1em;">
+                        Tu vas créer la fonction de calcul au runtime avec les blocs.
+                    </p>
+                </div>
+                <div class="accessibility-controls" style="display: flex; gap: 10px; align-items: center;">
+                    <button class="btn-accessibility" onclick="decreaseFontSize()" title="Réduire la taille">A-</button>
+                    <button class="btn-accessibility" onclick="increaseFontSize()" title="Augmenter la taille">A+</button>
+                    <button class="btn-accessibility" onclick="toggleDarkMode()" title="Mode sombre/clair">☀</button>
+                </div>
+            </div>
         </header>
 
         <div class="main-layout">
@@ -228,12 +237,13 @@
         <category name="Fonctions" colour="290" custom="PROCEDURE"></category>
     </xml>
 
-    <!-- Scripts JavaScript modulaires -->
-    <script src="../src/js/utils.js"></script>
-    <script src="../src/js/calculator.js"></script>
-    <script src="../src/js/keyboard.js"></script>
-    <script src="../src/js/tabs.js"></script>
-    <script src="../src/js/runtime.js"></script>
+    <!-- Scripts JavaScript modulaires (version Blockly) -->
+    <script src="./src/js/utils.js"></script>
+    <script src="./src/js/calculator.js"></script>
+    <script src="./src/js/keyboard.js"></script>
+    <script src="./src/js/tabs.js"></script>
+    <script src="./src/js/accessibility-controls.js"></script>
+    <script src="./src/js/runtime.js"></script>
     
     <!-- Initialisation -->
     <script>

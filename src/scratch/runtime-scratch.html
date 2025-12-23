@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice Scratch Runtime</title>
+
+    <!-- Blockly - Nécessaire pour scratch-blocks (réutilise les fichiers de la version Blockly) -->
+    <script src="../blockly/src/blockly/blockly_compressed.js"></script>
+    <script src="../blockly/src/blockly/blocks_compressed.js"></script>
+    <script src="../blockly/src/blockly/javascript_compressed.js"></script>
+    <script src="../blockly/src/blockly/fr.js"></script>
+    
+    <!-- Scratch VM - Charger depuis node_modules ou CDN -->
+    <!-- Note: Pour une utilisation en production, copiez scratch-vm dans src/scratch/ -->
+    <script src="https://cdn.jsdelivr.net/npm/scratch-vm@1.5.0/dist/web/scratch-vm.js"></script>
+    <!-- Alternative: utiliser le fichier local si disponible -->
+    <!-- <script src="../node_modules/scratch-vm/dist/web/scratch-vm.js"></script> -->
+    
+    <!-- Scratch Blocks - Éditeur visuel de blocs Scratch -->
+    <!-- Note: scratch-blocks nécessite Blockly comme dépendance (chargé ci-dessus) -->
+    <!-- Utiliser Blockly directement avec un thème Scratch-like pour l'instant -->
+    <!-- scratch-blocks complet nécessite une configuration plus complexe -->
+
+    <!-- Styles globaux du projet (version Scratch) -->
+    <link rel="stylesheet" href="./css/styles.css">
+    
+    <!-- Styles modulaires (version Scratch) -->
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/calculator.css">
+    <link rel="stylesheet" href="./css/tabs.css">
+    
+    <style>
+        /* Styles spécifiques pour Scratch */
+        #scratchDiv {
+            height: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            position: relative;
+        }
+        
+        /* Si scratch-blocks n'est pas chargé, afficher le placeholder */
+        #scratchDiv .scratch-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            height: 100%;
+        }
+        
+        #scratchDiv .scratch-placeholder h3 {
+            margin-bottom: 15px;
+            color: #4C97FF;
+        }
+        
+        #scratchDiv .scratch-placeholder p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        
+        /* Cacher le placeholder quand l'éditeur est chargé */
+        #scratchDiv.blockly-loaded .scratch-placeholder {
+            display: none;
+        }
+        
+        .scratch-controls {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-scratch {
+            background: rgba(76, 151, 255, 0.8);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-scratch:hover {
+            background: rgba(76, 151, 255, 1);
+            transform: translateY(-2px);
+        }
+        
+        .scratch-info {
+            background: rgba(76, 151, 255, 0.1);
+            border-left: 4px solid rgba(76, 151, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                <div>
+                    <h1>🎨 Calculatrice Scratch (Runtime)</h1>
+                    <p style="color: rgba(255, 255, 255, 0.9); font-size: 1.1em;">
+                        Tu vas créer la fonction de calcul au runtime avec Scratch.
+                    </p>
+                </div>
+                <div class="accessibility-controls" style="display: flex; gap: 10px; align-items: center;">
+                    <button class="btn-accessibility" onclick="decreaseFontSize()" title="Réduire la taille">A-</button>
+                    <button class="btn-accessibility" onclick="increaseFontSize()" title="Augmenter la taille">A+</button>
+                    <button class="btn-accessibility" onclick="toggleDarkMode()" title="Mode sombre/clair">☀</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-layout">
+            <!-- Panneau Scratch -->
+            <div class="panel">
+                <h2>Blocs de Programmation Scratch</h2>
+                <div id="scratchDiv">
+                    <div class="scratch-placeholder" id="scratch-placeholder">
+                        <h3>Éditeur Scratch</h3>
+                        <p>Chargement de l'éditeur Scratch Blocks...</p>
+                        <p style="font-size: 0.9em; color: #999;">
+                            Si l'éditeur ne se charge pas, vérifiez votre connexion internet.
+                        </p>
+                        <div class="scratch-controls">
+                            <button class="btn-scratch" onclick="initScratchBlocks()">Charger l'éditeur</button>
+                            <button class="btn-scratch" onclick="loadEmptyProject()">Initialiser Scratch VM</button>
+                            <button class="btn-scratch" onclick="updateFunctions()">Mettre à jour les fonctions</button>
+                            <button class="btn-scratch" onclick="createTestFunction()">Créer fonction test (calc_add)</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="status disconnected" id="runtime-status">
+                    Aucune fonction runtime définie pour l'instant
+                </div>
+            </div>
+
+            <!-- Panneau Calculatrice -->
+            <div class="panel">
+                <h2>Calculatrice</h2>
+                <div class="calculator-container">
+                    <!-- Onglets -->
+                    <div class="calculator-tabs">
+                        <button class="tab-button active" data-tab="calculator">Calculatrice</button>
+                        <button class="tab-button" data-tab="console">Console (Code)</button>
+                        <button class="tab-button" data-tab="tests">Tests</button>
+                    </div>
+
+                    <!-- Contenu onglet Calculatrice -->
+                    <div class="tab-content active" id="tab-calculator">
+                        <div class="calculator" id="calculator">
+                            <div class="display" id="display">0</div>
+                            <div class="buttons">
+                                <!-- Ligne 1 -->
+                                <button class="btn clear" data-action="clear">C</button>
+                                <button class="btn operator" data-operator="/">÷</button>
+                                <button class="btn operator" data-operator="*">×</button>
+                                <button class="btn operator" data-operator="-">-</button>
+
+                                <!-- Ligne 2 -->
+                                <button class="btn number" data-number="7">7</button>
+                                <button class="btn number" data-number="8">8</button>
+                                <button class="btn number" data-number="9">9</button>
+                                <button class="btn operator" data-operator="+">+</button>
+
+                                <!-- Ligne 3 -->
+                                <button class="btn number" data-number="4">4</button>
+                                <button class="btn number" data-number="5">5</button>
+                                <button class="btn number" data-number="6">6</button>
+                                <button class="btn number" data-number=".">.</button>
+
+                                <!-- Ligne 4 -->
+                                <button class="btn number" data-number="1">1</button>
+                                <button class="btn number" data-number="2">2</button>
+                                <button class="btn number" data-number="3">3</button>
+                                <button class="btn number" data-number="0">0</button>
+
+                                <!-- Ligne 5 -->
+                                <button class="btn equals" data-action="equals">=</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contenu onglet Console -->
+                    <div class="tab-content" id="tab-console">
+                        <div class="code-console" id="code-console"></div>
+                    </div>
+
+                    <!-- Contenu onglet Tests -->
+                    <div class="tab-content" id="tab-tests">
+                        <div class="tests-summary" id="tests-summary">
+                            Score : 0/0 tests exécutés
+                        </div>
+                        <div class="tests-actions">
+                            <button class="btn-scratch" id="run-tests-button">Lancer les tests</button>
+                        </div>
+                        <div class="tests-list" id="tests-list">
+                            <!-- Résultats des tests générés dynamiquement -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Zone tuto -->
+        <div class="panel" id="tuto-panel">
+            <h2>Tuto : créer ta fonction de calcul en runtime avec Scratch</h2>
+            <div class="info-box">
+                <p><strong>Objectif :</strong> Construire une fonction de calcul à partir de blocs Scratch, qui sera créée au runtime.</p>
+                <p><strong>Idée générale :</strong></p>
+                <ol style="line-height: 1.8;">
+                    <li>Dans la zone Scratch, tu définis une fonction (par exemple <code>calc_add</code>).</li>
+                    <li>Le code JavaScript correspondant sera généré et chargé dynamiquement.</li>
+                    <li>La calculatrice utilisera cette fonction pour exécuter les opérations quand tu appuies sur <strong>=</strong>.</li>
+                </ol>
+                <div class="scratch-info" style="margin-top: 15px;">
+                    <p><strong>Note :</strong> Cette version utilise Scratch VM pour l'exécution. Pour un éditeur visuel complet, il faudrait intégrer scratch-gui ou scratch-blocks.</p>
+                    <p style="margin-top: 10px; font-size: 0.9em;">
+                        <strong>Fonctionnalités actuelles :</strong>
+                    </p>
+                    <ul style="margin-left: 20px; margin-top: 5px;">
+                        <li>Scratch VM chargé et initialisé</li>
+                        <li>Détection automatique des changements (polling)</li>
+                        <li>Exposition des fonctions vers JavaScript</li>
+                        <li>Intégration avec la calculatrice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toolbox XML pour Scratch Blocks (Blockly) -->
+    <!-- On ne garde que les catégories utiles pour la logique de calculatrice -->
+    <xml id="scratch-toolbox" style="display: none">
+        <category name="Contrôle" colour="#FFAB19">
+            <block type="controls_repeat_ext">
+                <value name="TIMES">
+                    <block type="math_number">
+                        <field name="NUM">10</field>
+                    </block>
+                </value>
+            </block>
+            <block type="controls_whileUntil"></block>
+            <block type="controls_if"></block>
+        </category>
+        <category name="Opérateurs" colour="#59CC59">
+            <block type="math_number"></block>
+            <block type="math_arithmetic">
+                <value name="A">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+                <value name="B">
+                    <block type="math_number">
+                        <field name="NUM">1</field>
+                    </block>
+                </value>
+            </block>
+            <block type="math_single"></block>
+        </category>
+        <category name="Texte" colour="#9A5CA1">
+            <block type="text"></block>
+            <block type="text_join"></block>
+        </category>
+        <category name="Listes" colour="#CC0000">
+            <block type="lists_create_with"></block>
+            <block type="lists_length"></block>
+        </category>
+        <category name="Variables" colour="#FF8C1A" custom="VARIABLE"></category>
+        <category name="Mes blocs" colour="#FF6680" custom="PROCEDURE"></category>
+    </xml>
+
+    <!-- Scripts JavaScript modulaires (version Scratch) -->
+    <script src="./js/utils.js"></script>
+    <script src="./js/calculator.js"></script>
+    <script src="./js/keyboard.js"></script>
+    <script src="./js/tabs.js"></script>
+    <script src="./js/accessibility-controls.js"></script>
+    <script src="./js/runtime/scratch-runtime.js"></script>
+    
+    <!-- Initialisation -->
+    <script>
+        // Fonctions helper pour l'interface
+        function loadEmptyProject() {
+            console.log('loadEmptyProject appelé');
+            console.log('scratchVM:', typeof scratchVM !== 'undefined' ? scratchVM : 'undefined');
+            console.log('VirtualMachine:', typeof VirtualMachine !== 'undefined' ? VirtualMachine : 'undefined');
+            
+            // Vérifier si Scratch VM est disponible
+            if (typeof VirtualMachine === 'undefined') {
+                alert('Scratch VM n\'est pas chargé. Vérifiez la console pour plus de détails.');
+                console.error('VirtualMachine non disponible');
+                return;
+            }
+            
+            // Si scratchVM n'est pas initialisé, l'initialiser
+            if (typeof scratchVM === 'undefined' || !scratchVM) {
+                console.log('Initialisation de scratchVM...');
+                scratchVM = new VirtualMachine();
+            }
+            
+            if (!scratchVM || !scratchVM.runtime) {
+                alert('Impossible d\'initialiser Scratch VM. Vérifiez la console.');
+                console.error('scratchVM ou scratchVM.runtime non disponible');
+                return;
+            }
+            
+            console.log('Initialisation du runtime Scratch VM...');
+            
+            // Au lieu de charger un projet, on initialise simplement le runtime
+            // Scratch VM peut fonctionner sans projet chargé explicitement
+            try {
+                // Vérifier que le runtime est prêt
+                if (!scratchVM.runtime) {
+                    throw new Error('Runtime non disponible');
+                }
+                
+                // Le runtime est déjà initialisé par initRuntimeScratch()
+                // On peut maintenant créer des fonctions directement
+                console.log('✅ Runtime Scratch VM prêt');
+                
+                // Mettre à jour le statut
+                var statusEl = document.getElementById('runtime-status');
+                if (statusEl) {
+                    statusEl.textContent = '✅ Runtime Scratch VM prêt. Vous pouvez créer des fonctions.';
+                    statusEl.classList.remove('disconnected');
+                    statusEl.classList.add('connected');
+                }
+                
+                // Mettre à jour les fonctions (même s'il n'y en a pas encore)
+                if (typeof updateRuntimeFunctions === 'function') {
+                    updateRuntimeFunctions();
+                }
+                
+                // Mettre en place les listeners si ce n'est pas déjà fait
+                if (typeof setupScratchVMListeners === 'function') {
+                    setupScratchVMListeners();
+                }
+                
+            } catch (e) {
+                console.error('❌ Erreur lors de l\'initialisation:', e);
+                alert('Erreur: ' + e.message);
+                var statusEl = document.getElementById('runtime-status');
+                if (statusEl) {
+                    statusEl.textContent = '❌ Erreur: ' + e.message;
+                    statusEl.classList.remove('connected');
+                    statusEl.classList.add('disconnected');
+                }
+            }
+        }
+        
+        function updateFunctions() {
+            if (typeof updateRuntimeFunctions === 'function') {
+                updateRuntimeFunctions();
+            }
+        }
+        
+        // Fonction de test : créer une fonction calc_add manuellement
+        function createTestFunction() {
+            console.log('Création d\'une fonction de test calc_add...');
+            
+            // Créer directement la fonction JavaScript (sans passer par Scratch VM pour l'instant)
+            // C'est juste pour tester que le système d'exposition fonctionne
+            var testCode = 'function calc_add(a, b) {\n';
+            testCode += '    return a + b;\n';
+            testCode += '}\n';
+            
+            try {
+                // Exécuter le code pour créer la fonction
+                (0, eval)(testCode);
+                
+                // Vérifier que la fonction existe
+                if (typeof window.calc_add === 'function') {
+                    console.log('✅ Fonction calc_add créée avec succès');
+                    
+                    // Test de la fonction
+                    var testResult = window.calc_add(5, 3);
+                    console.log('Test: calc_add(5, 3) =', testResult);
+                    
+                    // Mettre à jour le statut
+                    var statusEl = document.getElementById('runtime-status');
+                    if (statusEl) {
+                        statusEl.textContent = '✅ Fonction calc_add créée et testée (' + testResult + '). Utilisable dans la calculatrice !';
+                        statusEl.classList.remove('disconnected');
+                        statusEl.classList.add('connected');
+                    }
+                    
+                    // Mettre à jour la console de code
+                    if (typeof updateCodeConsole === 'function') {
+                        updateCodeConsole(testCode);
+                    }
+                    
+                    // Mettre à jour le statut des boutons
+                    if (typeof updateOperationButtonsStatus === 'function') {
+                        updateOperationButtonsStatus();
+                    }
+                } else {
+                    throw new Error('La fonction n\'a pas été créée');
+                }
+            } catch (error) {
+                console.error('❌ Erreur lors de la création de la fonction test:', error);
+                alert('Erreur: ' + error.message);
+            }
+        }
+
+        // Initialiser la partie runtime Scratch (VM) et l'UI des tests
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof initRuntimeScratch === 'function') {
+                initRuntimeScratch();
+            }
+            if (typeof initScratchTestsUI === 'function') {
+                initScratchTestsUI();
+            }
+        });
+        // Variable globale pour l'éditeur Scratch Blocks
+        var scratchBlocksWorkspace;
+        
+        // Initialiser l'éditeur Scratch Blocks
+        function initScratchBlocks() {
+            console.log('Initialisation de Scratch Blocks...');
+            
+            // Vérifier que Blockly est disponible (scratch-blocks nécessite Blockly)
+            if (typeof Blockly === 'undefined') {
+                console.error('Blockly non disponible. Scratch-blocks nécessite Blockly.');
+                alert('Blockly n\'est pas chargé. Scratch-blocks nécessite Blockly comme dépendance.');
+                return;
+            }
+            
+            var scratchDiv = document.getElementById('scratchDiv');
+            if (!scratchDiv) {
+                console.error('Élément #scratchDiv non trouvé');
+                return;
+            }
+            
+            try {
+                // Utiliser la toolbox XML déjà définie dans le HTML
+                var toolbox = document.getElementById('scratch-toolbox');
+                if (!toolbox) {
+                    console.error('Toolbox non trouvée');
+                    return;
+                }
+                
+                // Initialiser Blockly avec un style similaire à Scratch
+                // Note: Pour un vrai éditeur Scratch, il faudrait utiliser scratch-blocks complet
+                // mais cela nécessite une configuration plus complexe
+                scratchBlocksWorkspace = Blockly.inject('scratchDiv', {
+                    toolbox: toolbox,
+                    grid: {
+                        spacing: 20,
+                        length: 3,
+                        colour: '#ccc',
+                        snap: true
+                    },
+                    zoom: {
+                        controls: true,
+                        wheel: true,
+                        startScale: 1.0,
+                        maxScale: 3,
+                        minScale: 0.3,
+                        scaleSpeed: 1.2
+                    },
+                    trashcan: true,
+                    media: '../blockly/src/blockly/media/',
+                    // Thème avec des couleurs similaires à Scratch
+                    theme: Blockly.Theme.defineTheme('scratchTheme', {
+                        'blockStyles': {
+                            'motion_blocks': {
+                                'colourPrimary': '#4C97FF',
+                                'colourSecondary': '#4280D7',
+                                'colourTertiary': '#3373CC'
+                            },
+                            'operator_blocks': {
+                                'colourPrimary': '#59CC59',
+                                'colourSecondary': '#46BF46',
+                                'colourTertiary': '#389438'
+                            },
+                            'variable_blocks': {
+                                'colourPrimary': '#FF8C1A',
+                                'colourSecondary': '#FF8000',
+                                'colourTertiary': '#DB6E00'
+                            },
+                            'procedure_blocks': {
+                                'colourPrimary': '#FF6680',
+                                'colourSecondary': '#FF4D6D',
+                                'colourTertiary': '#E63950'
+                            }
+                        }
+                    })
+                });
+                
+                // Cacher le placeholder
+                var placeholder = document.getElementById('scratch-placeholder');
+                if (placeholder) {
+                    placeholder.style.display = 'none';
+                }
+                scratchDiv.classList.add('blockly-loaded');
+                
+                // Écouter les changements dans les blocs
+                scratchBlocksWorkspace.addChangeListener(function(event) {
+                    if (event.type === Blockly.Events.UI) {
+                        return;
+                    }
+                    
+                    console.log('Changement dans Scratch Blocks détecté');
+                    // Convertir les blocs en format Scratch VM et mettre à jour
+                    updateScratchBlocksToVM();
+                });
+                
+                console.log('✅ Scratch Blocks initialisé avec succès');
+                
+            } catch (error) {
+                console.error('❌ Erreur lors de l\'initialisation de Scratch Blocks:', error);
+                alert('Erreur lors du chargement de l\'éditeur: ' + error.message);
+            }
+        }
+        
+        // Convertir les blocs Blockly en JavaScript (comme dans runtime.js)
+        function updateScratchBlocksToVM() {
+            if (!scratchBlocksWorkspace) {
+                return;
+            }
+            
+            try {
+                // Générer le code JavaScript depuis les blocs Blockly
+                var code = Blockly.JavaScript.workspaceToCode(scratchBlocksWorkspace);
+                console.log('Code généré depuis Blockly:', code);
+                
+                // Transformer le code (remplacer var par let)
+                if (typeof replaceVarWithLet === 'function') {
+                    code = replaceVarWithLet(code);
+                }
+                
+                // Mettre à jour la console de code
+                if (typeof updateCodeConsole === 'function') {
+                    updateCodeConsole(code);
+                }
+                
+                // Exécuter le code dans le scope global pour créer les fonctions
+                if (code && code.trim() !== '') {
+                    // Nettoyer les anciennes fonctions
+                    try {
+                        delete window.calc_add;
+                    } catch (e) {
+                        // Ignorer si delete échoue
+                    }
+                    
+                    // Exécuter le code (indirect eval pour scope global)
+                    (0, eval)(code);
+                    
+                    console.log('✅ Code exécuté, fonctions créées');
+                }
+                
+                // Mettre à jour le statut
+                if (typeof updateOperationButtonsStatus === 'function') {
+                    updateOperationButtonsStatus();
+                }
+            } catch (error) {
+                console.error('Erreur lors de la conversion:', error);
+                var statusEl = document.getElementById('runtime-status');
+                if (statusEl) {
+                    statusEl.textContent = '❌ Erreur dans les blocs: ' + error.message;
+                    statusEl.classList.remove('connected');
+                    statusEl.classList.add('disconnected');
+                }
+            }
+        }
+        
+        function initPage() {
+            // Vérifier que Scratch VM est chargé avant d'initialiser
+            if (typeof VirtualMachine === 'undefined') {
+                console.error('Scratch VM non chargé !');
+                var statusEl = document.getElementById('runtime-status');
+                if (statusEl) {
+                    statusEl.textContent = '❌ Erreur: Scratch VM n\'est pas chargé. Vérifiez votre connexion ou le CDN.';
+                    statusEl.classList.remove('connected');
+                    statusEl.classList.add('disconnected');
+                }
+                // Afficher un message dans la console
+                console.error('Le script scratch-vm.js n\'a pas été chargé. Vérifiez:');
+                console.error('1. Votre connexion internet');
+                console.error('2. Que le CDN jsDelivr est accessible');
+                console.error('3. Ouvrez la console du navigateur pour plus de détails');
+                return;
+            }
+            
+            console.log('✅ Scratch VM détecté, initialisation...');
+            initCalculator();
+            initRuntimeScratch();
+            initKeyboard();
+            initTabs();
+            
+            // Essayer d'initialiser Scratch Blocks automatiquement
+            // Attendre un peu pour que Blockly soit chargé
+            setTimeout(function() {
+                if (typeof Blockly !== 'undefined') {
+                    initScratchBlocks();
+                } else {
+                    console.warn('Blockly non disponible, Scratch Blocks ne peut pas être initialisé');
+                }
+            }, 500);
+        }
+
+        // Attendre que Scratch VM soit chargé (si chargé via CDN)
+        function waitForScratchVM() {
+            if (typeof VirtualMachine !== 'undefined') {
+                initPage();
+            } else {
+                // Réessayer après un court délai
+                setTimeout(waitForScratchVM, 100);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', waitForScratchVM);
+        } else {
+            waitForScratchVM();
+        }
+    </script>
+</body>
+</html>
+
